@@ -1,0 +1,17 @@
+# IntelliJ project files
+.idea
+.idea/*.xml
+*.iml
+out
+gen
+build
+rebel.xml
+ssafy-web.log
+*.log
+
+# Gradle
+.gradle
+/build/
+.gradletasknamecache
+gradle
+
