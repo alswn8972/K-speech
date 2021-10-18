@@ -57,12 +57,7 @@ public class JwtTokenUtil {
              token.put("id",user.getUserId());
             token.put("name", user.getUserName());
             token.put("isManager",String.valueOf(user.getIsManger()));
-            if(user.getEstateInfo() != null) {
-                token.put("isEstate",Long.toString(user.getEstateInfo().getId()));
-            }
-            else {
-                token.put("isEstate","null");
-            }
+
 
         return JWT.create()
                 .withClaim("userInfo",token)

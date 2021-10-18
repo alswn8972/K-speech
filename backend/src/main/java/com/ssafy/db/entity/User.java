@@ -15,8 +15,6 @@ import javax.persistence.*;
 @Getter
 @Setter
 public class User extends BaseEntity{
-    @ManyToOne(fetch = FetchType.LAZY)
-    private EstateInfo estateInfo;
 
     String userId;
     String userName;

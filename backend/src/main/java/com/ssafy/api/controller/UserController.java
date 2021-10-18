@@ -1,7 +1,5 @@
 package com.ssafy.api.controller;
 
-import com.ssafy.api.response.EstateRes;
-import com.ssafy.db.entity.EstateInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -119,18 +117,4 @@ public class UserController {
         }
     }
 
-    @GetMapping("/estate")
-    @ApiOperation(value = "부동산 정보 조회", notes = "부동산 등록번호로 부동산 정보를 한다.")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "성공"),
-            @ApiResponse(code = 500, message = "Error")
-    })
-    public ResponseEntity<EstateRes> getEstateInfo(@RequestParam String registrationNumber){
-        try {
-            EstateInfo estateInfo = userService.getEstateInfoByResgistrationNumber(registrationNumber);
-            return ResponseEntity.status(200).body(EstateRes.of(estateInfo));
-        } catch (NoSuchElementException e) {
-            return ResponseEntity.status(500).body(EstateRes.of(500, "Error"));
-        }
-    }
 }
