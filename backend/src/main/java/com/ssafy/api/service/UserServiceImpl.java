@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
 		User user = new User();
 		user.setUserId(userRegisterInfo.getUserId());
 		user.setUserPass(passwordEncoder.encode(userRegisterInfo.getUserPass()));
-		user.setUserEmail(userRegisterInfo.getUserEmail());
+		user.setUserNickName(userRegisterInfo.getUserNickName());
 		user.setUserPhone(userRegisterInfo.getUserPhone());
 		user.setUserName(userRegisterInfo.getUserName());
 
@@ -42,8 +42,9 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void patchUser(UserRegisterPostReq userRegisterInfo, String userId) {
 		Optional<User> user = userRepository.findById(userRepositorySupport.findUserByUserId(userId).get().getId());
-		user.get().setUserEmail(userRegisterInfo.getUserEmail());
-//		user.get().setUserPass(passwordEncoder.encode(userRegisterInfo.getUserPass()));
+		//user.get().setUserEmail(userRegisterInfo.getUserEmail());
+		//user.get().setUserPass(passwordEncoder.encode(userRegisterInfo.getUserPass()));
+		user.get().setUserNickName(userRegisterInfo.getUserNickName());
 		user.get().setUserPhone(userRegisterInfo.getUserPhone());
 		user.get().setUserName(userRegisterInfo.getUserName());
 		userRepository.save(user.get());
@@ -55,6 +56,12 @@ public class UserServiceImpl implements UserService {
 	public User getUserByUserId(String userId) {
 		return userRepositorySupport.findUserByUserId(userId).get();
 	}
+
+	@Override
+	public User getUserByUserNickName(String userNickName) {
+		return userRepositorySupport.findUserByUserNickName(userNickName).get();
+	}
+
 	@Override
 	public void deleteUserByUserId(String userId) {
 		userRepository.deleteById(userRepositorySupport.findUserByUserId(userId).get().getId());
