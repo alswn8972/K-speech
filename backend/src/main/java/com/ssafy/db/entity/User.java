@@ -18,7 +18,7 @@ public class User extends BaseEntity{
 
     String userId;
     String userName;
-    String userEmail;
+    String userNickName;
     String userPhone;
     Boolean isManger;
 
