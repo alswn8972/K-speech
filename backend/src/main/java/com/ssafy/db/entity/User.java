@@ -20,7 +20,6 @@ public class User extends BaseEntity{
     String userName;
     String userNickName;
     String userPhone;
-    Boolean isManger;
 
     @JsonIgnore
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
