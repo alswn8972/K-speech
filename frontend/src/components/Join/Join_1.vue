@@ -100,6 +100,13 @@ export default {
       this.code=this.$route.query.code;
       this.getToken();
     },
+    // 토큰 받아오기
+    getToken(){
+      http.get("http://localhost:8080/kakaologin?authorize_code=",this.code)
+      .then((res)=>{
+        console.log(res);
+      })
+    },
     // 아이디 중복체크
     Check(){
       if(this.id.length<=0 || this.id.length>10){
@@ -137,7 +144,11 @@ export default {
         console.error(err);
       });
     }, 
+    // 회원가입
+    onSubmit(){
+    
 
+    },
     // 다음페이지 넘기기
     next(event){
       event.preventDefault();
