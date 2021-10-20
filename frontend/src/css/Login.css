@@ -1,0 +1,101 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url("../../public/Image/login_bg.gif");
+    background-size: cover;
+}
+
+.login_content {
+    display: flex;
+    flex-direction: row;
+    font-family: system-ui, serif;
+    padding: 1.5rem;
+    border-radius: 20px;
+    width: 60%;
+    height: 500px;
+    background: var(--color-white);
+    box-shadow: 0px 3px 15px var(--color-shadow);
+}
+
+.login_leftBox{
+    flex: 1 1 0; 
+    overflow: hidden; 
+    border-right: 1px solid var(--color-grey-4);
+    text-align: center;
+    line-height: 452px;
+}
+
+.login_leftBox > .login_img{
+    max-width:100%; max-height:100%;
+    vertical-align:middle;
+}
+
+.login_rightBox{
+    flex: 1 1 0; 
+    overflow: hidden; 
+}
+
+.login_rightBox > .login_input{
+    width: 65%;
+    margin: 0 auto;
+}
+
+.login_header{
+    color: var(--color-mainBlue);
+    font-size: var(--font-size-28);
+    font-family: "AppleSDGothicNeoEB";
+    margin-top: 32px;
+}
+
+.text{
+    font-size: var(--font-size-14);
+    color: var(--color-grey-3);
+    margin-bottom: 25px!important;
+    font-family: "AppleSDGothicNeoB";
+}
+
+.login_mid_header{
+    color: var(--color-grey-1);
+    font-size: var(--font-size-18);
+    font-family: "AppleSDGothicNeoB";
+}
+
+.login_input_c{
+    margin-top: 0px!important;
+}
+
+.theme--light.v-input, .theme--light.v-input input, .theme--light.v-input textarea::placeholder { 
+    font-size: var(--font-size-14); 
+    font-family: "AppleSDGothicNeoR";
+}
+
+.id_remember{
+    color: var(--color-grey-1);
+    font-size: var(--font-size-14); 
+    font-family: "AppleSDGothicNeoR";
+}
+
+.login_btn{
+    margin-top: 30px;
+    width: 100%;
+}
+
+.moves{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.move{
+    font-size: var(--font-size-14); 
+    font-family: "AppleSDGothicNeoR";
+    text-decoration: none;
+}
+.move:link {color: var(--color-grey-1);}
+.move:visited {color: var(--color-grey-1);}
+.move:hover {
+    text-decoration: none; 
+    color:var(--color-mainBlue);
+    font-weight: 600;
+}

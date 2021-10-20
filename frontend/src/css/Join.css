@@ -1,0 +1,110 @@
+.join1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url("../../public/Image/join_bg.gif");
+    background-size: cover;
+}
+
+.join_content {
+    display: flex;
+    flex-direction: row;
+    font-family: system-ui, serif;
+    padding: 1.5rem;
+    border-radius: 20px;
+    width: 60%;
+    height: 500px;
+    background: var(--color-white);
+    box-shadow: 0px 3px 15px var(--color-shadow);
+}
+
+.join_leftBox{
+    flex: 1 1 0; 
+    overflow: hidden; 
+}
+
+.join_leftBox > .join_input{
+    width: 65%;
+    margin: 0 auto;
+}
+
+.join_header{
+    color: var(--color-mainBlue);
+    font-size: var(--font-size-28);
+    font-family: "AppleSDGothicNeoEB";
+    margin-top: 10px;
+}
+
+.text{
+    font-size: var(--font-size-14);
+    color: var(--color-grey-3);
+    margin-bottom: 25px!important;
+    font-family: "AppleSDGothicNeoB";
+}
+
+.join_input_id,
+.join_input_phone{
+    width: 70%;
+    float: left;
+}
+
+.join_id_check_btn{
+    width: 10px;
+    height: 35px!important;
+    font-size: var(--font-size-12);
+    font-family: "AppleSDGothicNeoB";
+    float: right;
+}
+
+.join_rightBox{
+    flex: 1 1 0; 
+    overflow: hidden; 
+    border-left: 1px solid var(--color-grey-4);
+    text-align: center;
+    line-height: 452px;
+}
+
+.join_rightBox > .join_img{
+    max-width:100%; max-height:100%;
+    vertical-align:middle;
+    padding-left: 5%;
+}
+
+.mid_join_header{
+    color: var(--color-grey-1);
+    font-size: var(--font-size-16);
+    font-family: "AppleSDGothicNeoB";
+    clear: both;
+}
+
+.join_next{
+    float: right;
+    font-size: var(--font-size-16);
+    font-family: "AppleSDGothicNeoB";
+    cursor:pointer;
+}
+
+.theme--light.v-input, .theme--light.v-input input, .theme--light.v-input textarea::placeholder { 
+    font-size: var(--font-size-14); 
+    font-family: "AppleSDGothicNeoR";
+}
+
+.move:link {color: var(--color-grey-1);}
+.move:visited {color: var(--color-grey-1);}
+.move:hover {
+    text-decoration: none; 
+    color:var(--color-mainBlue);
+    font-weight: 600;
+}
+
+/* join 본인인증 부분 추가 css */
+
+.join_btn{
+    margin-top: 30px;
+    width: 100%;
+}
+
+.join2_head{
+    margin-top: 70px;
+}
