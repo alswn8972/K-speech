@@ -72,6 +72,7 @@ export default {
   name: "Join1",
   data: () => {
     return {
+      code:"",
       id: "",
       nickName: "",
       password: "",
@@ -94,6 +95,11 @@ export default {
       .letters();
   },
   methods:{
+    // 카카오로그인 토큰
+    create(){
+      this.code=this.$route.query.code;
+      this.getToken();
+    },
     // 아이디 중복체크
     Check(){
       if(this.id.length<=0 || this.id.length>10){
@@ -110,22 +116,22 @@ export default {
       .get(`v1/user/check/${this.id}`)
       .then((res) => {
         const idResult = res.data.data;
-         if(idResult == true){
+        if(idResult == true){
             Swal.fire({
               icon: "error",
               text: "중복된 아이디 입니다.",
               showConfirmButton: false,
               timer: 1000,
             });
-         }else{
-           this.idCheck = true;
-           Swal.fire({
+        }else{
+          this.idCheck = true;
+          Swal.fire({
               icon: "success",
               text: "사용 가능한 아이디 입니다.",
               showConfirmButton: false,
               timer: 1000,
             });
-         }
+        }
       })
       .catch((err) => {
         console.error(err);

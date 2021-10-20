@@ -34,8 +34,9 @@
             <input type="checkbox" id="checkbox" v-model="checked" />
             <label class="id_remember" for="checkbox">아이디 기억하기</label>
 
-            <div class="text-center">
+            <div class="text-center" style="margin-top: 20px;">
               <v-btn class="login_btn" rounded :color="classObject" dark @click="onSubmit">LOGIN</v-btn>
+              <v-btn class="login_btn" rounded style="background-color:#eee713" @click="onKakao">Kakao Login</v-btn>
             </div>
           </form>
           <div class="moves">
@@ -92,12 +93,12 @@ export default {
         return "#04338C";
       return  "#6482B9";
     },
-
   },
   methods: {
     onSubmit(event){
       event.preventDefault();
-
+      console.log(this.id);
+      console.log(this.password);
       if(this.id.length<=0 || this.id.length>10){
         Swal.fire({
           icon: "error",
@@ -107,7 +108,7 @@ export default {
         });
         return;
       }
-      if(this.password.length<8 || this.password.length>=12){
+      if(this.password.length<8){
         Swal.fire({
           icon: "error",
           text: "비밀번호는 8 ~ 11자입니다. ",
@@ -124,18 +125,25 @@ export default {
       }
 
       const user = {
-        userId: this.id,
-        userPw: this.password
+        id: this.id,
+        password: this.password
       }
 
       http
-      .post("v1/login", JSON.stringify(user))
+      .post("/api/v1/auth/login", JSON.stringify(user))
       .then((res) => {
-         const token = res.data["auth_token"];
+        console.log(res);
+         const token = res.data["accessToken"];
          if(token){
             this.$store.commit('login',res.data.user);
+            Swal.fire({
+            icon: "success",
+            text: res.data['message'],
+            showConfirmButton: false,
+            timer: 1000,
+            });
             this.$router.push({
-              name:'CamSetting'
+              name:'About'
             }); 
           }
           else{
@@ -150,6 +158,9 @@ export default {
       .catch((err) => {
         console.error(err);
       });
+    },
+    onKakao(){
+      window.location.replace("https://kauth.kakao.com/oauth/authorize?client_id=176a306530233dd86c855ff4bb75e587&redirect_uri=http://localhost:8000/join&response_type=code");
     }
   }
 };
