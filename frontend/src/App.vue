@@ -1,28 +1,41 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" data-app>
+    <loader :isLoading="$store.getters.getIsSubmit"/>
+    <router-view />
+    <UnityGame v-if="$store.state.user!==null && showUnity"/>
   </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import UnityGame from '@/components/Unity/UnityGame';
+import Loader from './common/Loader/Loader.vue';
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name : "App",
+  data() {
+    return {
+    }
+  },
+  components : {
+    UnityGame,
+    Loader,
+  },
+  created(){
+    this.$store.commit('setIsSubmit',false)
+  },
+  computed : {
+    showUnity : function(){
+      if(this.$route.name === "MyPage" || this.$route.name === "CamSetting" || this.$route.name === "About"){
+        return false;
+      }
+      return true;
+    }
   }
 }
 </script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@import "./css/style.css";
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 </style>

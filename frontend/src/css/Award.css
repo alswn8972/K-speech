@@ -1,0 +1,133 @@
+@import 'style.css';
+
+.award {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color-award);
+  font-family: AppleSDGothicNeoB;
+}
+
+.award_area {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 75%;
+  height: 80vh;
+  text-align: center;
+  padding: 2rem;
+  border: 1px solid #fced01;
+  border-radius: 20px;
+}
+
+h2 {
+  font-size: var(--font-size-35);
+  color: var(--color-white);
+  font-family: AppleSDGothicNeoB;
+  z-index: 999;
+}
+
+.laurel_img {
+  margin: 0 auto;
+  max-width: 233px;
+  max-height: 155px;
+  margin-top: -6rem;
+}
+
+.award_inner {
+  display: flex;
+  flex-direction: rows;
+  height: 100%;
+  padding: 2rem;
+}
+
+.award_left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 0;
+  overflow: hidden;
+}
+
+.left_user {
+  z-index: 999;
+  position: absolute;
+}
+
+.user1 {
+  top: 27vh;
+}
+
+.user2 {
+  top: 35vh;
+  left: 24vw;
+}
+
+.user3 {
+  top: 35vh;
+  left: 37vw;
+}
+
+.trophy_img {
+  display: flex;
+}
+
+.left_user_img {
+  display: inline;
+}
+
+.left_user_name {
+  color: var(--color-white);
+  font-family: AppleSDGothicNeoB;
+  font-size: var(--font-size-20);
+}
+
+.left_user_point {
+  color: var(--color-white);
+  font-family: AppleSDGothicNeoB;
+  font-size: var(--font-size-20);
+}
+
+.award_right {
+  display: flex;
+  flex: 1 1 0;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  color: var(--color-white);
+}
+
+.award_right > ul {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.award_right > ul > li {
+  text-align: left;
+  margin: 0 auto;
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: row;
+  width: 60%;
+  padding: 0.35rem 0;
+  font-size: var(--font-size-20);
+}
+
+.ranking {
+  flex: 4;
+}
+
+.award_right > ul > li .level_img {
+  flex: 3;
+}
+
+.user_name {
+  flex: 10;
+}
+
+.user_score {
+  flex: 5;
+}
