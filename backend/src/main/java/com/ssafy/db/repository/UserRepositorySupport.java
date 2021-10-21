@@ -4,6 +4,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.ssafy.db.entity.QUser;
 import com.ssafy.db.entity.User;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,15 @@ public class UserRepositorySupport {
     public Optional<User> findUserByUserNickName(String userNickName) {
         User user = jpaQueryFactory.select(qUser).from(qUser)
                 .where(qUser.userNickName.eq(userNickName)).fetchOne();
+        if(user == null) return Optional.empty();
+        return Optional.ofNullable(user);
+    }
+
+    public Optional<User> findUserById(String id) {
+        Long pid=Long.parseLong(id);
+        System.out.println(pid);
+        User user = jpaQueryFactory.select(qUser).from(qUser)
+                .where(qUser.id.eq(pid)).fetchOne();
         if(user == null) return Optional.empty();
         return Optional.ofNullable(user);
     }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Collection;
 import java.util.HashMap;
 
 @Service
@@ -16,7 +17,7 @@ public class KakaoService {
     public String getAccessToken(String code){
         String access_token="";
         String refresh_token="";
-        String reqUrl="http://kauth.kakao.com/auth/token";
+        String reqUrl="https://kauth.kakao.com/oauth/token";
 
         try{
             URL url=new URL(reqUrl);
@@ -29,7 +30,7 @@ public class KakaoService {
             StringBuilder sb=new StringBuilder();
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=176a306530233dd86c855ff4bb75e587");
-            sb.append("&redirect_url=http://localhost:8081/");
+            sb.append("&redirect_url=http://localhost:8000");
             sb.append("&code="+code);
             bw.write(sb.toString());
             bw.flush();
@@ -76,15 +77,17 @@ public class KakaoService {
             JsonElement element=parser.parse(result);
 
             JsonObject kakao_account=element.getAsJsonObject().get("kakao_account").getAsJsonObject();
+            System.out.println(kakao_account);
+//            String id=element.getAsJsonObject().get("id").getAsString();
+//            System.out.println(id);
 
+            String nickname=element.getAsJsonObject().get("properties").getAsJsonObject().get("nickname").getAsString();
             String id=element.getAsJsonObject().get("id").getAsString();
-            String email=null;
-            if(kakao_account.getAsJsonObject().get(email)!=null){
-                email=kakao_account.getAsJsonObject().get("email").getAsString();
-                userInfo.put("id", id);
-                userInfo.put("email", email);
 
-            }
+
+            userInfo.put("id", id);
+            Collection<String> values=userInfo.values();
+            System.out.println(nickname);
         }catch (IOException e){
             e.printStackTrace();
         }

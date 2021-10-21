@@ -34,19 +34,21 @@ public class UserServiceImpl implements UserService {
 		user.setUserId(userRegisterInfo.getUserId());
 		user.setUserPass(passwordEncoder.encode(userRegisterInfo.getUserPass()));
 		user.setUserNickName(userRegisterInfo.getUserNickName());
-		user.setUserPhone(userRegisterInfo.getUserPhone());
-		user.setUserName(userRegisterInfo.getUserName());
 
 		return userRepository.save(user);
 	}
+
+	@Override
+	public User getUserById(String Id) {
+		return userRepositorySupport.findUserById(Id).get();
+	}
+
 	@Override
 	public void patchUser(UserRegisterPostReq userRegisterInfo, String userId) {
 		Optional<User> user = userRepository.findById(userRepositorySupport.findUserByUserId(userId).get().getId());
 		//user.get().setUserEmail(userRegisterInfo.getUserEmail());
 		//user.get().setUserPass(passwordEncoder.encode(userRegisterInfo.getUserPass()));
 		user.get().setUserNickName(userRegisterInfo.getUserNickName());
-		user.get().setUserPhone(userRegisterInfo.getUserPhone());
-		user.get().setUserName(userRegisterInfo.getUserName());
 		userRepository.save(user.get());
 	}
 
