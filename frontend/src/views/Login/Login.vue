@@ -130,7 +130,7 @@ export default {
       }
 
       http
-      .post("/api/v1/auth/login", JSON.stringify(user))
+      .post("/api/auth/login", JSON.stringify(user))
       .then((res) => {
         console.log(res);
          const token = res.data["accessToken"];
