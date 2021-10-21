@@ -18,11 +18,14 @@ public class User extends BaseEntity{
 
     String userId;
     String userName;
-    String userEmail;
+    String userNickName;
     String userPhone;
-    Boolean isManger;
 
     @JsonIgnore
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     String userPass;
+
+    //게임 결과 저장
+    @OneToOne
+    GameResult gameResult;
 }
