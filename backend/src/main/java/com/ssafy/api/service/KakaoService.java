@@ -77,17 +77,15 @@ public class KakaoService {
             JsonElement element=parser.parse(result);
 
             JsonObject kakao_account=element.getAsJsonObject().get("kakao_account").getAsJsonObject();
-            System.out.println(kakao_account);
-//            String id=element.getAsJsonObject().get("id").getAsString();
-//            System.out.println(id);
+
+            System.out.println(kakao_account.get("email").getAsString());
 
             String nickname=element.getAsJsonObject().get("properties").getAsJsonObject().get("nickname").getAsString();
-            String id=element.getAsJsonObject().get("id").getAsString();
+            String email=kakao_account.get("email").getAsString();
 
+            userInfo.put("nickName", nickname);
+            userInfo.put("id", email);
 
-            userInfo.put("id", id);
-            Collection<String> values=userInfo.values();
-            System.out.println(nickname);
         }catch (IOException e){
             e.printStackTrace();
         }

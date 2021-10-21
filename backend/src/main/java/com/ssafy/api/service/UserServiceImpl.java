@@ -39,11 +39,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User getUserById(String Id) {
-		return userRepositorySupport.findUserById(Id).get();
-	}
-
-	@Override
 	public void patchUser(UserRegisterPostReq userRegisterInfo, String userId) {
 		Optional<User> user = userRepository.findById(userRepositorySupport.findUserByUserId(userId).get().getId());
 		//user.get().setUserEmail(userRegisterInfo.getUserEmail());
