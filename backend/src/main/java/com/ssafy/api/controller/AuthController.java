@@ -76,10 +76,10 @@ public class AuthController {
 		System.out.println(access_token);
 		HashMap<String, String> userInfo = kakaoservice.getUserInfo(access_token);
 		//System.out.println(userInfo.get("id"));
-		String pid=userInfo.get("id");
+		String id=userInfo.get("id");
 
 		try {
-			User user= userService.getUserById(pid);
+			User user= userService.getUserByUserId(id);
 			System.out.println("계정있음");
 			return ResponseEntity.ok(UserLoginPostRes.of(200, "로그인 성공", JwtTokenUtil.getToken(user)));
 		} catch (NoSuchElementException e){
