@@ -97,18 +97,39 @@ export default {
       .digits()
       .has()
       .letters();
+    this.code=this.$route.query.code;
+    this.getToken();
   },
   methods:{
     // 카카오로그인 토큰
-    create(){
-      this.code=this.$route.query.code;
-      this.getToken();
-    },
+    
     // 토큰 받아오기
     getToken(){
-      http.get("http://localhost:8080/kakaologin?authorize_code=",this.code)
+      http.get("/api/auth/kakaologin?authorize_code="+this.code)
       .then((res)=>{
         console.log(res);
+        const token = res.data["accessToken"];
+        if(token){
+            this.$store.commit('login',res.data.user);
+            Swal.fire({
+            icon: "success",
+            text: res.data['message'],
+            showConfirmButton: false,
+            timer: 1000,
+            });
+            this.$router.push({
+              name:'About'
+            });
+          }
+          else{
+            Swal.fire({
+            icon: "error",
+            text: res.data['message'],
+            showConfirmButton: false,
+            timer: 1000,
+            });
+            
+          }
       })
     },
     // 아이디 중복체크

@@ -133,8 +133,8 @@ export default {
       .post("/api/auth/login", JSON.stringify(user))
       .then((res) => {
         console.log(res);
-         const token = res.data["accessToken"];
-         if(token){
+        const token = res.data["accessToken"];
+        if(token){
             this.$store.commit('login',res.data.user);
             Swal.fire({
             icon: "success",
@@ -160,7 +160,7 @@ export default {
       });
     },
     onKakao(){
-      window.location.replace("https://kauth.kakao.com/oauth/authorize?client_id=176a306530233dd86c855ff4bb75e587&redirect_uri=http://localhost:8000/join&response_type=code");
+      window.location.replace("https://kauth.kakao.com/oauth/authorize?client_id=176a306530233dd86c855ff4bb75e587&redirect_uri=http://localhost:8000&response_type=code");
     }
   }
 };
