@@ -55,7 +55,7 @@ public class JwtTokenUtil {
              Map<String, String > token = new HashMap<String, String>();
 
              token.put("id",user.getUserId());
-            token.put("name", user.getUserName());
+            token.put("nickname", user.getUserNickName());
 
 
 

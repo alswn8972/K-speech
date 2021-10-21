@@ -54,6 +54,7 @@ public class AuthController {
 
 		try {
 			User user = userService.getUserByUserId(userId);
+			System.out.println(user.getUserNickName());
 			if(passwordEncoder.matches(password, user.getUserPass()))
 				return ResponseEntity.ok(UserLoginPostRes.of(200, "Success", JwtTokenUtil.getToken(user)));
 			return ResponseEntity.status(401).body(UserLoginPostRes.of(401, "잘못된 비밀번호입니다.", null));
@@ -70,9 +71,20 @@ public class AuthController {
 			@ApiResponse(code = 404, message = "존재하지 않는 계정입니다.", response = BaseResponseBody.class),
 			@ApiResponse(code = 500, message = "서버 오류", response = BaseResponseBody.class)
 	})
-	public HashMap<String, String> k_login(@RequestBody @ApiParam(value="카카오토큰정보", required = true) @RequestParam String authorize_code) {
+	public ResponseEntity<UserLoginPostRes> k_login(@RequestBody @ApiParam(value="카카오토큰정보", required = true) @RequestParam String authorize_code) {
 		String access_token=kakaoservice.getAccessToken(authorize_code);
+		System.out.println(access_token);
 		HashMap<String, String> userInfo = kakaoservice.getUserInfo(access_token);
-		return userInfo;
+		//System.out.println(userInfo.get("id"));
+		String pid=userInfo.get("id");
+
+		try {
+			User user= userService.getUserById(pid);
+			System.out.println("계정있음");
+			return ResponseEntity.ok(UserLoginPostRes.of(200, "로그인 성공", JwtTokenUtil.getToken(user)));
+		} catch (NoSuchElementException e){
+			System.out.println("계정ㄴㄴㄴㄴㄴㄴㄴ");
+			return ResponseEntity.status(404).body(UserLoginPostRes.of(404, "존재하지 않는 계정입니다. 회원가입을 해주세용!", null));
+		}
 	}
 }

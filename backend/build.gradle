@@ -144,7 +144,7 @@ dependencies {
     implementation("com.querydsl:querydsl-apt:${querydslVer}")
 
     //몽고디비
-    implementation('org.springframework.boot:spring-boot-starter-data-mongodb')
+    //implementation('org.springframework.boot:spring-boot-starter-data-mongodb')
     //KakaoLogin
     implementation ('com.google.code.gson:gson')
 //    //STOMP 웹소캣 서버 사이드 테스트를 위한 의존성 추가
