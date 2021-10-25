@@ -99,7 +99,7 @@ export default {
       event.preventDefault();
       console.log(this.id);
       console.log(this.password);
-      if(this.id.length<=0 || this.id.length>10){
+      if(this.id.length<=0 || this.id.length>50){
         Swal.fire({
           icon: "error",
           text: "아이디는 최대 10자입니다. ",
@@ -160,7 +160,8 @@ export default {
       });
     },
     onKakao(){
-      window.location.replace("https://kauth.kakao.com/oauth/authorize?client_id=176a306530233dd86c855ff4bb75e587&redirect_uri=http://localhost:8000&response_type=code");
+      console.log("이동이동디옫팅동");
+      window.location.replace("https://kauth.kakao.com/oauth/authorize?client_id=176a306530233dd86c855ff4bb75e587&redirect_uri=http://localhost:8000/join&response_type=code");
     }
   }
 };
