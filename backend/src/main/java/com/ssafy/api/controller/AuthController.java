@@ -1,13 +1,11 @@
 package com.ssafy.api.controller;
 
+import com.ssafy.api.service.KakaoService;
 import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.ssafy.api.request.UserLoginPostReq;
 import com.ssafy.api.response.UserLoginPostRes;
@@ -23,6 +21,7 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.ApiResponse;
 
+import java.util.HashMap;
 import java.util.NoSuchElementException;
 
 /**
@@ -30,13 +29,16 @@ import java.util.NoSuchElementException;
  */
 @Api(value = "인증 API", tags = {"Auth."})
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
 	@Autowired
 	UserService userService;
 	
 	@Autowired
 	PasswordEncoder passwordEncoder;
+
+	@Autowired
+	KakaoService kakaoservice;
 	
 	@PostMapping("/login")
 	@ApiOperation(value = "로그인", notes = "<strong>아이디와 패스워드</strong>를 통해 로그인 한다.") 
@@ -58,5 +60,19 @@ public class AuthController {
 		} catch (NoSuchElementException e){
 			return ResponseEntity.status(404).body(UserLoginPostRes.of(404, "존재하지 않는 계정입니다.", null));
 		}
+	}
+
+	@GetMapping("/kakaologin")
+	@ApiOperation(value = "카카오 로그인", notes = "<strong>카카오 아이디와 패스워드</strong>를 통해 로그인 한다.")
+	@ApiResponses({
+			@ApiResponse(code = 200, message = "성공", response = UserLoginPostRes.class),
+			@ApiResponse(code = 401, message = "잘못된 비밀번호입니다.", response = BaseResponseBody.class),
+			@ApiResponse(code = 404, message = "존재하지 않는 계정입니다.", response = BaseResponseBody.class),
+			@ApiResponse(code = 500, message = "서버 오류", response = BaseResponseBody.class)
+	})
+	public HashMap<String, String> k_login(@RequestBody @ApiParam(value="카카오토큰정보", required = true) @RequestParam String authorize_code) {
+		String access_token=kakaoservice.getAccessToken(authorize_code);
+		HashMap<String, String> userInfo = kakaoservice.getUserInfo(access_token);
+		return userInfo;
 	}
 }

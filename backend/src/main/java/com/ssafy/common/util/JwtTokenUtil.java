@@ -56,7 +56,7 @@ public class JwtTokenUtil {
 
              token.put("id",user.getUserId());
             token.put("name", user.getUserName());
-            token.put("isManager",String.valueOf(user.getIsManger()));
+
 
 
         return JWT.create()

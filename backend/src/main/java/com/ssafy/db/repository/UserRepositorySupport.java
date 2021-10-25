@@ -24,4 +24,11 @@ public class UserRepositorySupport {
         if(user == null) return Optional.empty();
         return Optional.ofNullable(user);
     }
+
+    public Optional<User> findUserByUserNickName(String userNickName) {
+        User user = jpaQueryFactory.select(qUser).from(qUser)
+                .where(qUser.userNickName.eq(userNickName)).fetchOne();
+        if(user == null) return Optional.empty();
+        return Optional.ofNullable(user);
+    }
 }
