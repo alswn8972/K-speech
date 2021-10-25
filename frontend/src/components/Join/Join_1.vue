@@ -2,19 +2,21 @@
   <div class="join1">
     <div class="join_content">
       <div class="join_leftBox">
-         <div class="join_input">
-          <h1 class="join_header">회원가입</h1>
-          <p class="text">회원정보를 입력하세요.</p>
+          <div class="join_input">
+            <h1 class="join_header">회원가입</h1>
+            <p class="text">회원정보를 입력하세요.</p>
 
           <form class="join_form">
             <p class="mid_join_header" for="user-id">아이디</p>
             <v-text-field 
               id="user-id" 
               v-model="id" 
+              :disabled="this.iskakao"
               style="padding-top:0px" 
               class="join_input join_input_id" 
               placeholder="최대 10자입니다. " 
               single-line
+              autocomplete="off"
             ></v-text-field>
 
             <v-btn v-if="idCheck == false" class="join_id_check_btn" outlined color="#04338C" @click="CheckId">중복확인</v-btn>
@@ -24,16 +26,18 @@
             <v-text-field 
               id="user-nick" 
               v-model="nickName" 
+              :disabled="this.iskakao"
               style="padding-top:0px" 
               class="join_input join_input_id"  
               placeholder="최대 20자입니다. " 
               single-line
+              autocomplete="off"
             ></v-text-field>
 
             <v-btn v-if="nickNameCheck == false" class="join_id_check_btn" outlined color="#04338C" @click="CheckNickName">중복확인</v-btn>
             <v-btn v-if="nickNameCheck == true" class="join_id_check_btn" style="color:white;" depressed color="#04338C">확인완료</v-btn> 
 
-            <p class="mid_join_header" for="user-pw">비밀번호</label>
+            <p class="mid_join_header" for="user-pw">비밀번호</p>
             <v-text-field 
               id="user-pw"
               v-model="password"
@@ -42,6 +46,7 @@
               placeholder="8자~11자입니다. " 
               single-line
               type="password"
+              autocomplete="off"
             ></v-text-field>
 
             <p class="mid_join_header" for="userpw_check">비밀번호 확인</p>
@@ -53,6 +58,7 @@
               placeholder="비밀번호를 다시 입력해주세요. " 
               single-line
               type="password"
+              autocomplete="off"
             ></v-text-field>
 
             <p class="move join_next" style="color:#04338C" @click="SignUp" >Sign Up >></p>
@@ -83,7 +89,8 @@ export default {
       passwordSchema: new PV(),
       idCheck:false,
       nickNameCheck:false,
-      component : this
+      component : this,
+      iskakao:false,
     }
   },
   created(){
@@ -101,35 +108,34 @@ export default {
     this.getToken();
   },
   methods:{
-    // 카카오로그인 토큰
-    
-    // 토큰 받아오기
+    // 토큰 받아오기(카카오 로그인 시 회원정보가 없으면 카카오 정보로 회원가입 진행 : 카카오 이메일=아이디, 카카오닉네임=닉네임)
     getToken(){
       http.get("/api/auth/kakaologin?authorize_code="+this.code)
       .then((res)=>{
-        console.log(res);
-        const token = res.data["accessToken"];
-        if(token){
-            this.$store.commit('login',res.data.user);
-            Swal.fire({
-            icon: "success",
-            text: res.data['message'],
-            showConfirmButton: false,
-            timer: 1000,
-            });
-            this.$router.push({
-              name:'About'
-            });
-          }
-          else{
-            Swal.fire({
-            icon: "error",
-            text: res.data['message'],
-            showConfirmButton: false,
-            timer: 1000,
-            });
-            
-          }
+        this.$router.push({
+            name:'About'
+        });
+        this.$store.commit('login',res.data.user);
+        Swal.fire({
+          icon: "success",
+          text: res.data['message'],
+          showConfirmButton: false,
+          timer: 1000,
+        });
+      })
+      .catch((err)=>{
+        console.log(err.response);
+        
+        this.id=err.response.data.user.userId;
+        this.nickName=err.response.data.user.userNickName;
+        this.iskakao=true;
+
+        Swal.fire({
+              icon: "error",
+              text: "일치하는 회원이 없습니다. 회원가입을 진행해주세요.",
+              showConfirmButton: false,
+              timer: 3000,
+        });
       })
     },
     // 아이디 중복체크
@@ -146,7 +152,7 @@ export default {
 
       http
       .get(`api/users/${this.id}`)
-      .then((res) => {
+      .then(() => {
           this.idCheck = true;
           Swal.fire({
               icon: "success",
@@ -179,7 +185,7 @@ export default {
 
       http
       .get(`api/users/nickName/${this.nickName}`)
-      .then((res) => {
+      .then(() => {
           this.nickNameCheck = true;
           Swal.fire({
               icon: "success",
@@ -259,7 +265,7 @@ export default {
 
       http
             .post("api/users/", user)
-            .then((res) => {
+            .then(() => {
                 Swal.fire({
                   icon: "success",
                   text: "회원가입이 완료되었습니다.",
