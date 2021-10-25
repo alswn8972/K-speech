@@ -150,6 +150,17 @@ export default {
         return;
       }
 
+      let exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+      if(exptext.test(this.id)==false){
+        Swal.fire({
+          icon: "error",
+          text: "아이디가 이메일 형식이 아닙니다. ",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+        return;
+      }
+
       http
       .get(`api/users/${this.id}`)
       .then(() => {
