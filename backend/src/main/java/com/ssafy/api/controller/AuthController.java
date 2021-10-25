@@ -1,5 +1,6 @@
 package com.ssafy.api.controller;
 
+import com.ssafy.api.response.UserRes;
 import com.ssafy.api.service.KakaoService;
 import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,20 +72,23 @@ public class AuthController {
 			@ApiResponse(code = 404, message = "존재하지 않는 계정입니다.", response = BaseResponseBody.class),
 			@ApiResponse(code = 500, message = "서버 오류", response = BaseResponseBody.class)
 	})
-	public ResponseEntity<UserLoginPostRes> k_login(@RequestBody @ApiParam(value="카카오토큰정보", required = true) @RequestParam String authorize_code) {
+	public ResponseEntity<?> k_login(@RequestBody @ApiParam(value="카카오토큰정보", required = true) @RequestParam String authorize_code) {
 		String access_token=kakaoservice.getAccessToken(authorize_code);
 		System.out.println(access_token);
 		HashMap<String, String> userInfo = kakaoservice.getUserInfo(access_token);
-		//System.out.println(userInfo.get("id"));
+		System.out.println(userInfo.get("id"));
+		System.out.println(userInfo.get("nickName"));
 		String id=userInfo.get("id");
+		String nickname=userInfo.get("nickName");
 
 		try {
 			User user= userService.getUserByUserId(id);
-			System.out.println("계정있음");
 			return ResponseEntity.ok(UserLoginPostRes.of(200, "로그인 성공", JwtTokenUtil.getToken(user)));
 		} catch (NoSuchElementException e){
-			System.out.println("계정ㄴㄴㄴㄴㄴㄴㄴ");
-			return ResponseEntity.status(404).body(UserLoginPostRes.of(404, "존재하지 않는 계정입니다. 회원가입을 해주세용!", null));
+			User user=new User();
+			user.setUserId(id);
+			user.setUserNickName(nickname);
+			return ResponseEntity.status(404).body(UserRes.of(user));
 		}
 	}
 }
