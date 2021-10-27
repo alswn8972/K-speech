@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 유저 모델 정의.
@@ -16,14 +18,14 @@ import javax.persistence.*;
 @Setter
 public class User extends BaseEntity{
 
-    String userId;
-    String userNickName;
+    private String userId;
+    private String userNickName;
 
     @JsonIgnore
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    String userPass;
+    private String userPass;
 
-    //게임 결과 저장
-    @OneToOne
-    GameResult gameResult;
+    @OneToMany(mappedBy="user", fetch =FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true)
+    private List<UserGame> userGameList=new ArrayList<>();
+
 }

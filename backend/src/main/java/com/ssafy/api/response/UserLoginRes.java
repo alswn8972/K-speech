@@ -23,7 +23,6 @@ public class UserLoginRes extends BaseResponseBody{
         res.setStatusCode(statusCode);
         res.setMessage(message);
         res.setAccessToken(accessToken);
-        res.setNickName(nickName);
         return res;
     }
 }
