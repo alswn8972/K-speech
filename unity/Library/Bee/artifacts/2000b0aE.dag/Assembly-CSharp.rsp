@@ -321,7 +321,12 @@
 -r:"Library/Bee/artifacts/2000b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/2000b0aE.dag/UnityEngine.UI.ref.dll"
 -r:"Library/Bee/artifacts/2000b0aE.dag/VSSettingsProvider.ref.dll"
+"Assets/CamerManager.cs"
+"Assets/DataMgr.cs"
 "Assets/player.cs"
+"Assets/respawn.cs"
+"Assets/Scene1.cs"
+"Assets/SelectChar.cs"
 "Assets/TopDown 2D RPG BE3/ReadMe/Scripts/ReadmeBE3.cs"
 -langversion:8.0
 
