@@ -16,13 +16,10 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class User extends BaseEntity{
+public class Word extends BaseEntity{
 
-    private String userId;
-    private String userNickName;
-
-    @JsonIgnore
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private String userPass;
+    private String content;     //내용
+    private String pron;        //발음
+    private String difficulty;  //난이도
 
 }

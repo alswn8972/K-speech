@@ -2,15 +2,15 @@ package com.ssafy.api.service;
 
 import com.ssafy.api.request.UserGameRegisterPostReq;
 import com.ssafy.db.entity.GameOne;
-import com.ssafy.db.repository.GameOneRepository;
+import com.ssafy.db.entity.GameThree;
+import com.ssafy.db.entity.GameTwo;
+import com.ssafy.db.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ssafy.api.request.UserRegisterPostReq;
 import com.ssafy.db.entity.User;
-import com.ssafy.db.repository.UserRepository;
-import com.ssafy.db.repository.UserRepositorySupport;
 
 import java.util.Optional;
 
@@ -29,6 +29,11 @@ public class UserServiceImpl implements UserService {
 	PasswordEncoder passwordEncoder;
 	@Autowired
 	GameOneRepository gameOneRepository;
+	@Autowired
+	GameTwoRepository gameTwoRepository;
+	@Autowired
+	GameThreeRepository gameThreeRepository;
+
 
 	@Override
 	public User createUser(UserRegisterPostReq userRegisterInfo) {
@@ -57,8 +62,21 @@ public class UserServiceImpl implements UserService {
 			gameOne.setLevel(gameRegisterInfo.getLevel());
 			gameOne.setScore(gameRegisterInfo.getScore());
 			gameOne.setDate(gameRegisterInfo.getDate());
-
 			gameOneRepository.save(gameOne);
+		}else if(gameRegisterInfo.getType().equals("2")){
+			GameTwo gameTwo = new GameTwo();
+			gameTwo.setUser(user);
+			gameTwo.setLevel(gameRegisterInfo.getLevel());
+			gameTwo.setScore(gameRegisterInfo.getScore());
+			gameTwo.setDate(gameRegisterInfo.getDate());
+			gameTwoRepository.save(gameTwo);
+		}else{
+			GameThree gameThree = new GameThree();
+			gameThree.setUser(user);
+			gameThree.setLevel(gameRegisterInfo.getLevel());
+			gameThree.setScore(gameRegisterInfo.getScore());
+			gameThree.setDate(gameRegisterInfo.getDate());
+			gameThreeRepository.save(gameThree);
 		}
 	}
 

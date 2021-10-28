@@ -16,7 +16,7 @@ import java.sql.Date;
 public class UserGameRegisterPostReq {
     @ApiModelProperty(name="유저 ID", example="ssafy_web")
     String userId;
-    @ApiModelProperty(name="게임한 날짜, 시간", example="20211028")
+    @ApiModelProperty(name="게임한 날짜, 시간", example="YYYY-MM-DD hh:mm:ss")
     Date date;
     @ApiModelProperty(name="게임 레벨", example="1")
     String level;
@@ -24,7 +24,4 @@ public class UserGameRegisterPostReq {
     String score;
     @ApiModelProperty(name="게임 종류", example="1")
     String type;
-
-
-
 }
