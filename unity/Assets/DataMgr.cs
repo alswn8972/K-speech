@@ -4,10 +4,7 @@ using UnityEngine;
 
 public enum Character{
     Acharacter,
-    Bcharacter,
-    Ccharacter,
     Dcharacter,
-    
 }
 
 public class DataMgr : MonoBehaviour
