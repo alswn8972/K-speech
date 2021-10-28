@@ -1,5 +1,6 @@
 package com.ssafy.api.service;
 
+import com.ssafy.api.request.UserGameRegisterPostReq;
 import com.ssafy.api.request.UserRegisterPostReq;
 import com.ssafy.db.entity.User;
 
@@ -12,5 +13,5 @@ public interface UserService {
 	User getUserByUserNickName(String userNickName);
 	void deleteUserByUserId(String userId);
 	void patchUser(UserRegisterPostReq registerInfo, String userId);
-
+	void createUserGameResult(User user, UserGameRegisterPostReq gameRegisterInfo);
 }

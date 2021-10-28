@@ -25,7 +25,6 @@ public class User extends BaseEntity{
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String userPass;
 
-    @OneToMany(mappedBy="user", fetch =FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true)
-    private List<UserGame> userGameList=new ArrayList<>();
+
 
 }

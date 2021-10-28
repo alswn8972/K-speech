@@ -1,5 +1,6 @@
 package com.ssafy.api.controller;
 
+import com.ssafy.api.request.UserGameRegisterPostReq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -132,7 +133,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/user/result")
+    @PostMapping("/game/result")
     @ApiOperation(value = "게임 결과 저장", notes = "유저의 게임 결과를 저장한다.")
     @ApiResponses({
             @ApiResponse(code = 201, message = "성공"),
@@ -141,14 +142,10 @@ public class UserController {
             @ApiResponse(code = 409, message = "이미 존재하는 사용자 아이디")
     })
     public ResponseEntity<? extends BaseResponseBody> scoreRegister(
-            @RequestBody @ApiParam(value = "사용자 정보와 게임 결과", required = true) UserRegisterPostReq registerInfo) {
-        String userId = registerInfo.getUserId();
-        try {
-            userService.getUserByUserId(userId);
-            return ResponseEntity.status(409).body(BaseResponseBody.of(409, "이미 존재하는 사용자 ID입니다."));
-        } catch (NoSuchElementException e) {
-            userService.createUser(registerInfo);
-            return ResponseEntity.status(201).body(BaseResponseBody.of(201, "회원가입에 성공하셨습니다."));
-        }
+            @RequestBody @ApiParam(value = "사용자 정보와 게임 결과", required = true) UserGameRegisterPostReq registerInfo) {
+            System.out.println(registerInfo.getUserId());
+            User user=userService.getUserByUserId(registerInfo.getUserId());
+            userService.createUserGameResult(user, registerInfo);
+            return ResponseEntity.status(201).body(BaseResponseBody.of(201, "게임 결과가 저장되었습니다."));
     }
 }

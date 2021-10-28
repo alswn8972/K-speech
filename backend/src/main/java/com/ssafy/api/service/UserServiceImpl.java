@@ -1,5 +1,8 @@
 package com.ssafy.api.service;
 
+import com.ssafy.api.request.UserGameRegisterPostReq;
+import com.ssafy.db.entity.GameOne;
+import com.ssafy.db.repository.GameOneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -18,15 +21,14 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 	@Autowired
 	UserRepository userRepository;
-
 	@Autowired
 	UserService userService;
-	
 	@Autowired
 	UserRepositorySupport userRepositorySupport;
-	
 	@Autowired
 	PasswordEncoder passwordEncoder;
+	@Autowired
+	GameOneRepository gameOneRepository;
 
 	@Override
 	public User createUser(UserRegisterPostReq userRegisterInfo) {
@@ -47,6 +49,18 @@ public class UserServiceImpl implements UserService {
 		userRepository.save(user.get());
 	}
 
+	@Override
+	public void createUserGameResult(User user, UserGameRegisterPostReq gameRegisterInfo) {
+		if(gameRegisterInfo.getType().equals("1")){
+			GameOne gameOne = new GameOne();
+			gameOne.setUser(user);
+			gameOne.setLevel(gameRegisterInfo.getLevel());
+			gameOne.setScore(gameRegisterInfo.getScore());
+			gameOne.setDate(gameRegisterInfo.getDate());
+
+			gameOneRepository.save(gameOne);
+		}
+	}
 
 
 	@Override
