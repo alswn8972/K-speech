@@ -5,9 +5,12 @@ TextureImporter:
   - first:
       213: -7695670036318147783
     second: 6273d031608e4880885b55cc22e731b0cJWJ8zWHnvfF7ebx-0_0
+<<<<<<< HEAD
   - first:
       213: 2306054799906151880
     second: 6273d031608e4880885b55cc22e731b0cJWJ8zWHnvfF7ebx-0_1
+=======
+>>>>>>> unity_map
   externalObjects: {}
   serializedVersion: 11
   mipmaps:

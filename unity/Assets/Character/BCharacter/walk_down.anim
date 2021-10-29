@@ -20,6 +20,7 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
+<<<<<<< HEAD
       value: {fileID: 21300000, guid: 765255677d0fa8043b670f05f6265a0b, type: 3}
     - time: 0.1
       value: {fileID: 21300000, guid: 188df0419da521f489921b9eb1ccb86f, type: 3}
@@ -31,6 +32,19 @@ AnimationClip:
       value: {fileID: 21300000, guid: 04c95dd328a3fd3498d13a2beb3af2ba, type: 3}
     - time: 0.46666667
       value: {fileID: 21300000, guid: a264fd7c91386e54ab6cc3153b3e8c84, type: 3}
+=======
+      value: {fileID: 21300000, guid: 2ae758e0fdca8ac469fc9b9c0c47b947, type: 3}
+    - time: 0.05
+      value: {fileID: 21300000, guid: f0c645349a08e7f4c8a9aa47fe175b77, type: 3}
+    - time: 0.1
+      value: {fileID: 21300000, guid: 04fc30bc053633c49b82fb81d949106c, type: 3}
+    - time: 0.15
+      value: {fileID: 21300000, guid: 20dab1d1647ac74488c65f8a497ded60, type: 3}
+    - time: 0.2
+      value: {fileID: 21300000, guid: bb8c48b21ddf8d3478b00beb3cbcce21, type: 3}
+    - time: 0.25
+      value: {fileID: 21300000, guid: d016a1b88ea538b44a94b0a6057734f0, type: 3}
+>>>>>>> unity_map
     attribute: m_Sprite
     path: 
     classID: 212
@@ -50,18 +64,31 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
+<<<<<<< HEAD
     - {fileID: 21300000, guid: 765255677d0fa8043b670f05f6265a0b, type: 3}
     - {fileID: 21300000, guid: 188df0419da521f489921b9eb1ccb86f, type: 3}
     - {fileID: 21300000, guid: 5e6a72dce5cea2244861708a95774a23, type: 3}
     - {fileID: 21300000, guid: fc7697880fcb5ae4198465739953feb5, type: 3}
     - {fileID: 21300000, guid: 04c95dd328a3fd3498d13a2beb3af2ba, type: 3}
     - {fileID: 21300000, guid: a264fd7c91386e54ab6cc3153b3e8c84, type: 3}
+=======
+    - {fileID: 21300000, guid: 2ae758e0fdca8ac469fc9b9c0c47b947, type: 3}
+    - {fileID: 21300000, guid: f0c645349a08e7f4c8a9aa47fe175b77, type: 3}
+    - {fileID: 21300000, guid: 04fc30bc053633c49b82fb81d949106c, type: 3}
+    - {fileID: 21300000, guid: 20dab1d1647ac74488c65f8a497ded60, type: 3}
+    - {fileID: 21300000, guid: bb8c48b21ddf8d3478b00beb3cbcce21, type: 3}
+    - {fileID: 21300000, guid: d016a1b88ea538b44a94b0a6057734f0, type: 3}
+>>>>>>> unity_map
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
+<<<<<<< HEAD
     m_StopTime: 0.48333335
+=======
+    m_StopTime: 0.26666668
+>>>>>>> unity_map
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
