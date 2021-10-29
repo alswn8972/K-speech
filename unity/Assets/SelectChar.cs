@@ -13,12 +13,12 @@ public class SelectChar : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
-        if(DataMgr.instance.currentChara==character) OnSelect();
+        if(DataManager.instance.currentChara==character) OnSelect();
         else OnDeSelect();
     }
     private void OnMouseUpAsButton(){
         
-        DataMgr.instance.currentChara=character;
+        DataManager.instance.currentChara=character;
         OnSelect();
         for(int i=0;i<chars.Length;i++){
             if(chars[i]!=this)chars[i].OnDeSelect();

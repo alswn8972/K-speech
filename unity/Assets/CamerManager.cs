@@ -12,7 +12,7 @@ public class CamerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target=Instantiate(charPrefabs[(int)DataMgr.instance.currentChara]);
+        target=Instantiate(charPrefabs[(int)DataManager.instance.currentChara]);
     }
 
     // Update is called once per frame
