@@ -1,13 +1,10 @@
-package com.ssafy.api.response;
+package com.ssafy.api.redis.response;
 
-import com.ssafy.db.entity.Word;
+
 import io.swagger.annotations.ApiModel;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 @Getter
 @Setter
@@ -15,4 +12,5 @@ import java.util.Optional;
 public class WordRes {
     String content;
     String pron;
+    int level;
 }
