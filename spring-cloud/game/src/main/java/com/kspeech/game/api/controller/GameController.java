@@ -48,7 +48,7 @@ public class GameController {
         Random r = new Random();
         try{
             wordList=redisService.getWord();
-            int size = wordList.size()+1;
+            int size = wordList.size();
             int a[] = new int[size];
             System.out.println(size);
             for(int i=0;i<15;i++){
@@ -81,7 +81,7 @@ public class GameController {
         Random r = new Random();
         try{
             wordSentence=redisService.getSentence();
-            int sizeS = wordSentence.size()+1;
+            int sizeS = wordSentence.size();
             int arr[] = random(sizeS);
 
             for(int i=0;i<15;i++){
