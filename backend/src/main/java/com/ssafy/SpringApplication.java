@@ -1,6 +1,5 @@
 package com.ssafy;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -10,9 +9,10 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import java.nio.charset.Charset;
 
 @SpringBootApplication
-public class ResidenceApplication {
-	public static void main(String[] args) {
-        SpringApplication.run(ResidenceApplication.class, args);
+public class SpringApplication {
+    
+    public static void main(String[] args) {
+        org.springframework.boot.SpringApplication.run(SpringApplication.class, args);
     }
 
     @Bean
@@ -27,4 +27,10 @@ public class ResidenceApplication {
         characterEncodingFilter.setForceEncoding(true);
         return characterEncodingFilter;
     }
+
+//    @Bean
+//    public RestTemplate getRestTemplate() {
+//        return new RestTemplate();
+//    }
+
 }

@@ -1,0 +1,13 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: servicediscovery
+
+eureka:
+  client:
+    #client의 역할로 자신의 정보를 자신에게 등록하는 의미 없는 현상을 방지
+    #외부에 있는 다른 마이크로 서비스랑 통신을 할 필요가 없기 때문
+    register-with-eureka: false
+    fetch-registry: false
