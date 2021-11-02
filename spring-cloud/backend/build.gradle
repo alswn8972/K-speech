@@ -147,6 +147,8 @@ dependencies {
     implementation ('org.springframework.boot:spring-boot-starter-data-redis')
     //KakaoLogin
     implementation ('com.google.code.gson:gson')
+    //eureka
+    implementation ('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
 //    //STOMP 웹소캣 서버 사이드 테스트를 위한 의존성 추가
 //    implementation("org.springframework.boot:spring-boot-starter-mustache")
 //    //STOMP 관련 프론트 라이브러리
@@ -190,6 +192,18 @@ dependencies {
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
+project.ext.set('springCloudVersion', "2020.0.4")
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
 test {
     useJUnitPlatform()
+}
+
+jar {
+    enabled = false
 }

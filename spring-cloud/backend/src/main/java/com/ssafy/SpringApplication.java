@@ -1,6 +1,7 @@
 package com.ssafy;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
@@ -9,6 +10,7 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import java.nio.charset.Charset;
 
 @SpringBootApplication
+@EnableDiscoveryClient
 public class SpringApplication {
     
     public static void main(String[] args) {

@@ -1,0 +1,25 @@
+eureka:
+  client:
+    #eureka 서버에 등록 가능 설정
+    register-with-eureka: true
+    #외부에서 검색 가능한 형태로 만듬
+    fetch-registry: true
+    #eureka 엔드포인트에 현재 마이크로서비스를 등록
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+spring:
+  cloud:
+    gateway:
+      routes:
+#        - id: backend
+#          uri: http://localhost:8080
+#          predicates:
+#            - Path=/api/**
+        - id: game
+          uri: http://localhost:8081
+          predicates:
+            - Path=/game/**
+          filters:
+            - AddRequestHeader=test-request, test-request-header2
+            - AddResponseHeader=test-response, test-response-header2
