@@ -12,14 +12,11 @@ spring:
   cloud:
     gateway:
       routes:
-#        - id: backend
-#          uri: http://localhost:8080
-#          predicates:
-#            - Path=/api/**
+        - id: backend
+          uri: http://localhost:8080
+          predicates:
+            - Path=/api/**
         - id: game
           uri: http://localhost:8081
           predicates:
             - Path=/game/**
-          filters:
-            - AddRequestHeader=test-request, test-request-header2
-            - AddResponseHeader=test-response, test-response-header2

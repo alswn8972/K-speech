@@ -109,4 +109,9 @@ public class GameController {
         return a;
     }
 
+    @GetMapping("message")
+    public String message(){
+        return "test";
+    }
+
 }
