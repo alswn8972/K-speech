@@ -239,7 +239,7 @@ export default {
   flex-direction: column;
 }
 .home1 {
-  background: center no-repeat url("../../assets/main_page.png");
+  background: center no-repeat url("../../assets/bg1.gif");
   background-size:100vw 100vh;
   display: flex;
   flex-direction: column;
@@ -252,7 +252,7 @@ export default {
   color: var(--color-mainBlue);
 }
 .home2 {
-  background: center no-repeat url("../../assets/main_2bg.png");
+  background: center no-repeat url("../../assets/bg2.gif");
   background-size:100vw 100vh;
   font-family: "AppleSDGothicNeoM";
   font-weight: bold;
@@ -272,7 +272,7 @@ export default {
   }
 }
 .home3{
-  background: center no-repeat url("../../assets/main_3bg.png");
+  background: center no-repeat url("../../assets/bg3.gif");
   background-size:100vw 100vh;
   font-family: "AppleSDGothicNeoM";
   font-weight: bold;

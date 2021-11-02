@@ -17,6 +17,7 @@ export default new Vuex.Store({
     audio: undefined,
     video: undefined,
     isSubmit: false,
+    selectedAudioInputId: null,
   },
   getters:{
     getUser(state){
@@ -46,6 +47,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    setAudioInputId(state, deviceId) {
+      state.selectedAudioInputId = deviceId;
+    },
     login(state,user){
       state.user = user;
     },

@@ -15,7 +15,7 @@
               id="user-id"
               v-model="id"
               class="login_input_c"
-              placeholder="최대 10자입니다. "
+              placeholder="이메일 형식으로 로그인해주세요. "
               single-line
               max=10
             ></v-text-field>
@@ -102,24 +102,6 @@ export default {
         Swal.fire({
           icon: "error",
           text: "아이디가 이메일 형식이 아닙니다. ",
-          showConfirmButton: false,
-          timer: 1000,
-        });
-        return;
-      }
-      if(this.id.length<=0 || this.id.length>20){
-        Swal.fire({
-          icon: "error",
-          text: "아이디는 최대 20자입니다. ",
-          showConfirmButton: false,
-          timer: 1000,
-        });
-        return;
-      }
-      if(this.id.length<=0 || this.id.length>20){
-        Swal.fire({
-          icon: "error",
-          text: "아이디는 최대 20자입니다. ",
           showConfirmButton: false,
           timer: 1000,
         });

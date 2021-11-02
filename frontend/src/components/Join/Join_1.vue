@@ -14,7 +14,7 @@
               :disabled="this.iskakao"
               style="padding-top:0px" 
               class="join_input join_input_id" 
-              placeholder="최대 10자입니다. " 
+              placeholder="이메일 형식으로 로그인해주세요 " 
               single-line
               autocomplete="off"
             ></v-text-field>
@@ -140,16 +140,6 @@ export default {
     },
     // 아이디 중복체크
     CheckId(){
-      if(this.id.length<=0 || this.id.length>10){
-        Swal.fire({
-          icon: "error",
-          text: "아이디는 최대 10자입니다. ",
-          showConfirmButton: false,
-          timer: 1000,
-        });
-        return;
-      }
-
       let exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
       if(exptext.test(this.id)==false){
         Swal.fire({
