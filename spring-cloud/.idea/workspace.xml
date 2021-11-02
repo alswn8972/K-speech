@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8db7b74e-3b60-42cb-a9a5-4cd12058ca7b" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/eureka/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Dockerfile" afterDir="false" />
-    </list>
+    <list default="true" id="8db7b74e-3b60-42cb-a9a5-4cd12058ca7b" name="Changes" comment="Changes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -221,7 +215,7 @@
       <updated>1635494008992</updated>
       <workItem from="1635494011296" duration="1384000" />
       <workItem from="1635834899185" duration="127000" />
-      <workItem from="1635835080254" duration="1790000" />
+      <workItem from="1635835080254" duration="2341000" />
     </task>
     <servers />
   </component>

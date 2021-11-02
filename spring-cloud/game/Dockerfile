@@ -1,5 +1,6 @@
 FROM adoptopenjdk:8-jdk-hotspot
-COPY --from=builder build/libs/*.jar app.jar
+ARG JAR_FILE=build/libs/*.jar
+ADD ${JAR_FILE} game.jar
 
 EXPOSE 8081
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","/game.jar"]

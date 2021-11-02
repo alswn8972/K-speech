@@ -1,5 +1,6 @@
 FROM adoptopenjdk:8-jdk-hotspot
-COPY --from=builder build/libs/*.jar app.jar
+ARG JAR_FILE=build/libs/*.jar
+ADD ${JAR_FILE} eureka.jar
 
 EXPOSE 8761
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","/eureka.jar"]

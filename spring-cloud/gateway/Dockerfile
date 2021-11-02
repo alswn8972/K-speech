@@ -1,9 +1,10 @@
 FROM adoptopenjdk:8-jdk-hotspot
-COPY --from=builder build/libs/*.jar app.jar
+ARG JAR_FILE=build/libs/*.jar
+ADD ${JAR_FILE} gateway.jar
 
 # ENVIRONMENT
 ARG ENVIRONMENT
 ENV SPRING_PROFILES_ACTIVE=${ENVIRONMENT}
 
 EXPOSE 8000
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","/gateway.jar"]
