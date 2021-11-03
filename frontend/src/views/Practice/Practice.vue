@@ -25,12 +25,12 @@ export default {
   },
   methods:{    
     moveWord(){
-      this.gameType="sentence";
-      this.$router.push({name: 'word', params: this.gameType});
+      this.gameType="word";
+      this.$router.push({name: 'word', params: {gameType : this.gameType}});
     },
     moveSentence(){
       this.gameType="sentence";
-      this.$router.push({name: 'sentence', params: this.gameType});
+      this.$router.push({name: 'sentence', params: {gameType : this.gameType}});
     }
   }
 };

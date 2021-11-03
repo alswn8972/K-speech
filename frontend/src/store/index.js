@@ -11,6 +11,7 @@ export default new Vuex.Store({
     }),
   ],  
   state: {
+    gameType:null,
     user:null,
     schoolId: null,
     schoolName: null,
@@ -44,6 +45,9 @@ export default new Vuex.Store({
     },
     getIsSubmit(state){
       return state.isSubmit;
+    },
+    getGameType(state){
+      return state.gameType;
     }
   },
   mutations: {
@@ -75,6 +79,9 @@ export default new Vuex.Store({
     },
     setIsSubmit(state,status){
       state.isSubmit=status;
+    },
+    setGameType(state,status){
+      state.gameType=status;
     }
   },
   actions: {},

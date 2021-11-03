@@ -5,7 +5,7 @@
       <div class="practice_title">
         <a>{{this.data[index].content}}</a>
         <div v-if="!isRecoding" class="practice_record" @click="onRecording"> </div>
-        <div v-else class="practice_recording" @click="evaluate"> </div>
+        <div v-else class="practice_recording" @click="stopRecording"> </div>
         
       </div>
       <div class="practice_body">
@@ -29,22 +29,17 @@
 
 <script>
 import AudioDeviceSelectDialog from '../audio/AudioDeviceSelectDialog.vue';
-import http from "@/util/http-common";
+import http from "@/util/http-game";
 import Recorder from '../../assets/js/recorder';
+import axios from "axios";
+import Swal from 'sweetalert2'
 // import RecordingList from '../audio/RecordingList.vue';
 
 export default {
   name: "sentencePractice",
   components: {
     AudioDeviceSelectDialog,
-    // RecordingList
   },
-  // props: {
-  //   value: {
-  //     type: Array,
-  //     default: []
-  //   }
-  // },
   data: () => {
     return {
       isRecoding: false,
@@ -63,6 +58,7 @@ export default {
       recorderState: 'stopped',
       enableRecording: true,
       deviceSelectionError: null,
+      audioData : null,
       showSelectableDevices: false,
       availableDevices: [],
       value: {
@@ -76,8 +72,12 @@ export default {
   },
   created(){
     // 단어데이터
-    this.gameType = this.$route.params.gameType;
-    console.log(this.gameType);
+    if (this.$route.params.gameType!=null) {
+      this.gameType = this.$route.params.gameType;
+      this.$store.commit('setGameType', this.gameType);
+    }
+    this.gameType = this.$store.getters.getGameType;
+    console.log("storestore",this.$store.getters.getGameType);
     this.getData();
 
     // 녹음 기능
@@ -102,7 +102,6 @@ export default {
       this.record()
     },
     async record() {
-      console.log(1)
       if (this.recorderState === 'paused') {
         this.recorder.resume();
         return;
@@ -144,20 +143,29 @@ export default {
       await this.recorder.stop();
       let recording = {};
       Object.assign(recording, this.recorder.lastRecording);
-      console.log("recording",recording)
       this.value = recording;
+
+      console.log("recorder",this.recorder)
+      console.log("ondataavailable",this.recorder._mediaRecorder.ondataavailable)
+      console.log("recorder.lastRecording",this.recorder.lastRecording)
+      console.log("recorder.lastRecording.blob",this.recorder.lastRecording.blob)
+      console.log("url",URL.createObjectURL(this.recorder.lastRecording.blob));
+      this.audioData = new File([this.recorder.lastRecording.blob], "soundBlob", { lastModified: new Date().getTime(), type: "audio" }).toString('base64');
+      
+      console.log("value.blob.toString('base64')",this.value.blob.toString('base64'))
       this.createURL()
       this.$emit('input', this.value);
     },
     createURL(){
-      console.log("sdfdsf",this.recording)
       this.audioURL = null;
       if (this.value == null) return this.value;
       let reader = new FileReader();
       reader.onload = e => {
+        console.log("e",e)
         this.audioURL = e.target.result;
-      console.log("fgh",this.audioURL)
-        /* Warning: Hack below as $nextTick wasn't sufficient */
+        // console.log("sdsd",console.log(URL.createObjectURL(e.target)))
+        this.pronunciation();
+
         setTimeout(() => {
           this.$refs.audioEl.load();
         }, 100);
@@ -166,7 +174,6 @@ export default {
     },
     async getAvailableDevices() {
       try {
-        // First request default device, to grant permissions to let us access labels for input devices
         await navigator.mediaDevices.getUserMedia({
           audio: true,
           video: false
@@ -181,58 +188,51 @@ export default {
     presentSelectableDevices() {
       this.showSelectableDevices = true;
     },
-    evaluate(){
-      this.stopRecording();
-      // this.pronunciation();
-      // this.Recognition();
-    },
     pre(){
       this.index--;
     },
     next(){
+      if(this.index==14){
+        Swal.fire({
+          icon: "success",
+          html: "테스트를 모두 완료하셨습니다.<br>점수페이지로 이동하시겠습니까?",
+          showConfirmButton: true,
+          showCancelButton: true,
+          cancelButtonColor: '#d33',
+          // timer: 1000,
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            this.$router.push({name: 'score'});
+          }
+        });
+        
+        return
+      }
       this.index++;
     },
     getData(){
-      http.get("/api/game/word")
+      http.get("game/"+this.gameType)
       .then((res)=>{
-        this.data=res.data.word;
+        console.log(res.data)
+        if(this.gameType=='word') this.data=res.data.word
+        else this.data=res.data.sentence
       })
       .catch((err)=>{
         console.log(err);
       })
     },
-    // recordAudio(){
-    //   if (navigator.mediaDevices) {
-    //     const constraints = {
-    //       audio: true
-    //     }
-
-    //     navigator.mediaDevices.getUserMedia(constraints).then(stream => {
-    //       this.mediaRecorder = new MediaRecorder(stream)
-    //       this.mediaRecorder.start()
-
-    //       this.mediaRecorder.ondataavailable = e => {
-    //         this.audioURL = e.data;
-    //         console.log(URL.createObjectURL(this.audioURL));
-    //         this.audioData = new File([this.audioURL], "soundBlob", { lastModified: new Date().getTime(), type: "audio" });
-    //         console.log("fsdfasdfasdf",this.audioData)
-    //         // this.pronunciation();
-    //         this.Recognition();
-    //       }
-            
-    //     }).catch(err => {
-    //       console.log('The following error occurred: ' + err)
-    //     })
-    //   }
-    //   this.isRecoding=true;
-    // },
     pronunciation(){
+      // var fs = require('fs');
+      // var contents = fs.readFileSync("sliderImages", "utf8");
+      var audio = new Audio(this.audioURL)
+      console.log("audio",audio)
       var openApiURL = 'http://aiopen.etri.re.kr:8000/WiseASR/PronunciationKor'; 
       var requestJson = {
           'access_key': this.accessKey,
           'argument': {
               'language_code': this.languageCode,
-              'audio': this.audioData.toString('base64')
+              'audio': audio
           }
       };
 
