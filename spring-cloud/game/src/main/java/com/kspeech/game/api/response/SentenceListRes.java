@@ -10,7 +10,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@ApiModel("WordListResponse")
+@ApiModel("SentenceListResponse")
 public class SentenceListRes {
     List<SentenceRes> sentence;
 

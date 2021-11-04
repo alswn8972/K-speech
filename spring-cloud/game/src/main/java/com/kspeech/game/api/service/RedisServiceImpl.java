@@ -1,9 +1,11 @@
 package com.kspeech.game.api.service;
 
+import com.kspeech.game.db.entity.Rank;
 import com.kspeech.game.db.entity.Sentence;
 import com.kspeech.game.db.entity.Word;
 import com.kspeech.game.db.repository.SentenceRedisRepository;
 import com.kspeech.game.db.repository.WordRedisRepository;
+import com.kspeech.game.db.repository.RankRedisRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,8 @@ public class RedisServiceImpl implements RedisService {
     private WordRedisRepository wordRedisRepository;
     @Autowired
     private SentenceRedisRepository sentenceRedisRepository;
+    @Autowired
+    private RankRedisRepository rankRedisRepository;
 
     public void addWord(String content, String pron, int level) {
         wordRedisRepository.save(Word.builder()
@@ -37,4 +41,10 @@ public class RedisServiceImpl implements RedisService {
     public List<Word> getWord() { return (List<Word>) wordRedisRepository.findAll(); }
 
     public List<Sentence> getSentence() { return (List<Sentence>) sentenceRedisRepository.findAll(); }
+
+    @Override
+    public List<Rank> getRank() {
+        //return (List<Rank>) rankRedisRepository.findByType();
+        return null;
+    }
 }

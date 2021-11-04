@@ -1,5 +1,6 @@
 package com.kspeech.game.api.service;
 
+import com.kspeech.game.db.entity.Rank;
 import com.kspeech.game.db.entity.Sentence;
 import com.kspeech.game.db.entity.Word;
 
@@ -11,4 +12,5 @@ public interface RedisService {
     void addSentence(String content, String pron, int level);
     List<Word> getWord();
     List<Sentence> getSentence();
+    List<Rank> getRank();
 }
