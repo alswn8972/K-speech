@@ -1,16 +1,22 @@
 package com.kspeech.game.api.service;
 
-import com.kspeech.game.db.entity.Rank;
-import com.kspeech.game.db.entity.Sentence;
-import com.kspeech.game.db.entity.Word;
+import com.kspeech.game.db.entity.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface RedisService {
     //void setGameWord();
     void addWord(String content, String pron, int level);
     void addSentence(String content, String pron, int level);
+
+    void addWordRank(WordRank wr);
+    void addSentenceRank(SentenceRank sr);
+    void addRainRank(RainRank rr);
+    void addRockRank(RockRank rr);
+
     List<Word> getWord();
     List<Sentence> getSentence();
-    List<Rank> getRank();
+    Map<String, Object> getRank();
 }

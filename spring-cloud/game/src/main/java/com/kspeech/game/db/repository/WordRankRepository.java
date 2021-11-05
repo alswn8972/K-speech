@@ -1,14 +1,12 @@
 package com.kspeech.game.db.repository;
 
 import com.kspeech.game.db.entity.Rank;
-import org.springframework.data.redis.core.RedisTemplate;
+import com.kspeech.game.db.entity.WordRank;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
-public interface RankRedisRepository extends CrudRepository<Rank, Long> {
+public interface WordRankRepository extends CrudRepository<WordRank, Long> {
 
 
 }

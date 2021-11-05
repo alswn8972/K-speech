@@ -9,13 +9,14 @@ import java.io.Serializable;
 @Builder @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@RedisHash("rank")
+@RedisHash("Rank")
 public class Rank implements Serializable {
     @Id
     private String id;
 
-    private String userId;
-    private String score;
+    private String userNick;
+    private int score;
     private int type;
     private int level;
+
 }
