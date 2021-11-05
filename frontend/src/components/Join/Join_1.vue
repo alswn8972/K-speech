@@ -88,13 +88,8 @@ export default {
       passwordCheck: "",
       passwordSchema: new PV(),
       idCheck:false,
-<<<<<<< HEAD
-      component : this,
-      iskakao:false,
-=======
       nickNameCheck:false,
       component : this
->>>>>>> 56ae1f9419838ff3b8317897c16495cbfb1e348f
     }
   },
   created(){
