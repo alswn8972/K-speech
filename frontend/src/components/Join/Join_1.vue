@@ -37,7 +37,7 @@
             <v-btn v-if="nickNameCheck == false" class="join_id_check_btn" outlined color="#04338C" @click="CheckNickName">중복확인</v-btn>
             <v-btn v-if="nickNameCheck == true" class="join_id_check_btn" style="color:white;" depressed color="#04338C">확인완료</v-btn> 
 
-            <p class="mid_join_header" for="user-pw">비밀번호</label>
+            <p class="mid_join_header" for="user-pw">비밀번호</p>
             <v-text-field 
               id="user-pw"
               v-model="password"
@@ -89,7 +89,8 @@ export default {
       passwordSchema: new PV(),
       idCheck:false,
       nickNameCheck:false,
-      component : this
+      component : this,
+      iskakao:false,
     }
   },
   created(){
@@ -151,7 +152,7 @@ export default {
 
       http
       .get(`api/users/${this.id}`)
-      .then((res) => {
+      .then(() => {
           this.idCheck = true;
           Swal.fire({
               icon: "success",
@@ -184,7 +185,7 @@ export default {
 
       http
       .get(`api/users/nickName/${this.nickName}`)
-      .then((res) => {
+      .then(() => {
           this.nickNameCheck = true;
           Swal.fire({
               icon: "success",
@@ -264,7 +265,7 @@ export default {
 
       http
             .post("api/users/", user)
-            .then((res) => {
+            .then(() => {
                 Swal.fire({
                   icon: "success",
                   text: "회원가입이 완료되었습니다.",
