@@ -19,9 +19,6 @@
       :devices="availableDevices"
       @record="startRecording"
     ></audio-device-select-dialog>
-    <audio controls ref="audioEl" v-show="audioURL != null">
-        <source :src="audioURL || ''" type="audio/mpeg">Your browser does not support audio playback.
-      </audio>
     <!--<recording-list :recordings="value" @delete="deleteRecording"></recording-list>-->
   </div>
   
@@ -42,6 +39,7 @@ export default {
   },
   data: () => {
     return {
+      /** @type {Recorder} */
       isRecoding: false,
       index : 0,
       data : [
@@ -60,24 +58,24 @@ export default {
       deviceSelectionError: null,
       audioData : null,
       showSelectableDevices: false,
+      audio : null,
       availableDevices: [],
-      value: {
+      value: [{
         type: Array,
         default: []
-      },
+      }],
       strings: {
         noMicrophone: 'No suitable recording device could be found.'
       },
     }
   },
   created(){
-    // 단어데이터
+    // 단어, 문장 데이터
     if (this.$route.params.gameType!=null) {
       this.gameType = this.$route.params.gameType;
       this.$store.commit('setGameType', this.gameType);
     }
     this.gameType = this.$store.getters.getGameType;
-    console.log("storestore",this.$store.getters.getGameType);
     this.getData();
 
     // 녹음 기능
@@ -143,16 +141,17 @@ export default {
       await this.recorder.stop();
       let recording = {};
       Object.assign(recording, this.recorder.lastRecording);
-      this.value = recording;
+      // console.log("dddddddddddd",recording)
+      this.value.push(recording);
 
-      console.log("recorder",this.recorder)
-      console.log("ondataavailable",this.recorder._mediaRecorder.ondataavailable)
-      console.log("recorder.lastRecording",this.recorder.lastRecording)
-      console.log("recorder.lastRecording.blob",this.recorder.lastRecording.blob)
-      console.log("url",URL.createObjectURL(this.recorder.lastRecording.blob));
-      this.audioData = new File([this.recorder.lastRecording.blob], "soundBlob", { lastModified: new Date().getTime(), type: "audio" }).toString('base64');
-      
-      console.log("value.blob.toString('base64')",this.value.blob.toString('base64'))
+      // console.log("recorder",this.recorder)
+      // console.log("ondataavailable",this.recorder._mediaRecorder.ondataavailable)
+      // console.log("recorder.lastRecording",this.recorder.lastRecording)
+      // console.log("recorder.lastRecording.blob",this.recorder.lastRecording.blob)
+      // console.log("url",URL.createObjectURL(this.recorder.lastRecording.blob));
+      this.audioData = new File([this.recorder.lastRecording.blob], "soundBlob", { lastModified: new Date().getTime(), type: "pcm" })
+      console.log("this.audioData", this.audioData)
+      // console.log("value.blob.toString('base64')",this.value.blob.toString('base64'))
       this.createURL()
       this.$emit('input', this.value);
     },
@@ -160,17 +159,17 @@ export default {
       this.audioURL = null;
       if (this.value == null) return this.value;
       let reader = new FileReader();
+      console.log("this.recorder.lastRecording.blob",this.recorder.lastRecording.blob)
       reader.onload = e => {
         console.log("e",e)
         this.audioURL = e.target.result;
-        // console.log("sdsd",console.log(URL.createObjectURL(e.target)))
         this.pronunciation();
 
-        setTimeout(() => {
-          this.$refs.audioEl.load();
-        }, 100);
+        // setTimeout(() => {
+        //   this.$refs.audioEl.load();
+        // }, 100);
       };
-      reader.readAsDataURL(this.value.blob);
+      reader.readAsDataURL(this.recorder.lastRecording.blob)
     },
     async getAvailableDevices() {
       try {
@@ -214,7 +213,6 @@ export default {
     getData(){
       http.get("game/"+this.gameType)
       .then((res)=>{
-        console.log(res.data)
         if(this.gameType=='word') this.data=res.data.word
         else this.data=res.data.sentence
       })
@@ -225,14 +223,27 @@ export default {
     pronunciation(){
       // var fs = require('fs');
       // var contents = fs.readFileSync("sliderImages", "utf8");
-      var audio = new Audio(this.audioURL)
-      console.log("audio",audio)
+      this.audio = new Audio(this.audioURL)
+      this.audio.play()
+
+      // var bytes = [];
+      // var reader = new FileReader();
+      // reader.onload = function () {
+      //    bytes = reader.result;
+      // };
+      // // reader.readAsDataURL(this.recorder.lastRecording.blob);
+      // console.log(bytes);
+      // console.log("audio",this.audio)
+      // console.log("audioaaaaaaaa",a)
+      console.log("해치웠나",this.audioURL)
+      console.log("해치웠나",this.audioURL.substr(22).replace("/",""))
       var openApiURL = 'http://aiopen.etri.re.kr:8000/WiseASR/PronunciationKor'; 
       var requestJson = {
           'access_key': this.accessKey,
           'argument': {
               'language_code': this.languageCode,
-              'audio': audio
+              'script': this.data[this.index].pron,
+              'audio': this.audioURL.substr(23).replace("/","")
           }
       };
 
@@ -247,13 +258,14 @@ export default {
           console.log('responseBody = ' + body);
       });
     },
-    Recognition(){
+    recognition(){
       var openApiURL = 'http://aiopen.etri.re.kr:8000/WiseASR/Recognition';
+      console.log("해치웠나",this.audioURL.substr(23).replace("/",""))
       var requestJson = {
           'access_key': this.accessKey,
           'argument': {
               'language_code': this.languageCode,
-              'audio': this.audioData.toString('base64')
+              'audio': this.audioURL.substr(23).replace("/","")
           }
       };
 
