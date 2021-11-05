@@ -42,7 +42,7 @@
 }
 #user-name p{
     font-size : var(--font-size-20);
-    font-family: 'AppleSDGothicNeoSB';
+    font-family: 'neodgm_pro';
     font-weight: var(--weight-regular);
     color : var(--color-grey-2);
     margin : 0px 10px 0px 5px;
@@ -80,7 +80,7 @@
 }
 #menus li button{
     font-size : var(--font-size-14);
-    font-family: 'AppleSDGothicNeoSB';
+    font-family: 'neodgm_pro';
     font-weight: var(--weight-regular);
     color : var(--color-grey-2);
     margin : 0px 10px 0px 0px;
