@@ -59,6 +59,7 @@ export default {
       audioData : null,
       showSelectableDevices: false,
       audio : null,
+      recognition : new(window.SpeechRocognition || window.webkitSpeechRecognition)(),
       availableDevices: [],
       value: [{
         type: Array,
@@ -98,6 +99,8 @@ export default {
     onRecording(){
       this.isRecoding=true;
       this.record()
+      this.recognition.lang='ko-KR'
+      this.recognition.start()
     },
     async record() {
       if (this.recorderState === 'paused') {
@@ -138,20 +141,30 @@ export default {
     },
     async stopRecording() {
       this.isRecoding=false;
+      this.recognition.stop()
+
+      this.recognition.onresult = event=> {
+        // The SpeechRecognitionEvent results property returns a SpeechRecognitionResultList object
+        // The SpeechRecognitionResultList object contains SpeechRecognitionResult objects.
+        // It has a getter so it can be accessed like an array
+        // The first [0] returns the SpeechRecognitionResult at position 0.
+        // Each SpeechRecognitionResult object contains SpeechRecognitionAlternative objects
+        // that contain individual results.
+        // These also have getters so they can be accessed like arrays.
+        // The second [0] returns the SpeechRecognitionAlternative at position 0.
+        // We then return the transcript property of the SpeechRecognitionAlternative object
+        var sd = event.results[0][0].transcript;
+        console.log("ddddddddddddddddddd",sd)
+      }
+
+
+      console.log("인식", this.recognition)
       await this.recorder.stop();
+      
       let recording = {};
       Object.assign(recording, this.recorder.lastRecording);
-      // console.log("dddddddddddd",recording)
       this.value.push(recording);
 
-      // console.log("recorder",this.recorder)
-      // console.log("ondataavailable",this.recorder._mediaRecorder.ondataavailable)
-      // console.log("recorder.lastRecording",this.recorder.lastRecording)
-      // console.log("recorder.lastRecording.blob",this.recorder.lastRecording.blob)
-      // console.log("url",URL.createObjectURL(this.recorder.lastRecording.blob));
-      this.audioData = new File([this.recorder.lastRecording.blob], "soundBlob", { lastModified: new Date().getTime(), type: "pcm" })
-      console.log("this.audioData", this.audioData)
-      // console.log("value.blob.toString('base64')",this.value.blob.toString('base64'))
       this.createURL()
       this.$emit('input', this.value);
     },
@@ -159,17 +172,24 @@ export default {
       this.audioURL = null;
       if (this.value == null) return this.value;
       let reader = new FileReader();
-      console.log("this.recorder.lastRecording.blob",this.recorder.lastRecording.blob)
-      reader.onload = e => {
-        console.log("e",e)
-        this.audioURL = e.target.result;
-        this.pronunciation();
 
-        // setTimeout(() => {
-        //   this.$refs.audioEl.load();
-        // }, 100);
+      reader.onload = e => {
+        this.audioURL = e.target.result;
       };
       reader.readAsDataURL(this.recorder.lastRecording.blob)
+
+      let pcmReader = new FileReader();
+      pcmReader.onload = e => {
+        this.audioData = e.target.result;
+        this.pronunciation();
+        // setTimeout(function() {
+        //   console.log("hi")
+        // }, 5000);
+        //   console.log("zz")
+
+        // this.recognition();
+      };
+      pcmReader.readAsDataURL(this.recorder.lastRecording.pcm)
     },
     async getAvailableDevices() {
       try {
@@ -221,29 +241,16 @@ export default {
       })
     },
     pronunciation(){
-      // var fs = require('fs');
-      // var contents = fs.readFileSync("sliderImages", "utf8");
       this.audio = new Audio(this.audioURL)
-      this.audio.play()
-
-      // var bytes = [];
-      // var reader = new FileReader();
-      // reader.onload = function () {
-      //    bytes = reader.result;
-      // };
-      // // reader.readAsDataURL(this.recorder.lastRecording.blob);
-      // console.log(bytes);
-      // console.log("audio",this.audio)
-      // console.log("audioaaaaaaaa",a)
-      console.log("해치웠나",this.audioURL)
-      console.log("해치웠나",this.audioURL.substr(22).replace("/",""))
+      this.audio.play(this.audioURL)
       var openApiURL = 'http://aiopen.etri.re.kr:8000/WiseASR/PronunciationKor'; 
       var requestJson = {
           'access_key': this.accessKey,
           'argument': {
               'language_code': this.languageCode,
-              'script': this.data[this.index].pron,
-              'audio': this.audioURL.substr(23).replace("/","")
+              // 'script': this.data[this.index].pron,
+              'script': "해치웠나",
+              'audio': this.audioData.substr(22)
           }
       };
 
@@ -258,28 +265,77 @@ export default {
           console.log('responseBody = ' + body);
       });
     },
-    recognition(){
-      var openApiURL = 'http://aiopen.etri.re.kr:8000/WiseASR/Recognition';
-      console.log("해치웠나",this.audioURL.substr(23).replace("/",""))
-      var requestJson = {
-          'access_key': this.accessKey,
-          'argument': {
-              'language_code': this.languageCode,
-              'audio': this.audioURL.substr(23).replace("/","")
-          }
-      };
+    // recognition(){
+    //   // this.recognition = new(window.SpeechRocognition || window.webkitSpeechRecognition)();
+    //   // if(!recognition){
+    //   //   alert("ㅈ됨")
+    //   // }else{
+    //   //   alert("굿")
 
-      var request = require('request');
-      var options = {
-          url: openApiURL,
-          body: JSON.stringify(requestJson),
-          headers: {'Content-Type':'application/json; charset=UTF-8'}
-      };
-      request.post(options, function (error, response, body) {
-          console.log('responseCode = ' + response.statusCode);
-          console.log('responseBody = ' + body);
-      });
-    }
+    //   // }
+
+    //   // const fs = require('fs');
+    //   // const speech = require('@google-cloud/speech');
+
+    //   // // Creates a client
+    //   // const client = new speech.SpeechClient();
+
+    //   // const encoding='LINEAR16'; 
+    //   // const sampleRateHertz=16000;
+    //   // const languageCode='ko-KR';
+
+    //   // const projectId='your project id'; //아래 설명
+    //   // //
+
+    //   // //아래는 그대로 사용
+
+    //   // const config={
+    //   // 	encoding: encoding,
+    //   // 	sampleRateHertz: sampleRateHertz,
+    //   // 	languageCode: languageCode
+    //   // };
+
+    //   // const audio={
+    //   // 	content: this.audioData.substr(22)
+    //   // };
+
+    //   // const request={
+    //   // 	config: config,
+    //   // 	audio: audio
+    //   // };
+
+    //   // client.recognize(request)
+    //   // 	.then((results) => {
+    //   // 		const transcription=results[0].results[0].alternatives[0].transcript;
+    //   // 		console.log('Transcription : ', transcription);
+    //   // 	})
+    //   // 	.catch((err) =>{
+    //   // 		console.error('Error:',err);
+    //   // 	});
+
+
+
+    //   // console.log("recognition")
+    //   // var openApiURL = 'http://aiopen.etri.re.kr:8000/WiseASR/Recognition';
+    //   // var requestJson = {
+    //   //     'access_key': this.accessKey,
+    //   //     'argument': {
+    //   //         'language_code': this.languageCode,
+    //   //         'audio': this.audioData.substr(22)
+    //   //     }
+    //   // };
+
+    //   // var request = require('request');
+    //   // var options = {
+    //   //     url: openApiURL,
+    //   //     body: JSON.stringify(requestJson),
+    //   //     headers: {'Content-Type':'application/json; charset=UTF-8'}
+    //   // };
+    //   // request.post(options, function (error, response, body) {
+    //   //     console.log('responseCode = ' + response.statusCode);
+    //   //     console.log('responseBody = ' + body);
+    //   // });
+    // }
   }
 };
 </script>

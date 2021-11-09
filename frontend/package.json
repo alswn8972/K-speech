@@ -8,11 +8,11 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "fs": "0.0.1-security",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/vue-fontawesome": "^2.0.2",
+    "@google-cloud/speech": "^4.9.0",
     "@kouts/vue-modal": "^2.0.5",
     "@tiptap/extension-code-block-lowlight": "^2.0.0-beta.12",
     "@tiptap/extension-highlight": "^2.0.0-beta.6",
@@ -28,6 +28,7 @@
     "animate.css": "^4.1.1",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "fs": "0.0.1-security",
     "hangul-js": "^0.2.6",
     "inko": "^1.1.1",
     "lowlight": "^1.20.0",
