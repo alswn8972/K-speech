@@ -98,6 +98,7 @@ export default {
   },
   created(){
     this.user=this.$store.getters.getUser;
+    console.log("user",this.user)
     // if(this.user===null){
     //   window.location.href="https://k4b107.p.ssafy.io:8000/login"
     // }
@@ -116,14 +117,14 @@ export default {
       this.showMenu = !this.showMenu;
     },
     handleMypage(){
-      window.location.href="https://k4b107.p.ssafy.io:8000/mypage"
+      window.location.href="https://localhost:8000/mypage"
     },
     handleLogout(){
       this.$store.commit('logout');
       window.location.href="http://localhost:8000/"
     },
     handleAbout(){
-      window.location.href="https://k4b107.p.ssafy.io:8000/"
+      window.location.href="https://localhost:8000/"
     },
     handleLogin(){
       this.$router.push('/login');
