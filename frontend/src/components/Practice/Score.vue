@@ -1,8 +1,11 @@
 <template>
   <div class="score">
-    
+    <div class="score_title">
+      점수
+    </div>
     <div class="score_content">
-      <div> 점수 </div>
+
+      <!--<div> 점수 </div>-->
         <div class="score_left">
           <div v-for="item in content">
             {{item}}
@@ -16,6 +19,9 @@
       </div>
     </div>
   </div>
+  <div>
+      평균점수 : {{aver}}
+    </div>
 </template>
 
 <script>
@@ -25,7 +31,8 @@ export default {
   data: () => {
     return {
       content : [],
-      score : []
+      score : [],
+      aver : null
     }
   },
   created(){
@@ -42,7 +49,9 @@ export default {
     for(let i=0; i<content.length; i++){
       this.score.push(result[i].score)
       this.content.push(content[i].content)
-    }    
+      this.aver+=result[i].score
+    }
+    this.aver/=content.length
     console.log("케케",this.data)
 
   },
