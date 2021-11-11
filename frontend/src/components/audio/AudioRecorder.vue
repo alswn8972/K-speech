@@ -143,7 +143,7 @@ export default {
     presentSelectableDevices() {
       this.showSelectableDevices = true;
     },
-    pronunciation(){
+    async pronunciation(){
       this.audio = new Audio(this.audioURL)
       this.audio.play(this.audioURL)
       var openApiURL = 'http://aiopen.etri.re.kr:8000/WiseASR/PronunciationKor'; 
@@ -166,21 +166,22 @@ export default {
           console.log('responseBody = ' + body);
           let my = body.split(":");
           this.score = my[my.length-1].replace("}}","")
-          console.log(this.score)
+          // console.log(this.score)
           
           this.recognition.onresult = event=> {
             this.mypron = event.results[0][0].transcript;
-            console.log(this.mypron)
-
-            let evalResult = {
-              score : this.score.substring(0,4),
-              mypron : this.mypron
-            }
-            // console.log("test",this.score.replace(".","").substring(0,5))
-            console.log(this.value)
-            this.value.splice(this.index, 1, evalResult)
-            this.$emit('update', this.value);
+            // console.log(this.mypron)
           }
+
+          let evalResult = {
+            score : this.score.substring(0,5),
+            mypron : this.mypron
+          }
+          
+          console.log(this.value)
+          this.value.splice(this.index, 1, evalResult)
+          this.$emit('update', this.value);
+          this.mypron=""
       });
     },
   }

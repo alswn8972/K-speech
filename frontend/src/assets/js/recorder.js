@@ -25,7 +25,7 @@
   /**
    * @type {object} Last recording
    */
-  pcmAudio = "dfdfd";
+  pcmAudio = "";
   lastRecording = null;
 
   constructor(options = {}) {

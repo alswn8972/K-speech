@@ -20,6 +20,7 @@
 <script>
 import AudioDeviceSelectDialog from '../audio/AudioDeviceSelectDialog.vue';
 import http from "@/util/http-game";
+import httpUser from "@/util/http-common";
 import Recorder from '../../assets/js/recorder';
 import axios from "axios";
 import Swal from 'sweetalert2'
@@ -44,7 +45,7 @@ export default {
     }
   },
   created(){
-    console.log(this.$store.getters.getUser)
+    // console.log(this.$store.getters.getUser)
     if (this.$route.params.gameType!=null) {
       this.gameType = this.$route.params.gameType;
       this.$store.commit('setGameType', this.gameType);
@@ -63,35 +64,44 @@ export default {
     pre(){
       this.index--;
     },
-    next(){
-      console.log(this.audioRecordings)
-      console.log(this.audioRecordings[this.index])
-      
+    next(){      
       if(this.index==this.data.length-1){
         let gType=0;
         if(this.gameType=="sentence") gType=2;
         else if (this.gameType=="word") gType=1;
 
+        let scoreAverage = 0;
+        for(let i=0; i<this.audioRecordings.length; i++)
+          scoreAverage+=Number(this.audioRecordings[i].score);
+        //  console.log("zzzzzzzzzzz",(scoreAverage/this.audioRecordings.length*20).toFixed(0))
+        
         const rank = {
-              userNick: this.user.userPhone,
-              score : this.audioRecordings[this.index].score.replace(".",""),
-              type : gType,
-            }
+          userNick: this.$store.getters.getUser.userNickName,
+          score : scoreAverage,
+          type : gType,
+        }
 
-          http
-          .post("/save/score", JSON.stringify(rank))
-          .then((res) => {
-            if(res.data.status === "success"){
+        http.post("game/save/score", JSON.stringify(rank))
+            .then((res) => {
               console.log(res)
-            }else{
-              Swal.fire({
-                icon: "error",
-                text: "인증번호 발송을 실패했습니다",
-                showConfirmButton: false,
-                timer: 1000,
-              });
-            };
-          })
+            }).catch((err)=>{
+          console.log(err);
+        })
+
+        const result = {
+          userId: this.$store.getters.getUser.userId,
+          date : new Date(),
+          score : scoreAverage,
+          type : gType,
+        }
+
+        httpUser.post("api/users/game/result", JSON.stringify(result))
+            .then((res) => {
+              console.log(res)
+              
+            }).catch((err)=>{
+          console.log(err);
+        })
 
         Swal.fire({
           icon: "success",
@@ -101,7 +111,7 @@ export default {
           cancelButtonColor: '#d33',
         }).then((result) => {
           if (result.isConfirmed) {
-            this.$router.push({name: 'score'});
+            this.$router.push({name: 'score', params: {data : this.data, result : this.audioRecordings}});
           }
         });
         
