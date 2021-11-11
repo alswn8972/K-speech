@@ -53,12 +53,12 @@ export default {
     },
 
     created(){
-      if(this.$store.state.user===null){
-        this.$router.push('/login');
-      }
-      this.nickname="User";
+    //   if(this.$store.state.user===null){
+    //     this.$router.push('/login');
+    //   }
       //this.schoolName=this.$store.state.schoolName;
-      //this.user=this.$store.getters.getUser;
+      this.user=this.$store.getters.getUser;
+      
     },
     mounted() {
         this.enterMap = false;
@@ -83,7 +83,10 @@ export default {
         this.width=960
         this.height=540
         const unity = document.querySelector('#unity-game');
-        unity.style.transform = `translate(${targetRect.left}px,102px)`;
+        //24인치 화면에 맞추다보니 위치가 가운데가 아닐 수 있다.
+        //unity.style.transform = `translate(${targetRect.left}px,102px)`;
+        unity.style.transform = `translate(470px
+        ,130px)`;
         // document.addEventListener(
         //     "click",
         //     function (event) {
@@ -127,7 +130,8 @@ export default {
                 this.width=960
                 this.height=540
                 const unity = document.querySelector('#unity-game');
-                unity.style.transform = `translate(${targetRect.left}px,102px)`;
+                unity.style.transform = `translate(470px,130px)`;
+                //unity.style.transform = `translate(${targetRect.left}px+20px,102px)`;
             }else{
                 this.width = '150';
                 this.height = '100';
@@ -141,7 +145,7 @@ export default {
     methods : {
         getUnityHook(){
             //닉네임 연동
-            if(this.$refs.hookInstance !== undefined) this.$refs.hookInstance.message('NetworkManager','initNick',this.nickname);
+            if(this.$refs.hookInstance !== undefined) this.$refs.hookInstance.message('NetworkManager','initNick',this.user.userNickName);
             this.linked = true;
             this.objectName = "";
             
