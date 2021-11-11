@@ -6,8 +6,9 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   plugins: [
+    //login 후 새로고침해도 vuex 값 저장
     createPersistedState({
-      storage: window.sessionStorage,
+      storage: window.localStorage,
     }),
   ],  
   state: {

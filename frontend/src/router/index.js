@@ -12,6 +12,7 @@ import About from '../views/About/About.vue';
 import Practice from '../views/Practice/Practice.vue';
 import PracticeScore from "../components/Practice/Score.vue";
 import SentencePractice from "../components/Practice/SentencePractice.vue";
+import Unity from "../views/Unity/Unity.vue";
 
 Vue.use(VueRouter);
 
@@ -101,6 +102,11 @@ const routes = [
     path: "/award",
     name: "Award",
     component: Award
+  },
+  {
+    path : "/unityGame",
+    name : "Unity",
+    component : Unity,
   },
 ];
 
