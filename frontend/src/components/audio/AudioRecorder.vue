@@ -163,7 +163,6 @@ export default {
           headers: {'Content-Type':'application/json; charset=UTF-8'}
       };
       request.post(options, (error, response, body)=> {
-          // console.log('responseCode = ' + response.statusCode);
           console.log('responseBody = ' + body);
           let my = body.split(":");
           this.score = my[my.length-1].replace("}}","")
@@ -174,11 +173,13 @@ export default {
             console.log(this.mypron)
 
             let evalResult = {
-              score : this.score,
+              score : this.score.substring(0,4),
               mypron : this.mypron
             }
-            this.value[this.index] = evalResult
-            this.$emit('input', this.value);
+            // console.log("test",this.score.replace(".","").substring(0,5))
+            console.log(this.value)
+            this.value.splice(this.index, 1, evalResult)
+            this.$emit('update', this.value);
           }
       });
     },
