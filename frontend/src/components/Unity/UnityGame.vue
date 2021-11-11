@@ -3,7 +3,7 @@
         <div id="game-container">
             <div id="mini-map-alt" class="map-alt" v-if="!showMap">
                 <div class="mini-alt">
-                    <v-icon id="mini-alt-icon">fas fa-sign-in-alt</v-icon>
+                    <v-icon id="mini-alt-icon">fas fa-undo-alt</v-icon>
                     <p id="mini-alt-text">돌아가기</p>
                 </div>
             </div>
@@ -192,7 +192,7 @@ export default {
         },
         goUnity(){
             if(!this.showMap){
-                this.$router.push({name : "Unity"});
+                this.$router.push({name : "Unity"}).catch(()=>{});;
             }
         },
     }

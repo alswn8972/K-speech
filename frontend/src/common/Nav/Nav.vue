@@ -60,6 +60,7 @@
         <div id="menu-container">
           <div id="menu-dropdown" @click="showMenu = !showMenu">
             <v-icon v-if="!showMenu">fas fa-angle-down</v-icon>
+          
             <v-icon v-if="showMenu">fas fa-angle-up</v-icon>
           </div>
           <ul
@@ -98,7 +99,6 @@ export default {
   },
   created(){
     this.user=this.$store.getters.getUser;
-    
     // if(this.user===null){
     //    this.$router.push({
     //     name:'Login'
@@ -109,6 +109,7 @@ export default {
     // }
   },
   mounted() {
+    
     document.addEventListener(
       "click",
       function (event) {
@@ -129,7 +130,7 @@ export default {
       window.location.href="http://localhost:8000/"
     },
     handleAbout(){
-      window.location.href="https://localhost:8000/"
+        this.$router.push('/').catch(()=>{});;
     },
     handleLogin(){
       this.$router.push('/login');
@@ -138,7 +139,8 @@ export default {
       this.$router.push('/join');
     },
     handleUnity(){
-      this.$router.push({name : 'Unity'});
+      
+        this.$router.push({name : 'Unity'}).catch(()=>{});;
     }
   },
 };

@@ -28,7 +28,7 @@ export default {
       } else if(this.$store.getters.getSchoolId === null) {
         this.$router.push({
           name: 'Unity',
-        })
+        }).catch(()=>{});
       }         
     },
 }
