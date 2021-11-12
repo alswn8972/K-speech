@@ -60,42 +60,9 @@
   --weight-exbold: 800;
 }
 @font-face {
-  font-family: 'AppleSDGothicNeoB';
-  src: url('../assets/font/AppleSDGothicNeoB.ttf') format('truetype');
+  font-family: 'neodgm_pro';
+  src: url('../css/neodgm_pro.woff') format('truetype');
 }
-@font-face {
-  font-family: 'AppleSDGothicNeoEB';
-  src: url('../assets/font/AppleSDGothicNeoEB.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'AppleSDGothicNeoH';
-  src: url('../assets/font/AppleSDGothicNeoH.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'AppleSDGothicNeoL';
-  src: url('../assets/font/AppleSDGothicNeoL.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'AppleSDGothicNeoM';
-  src: url('../assets/font/AppleSDGothicNeoM.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'AppleSDGothicNeoR';
-  src: url('../assets/font/AppleSDGothicNeoR.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'AppleSDGothicNeoSB';
-  src: url('../assets/font/AppleSDGothicNeoSB.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'AppleSDGothicNeoT';
-  src: url('../assets/font/AppleSDGothicNeoT.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'AppleSDGothicNeoUL';
-  src: url('../assets/font/AppleSDGothicNeoUL.ttf') format('truetype');
-}
-
 /* html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,

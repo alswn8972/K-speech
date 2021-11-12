@@ -2,7 +2,7 @@
   <div class="login">
     <div class="login_content">
       <div class="login_leftBox">
-        <img class="login_img" src="../../../public/Image/login_img.png" />
+        <img class="login_img" src="../../../public/Image/sign_img.png" />
       </div>
       <div class="login_rightBox">
         <div class="login_input">
@@ -15,7 +15,7 @@
               id="user-id"
               v-model="id"
               class="login_input_c"
-              placeholder="최대 10자입니다. "
+              placeholder="이메일 형식으로 로그인해주세요. "
               single-line
               max=10
             ></v-text-field>
@@ -97,12 +97,11 @@ export default {
   methods: {
     onSubmit(event){
       event.preventDefault();
-      console.log(this.id);
-      console.log(this.password);
-      if(this.id.length<=0 || this.id.length>50){
+      let exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+      if(exptext.test(this.id)==false){
         Swal.fire({
           icon: "error",
-          text: "아이디는 최대 10자입니다. ",
+          text: "아이디가 이메일 형식이 아닙니다. ",
           showConfirmButton: false,
           timer: 1000,
         });
@@ -160,7 +159,6 @@ export default {
       });
     },
     onKakao(){
-      console.log("이동이동디옫팅동");
       window.location.replace("https://kauth.kakao.com/oauth/authorize?client_id=176a306530233dd86c855ff4bb75e587&redirect_uri=http://localhost:8000/join&response_type=code");
     }
   }

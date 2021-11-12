@@ -11,12 +11,14 @@ export default new Vuex.Store({
     }),
   ],  
   state: {
+    gameType:null,
     user:null,
     schoolId: null,
     schoolName: null,
     audio: undefined,
     video: undefined,
     isSubmit: false,
+    selectedAudioInputId: null,
   },
   getters:{
     getUser(state){
@@ -43,9 +45,15 @@ export default new Vuex.Store({
     },
     getIsSubmit(state){
       return state.isSubmit;
+    },
+    getGameType(state){
+      return state.gameType;
     }
   },
   mutations: {
+    setAudioInputId(state, deviceId) {
+      state.selectedAudioInputId = deviceId;
+    },
     login(state,user){
       state.user = user;
     },
@@ -71,6 +79,9 @@ export default new Vuex.Store({
     },
     setIsSubmit(state,status){
       state.isSubmit=status;
+    },
+    setGameType(state,status){
+      state.gameType=status;
     }
   },
   actions: {},
