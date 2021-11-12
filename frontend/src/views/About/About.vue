@@ -11,21 +11,61 @@
     </div>
     <section class="fullpage home1">
       <Nav/>
-    </section>
-    <section class="fullpage home2">
-      <div class="home2__box">
-        <div class="home2__title">ABOUT US</div>
-        <div class="home2__content">
-          <p>힘든 코로나 상황을 겪고 있는 Z세대를 위한 <span class="blue">"학습 메타버스 플랫폼"</span>입니다.</p>
-          <p>단순한 공부 플랫폼을 넘어 친구들과 같이 참여하고 즐길 수 있는 환경을 제공할 뿐만 아니라,</p>
-          <p>실제 학교 같은 컨셉으로 가벼운 연대의 네트워크를 통해 사용자 간의 유대를 형성하고</p>
-          <p>그에 맞는 다양한 기능들을 제공하여 코로나 상황을 보다 슬기롭게 헤쳐나갈 수 있습니다.</p>
+      <div class="home1__content__img">
+          <div class="home1__card">
+            <div class="home1__card__img"></div>
+          </div>  
+          <div class="home1__card">
+            <div class="home1__card__img2"></div>
+          </div>
+          <div class="home1_card">
+            <div class="home1__card__img3"></div>
+          </div>
+          <div class="home1__card">
+            <div class="home1__card__img4"></div>
+          </div>
+        </div>    
+      <div class="home1__box">
+        <div class="home1__title">
+          About K-speech?
+        </div>
+        <div class="home1__content">
+          <div class="home1__card">
+            <p style="font-size:50px; font-color:#">한국어 발음</p>
+            <p style="font-size:30px;">너무 어려우셨죠?</p>
+            <p style="font-size:30px;">이제는 K-speech에서 한번에 끝내보세요!</p>
+            
+          </div>
+          
         </div>
       </div>
     </section>
+
+    <section class="fullpage home2">
+      <div class="home2__box">
+        <div class="home2__title">
+          01. 다양한 게임 제공
+          <div class="home2__subtitle">발음연습에 특화된 게임을 통해 한국어 발음을 연습할 수 있습니다.</div>
+        </div>
+        <div class="home2__content">
+          <div class="home2__card">
+            <div class="home2__card__img"></div>
+            <div class="home2__card__title blue">맑은 비 게임</div>
+            <div class="home2__card__content">비구름에서 내려오는 단어들을 음성으로 발음 연습을 통해 점수를 얻어봅세요!</div>
+          </div>
+          <div class="home2__card">
+            <div class="home2__card__img2"></div>
+            <div class="home2__card__title blue">광석 캐기 게임</div>
+            <div class="home2__card__content">원하는 단어를 발음하고 내가 얻을 수 있는 최고점을 얻어보세요!</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
     <section class="fullpage home3">
       <div class="home3__box">
-        <div class="home3__title">01. 가상환경 제공</div>
+        <div class="home3__title">01. 다양한 게임 제공</div>
         <div class="home3__content">
           <div class="home3__content__left"></div>
           <div class="home3__content__right">
@@ -38,77 +78,29 @@
         </div>
       </div>
     </section>
-    <section class="fullpage home4">
-      <div class="home4__box">
-        <div class="home4__title">
-          02. 컴퓨터 교실
-          <div class="home4__subtitle">코딩에 특화된 교실에서 수업도 하고 다양한 자료를 공유하며 함께 학습해봅시다.</div>
-        </div>
-        <div class="home4__content">
-          <div class="home4__card">
-            <div class="home4__card__img"></div>
-            <div class="home4__card__title blue">웹캡</div>
-            <div class="home4__card__content">웹캠 서비스를 통해 선생님과 수업을 듣고 친구들과 공유하는 시간을 가져봅시다.</div>
-          </div>
-          <div class="home4__card">
-            <div class="home4__card__img2"></div>
-            <div class="home4__card__title blue">정보공유 게시판</div>
-            <div class="home4__card__content">친구들에게 공유하고 싶은 다양한 정보를 나눌 수 있습니다.</div>
-          </div>
-          <div class="home4__card">
-            <div class="home4__card__img3"></div>
-            <div class="home4__card__title blue">QNA 게시판</div>
-            <div class="home4__card__content">궁금한 것이 생겼다면 질문을 올리고, 친구의 질문에 아는 것이 있다면 답변해주세요.</div>
-          </div>
-          <div class="home4__card">
-            <div class="home4__card__img4"></div>
-            <div class="home4__card__title blue">코드공유 게시판</div>
-            <div class="home4__card__content">문제를 올리고 친구들과 나의 코드를 공유하며, 학습해보세요.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="fullpage home5">
-      <div class="home5__box">
-        <div class="home5__title">
-          03. 휴게실
-          <div class="home5__subtitle">친구들과 식사와 휴식을 즐겨보세요.</div>
-        </div>
-        <div class="home5__content">
-          <img src="../../assets/main_friends.png" alt="">
-          <div class="home5__card">
-            <div class="home5__card__img"></div>
-            <div class="home5__card__title blue">웹캡</div>
-          </div>
-          <div class="home5__content__plus"></div>
-          <div class="home5__card">
-            <div class="home5__card__img2"></div>
-            <div class="home5__card__img3"></div>
-            <div class="home5__card__title blue">인기 영상</div>
-          </div>
-        </div>
-      </div>
-    </section>
     <section class="fullpage home6">
       <div class="home6__box">
         <div class="home6__title">
-          04. 도서관
+          02. 가상환경에서의 상호작용
           <div class="home6__subtitle">개인학습 서비스가 제공됩니다.</div>
         </div>
         <div class="home6__content">
           <div class="home6__card">
             <div class="home6__card__img"></div>
-            <div class="home6__card__title blue">플래너</div>
+            <div class="home6__card__title blue">산성비 게임</div>
           </div>
           <img src="../../assets/main_students.png" alt="">
           <div class="home6__content__plus"></div>
           <div class="home6__card">
             <div class="home6__card__img2"></div>
-            <div class="home6__card__title blue">공부 자극영상</div>
+            <div class="home6__card__title blue">자원캐기 게임</div>
           </div>
         </div>        
       </div>
     </section>
+    
+    
+    
   </div>
 </template>
 
@@ -238,43 +230,16 @@ export default {
   align-items: center;
   flex-direction: column;
 }
-.home1 {
-  background: center no-repeat url("../../assets/main_page.png");
-  background-size:100vw 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  #nav{
-    border: none;
-  }
-}
+
 .blue{
-  color: var(--color-mainBlue);
+  color: #000000;
 }
-.home2 {
-  background: center no-repeat url("../../assets/main_2bg.png");
-  background-size:100vw 100vh;
-  font-family: "AppleSDGothicNeoM";
-  font-weight: bold;
-  &__box{
-    width: 720px;
-    margin-top: 4rem;
-    margin-left: 20rem;
-  }
-  &__title{
-    font-size: var(--font-size-60);
-  }
-  p{
-    margin: 0.7rem 0;
-  }
-  &__content{
-    font-size: var(--font-size-20);
-  }
-}
+
 .home3{
-  background: center no-repeat url("../../assets/main_3bg.png");
+    //background: center no-repeat url("../../assets/bg2.gif");
+  background-color: #eeda6c;
   background-size:100vw 100vh;
-  font-family: "AppleSDGothicNeoM";
+  font-family: "neodgm_pro";
   font-weight: bold;
   &__box{
     width: 100vw;
@@ -309,10 +274,10 @@ export default {
     }
   }
 }
-.home4{
-  background-color: #D4E2FC;
+.home2{
+  background-color: #eeb66c;
   background-size:100vw 100vh;
-  font-family: "AppleSDGothicNeoM";
+  font-family: "neodgm_pro";
   font-weight: bold;
   &__box{
     width: 100vw;
@@ -342,19 +307,19 @@ export default {
     height: 450px;
     padding: 1rem;
     margin: 0 1rem;
-    border-radius: 20px;
+    border-radius: 5px;
     box-shadow: 0px 4px 8px #0000001A;
     background-color: var(--color-white);
     &__img{
-      border-radius: 20px;
+      border-radius: 5px;
       height: 310px;
-      background: center no-repeat url("../../assets/webcam.png");
+      background: center no-repeat url("../../assets/game.png");
       background-size: 100% 100%;
     }
     &__img2{
-      border-radius: 20px;
+      border-radius: 5px;
       height: 310px;
-      background: center no-repeat url("../../assets/share_info.png");
+      background: center no-repeat url("../../assets/game2.png");
       background-size: 100% 100%;
     }
     &__img3{
@@ -372,6 +337,8 @@ export default {
     &__title{
       padding: 1em 0;
       font-size: var(--font-size-20);
+      
+
     }
     &__content{
       font-size: var(--font-size-14);
@@ -382,22 +349,31 @@ export default {
     transform: scale(1.1);
   }
 }
-.home5 {
-  background-color: #90B6FF;
+.home1 {
+  #nav{
+    border: none;
+  }
+  background-color:#f09196;
   background-size:100vw 100vh;
-  font-family: "AppleSDGothicNeoM";
+  font-family: "neodgm_pro";
   font-weight: bold;
   &__box{
     width: 100vw;
     height: 100vh;
     display: flex;
+    margin-top:-150px;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
   }
   &__title{
     text-align: center;
-    font-size: var(--font-size-35);
+    font-size: var(--font-size-50);
+    background-color: #ebd9d9;
+    border-radius: 5px;
+    padding:20px 20px 20px 20px;
+    z-index: 10;
+;
   }
   &__subtitle{
     padding: 0.5rem 0;
@@ -405,56 +381,68 @@ export default {
     color: #585858;
     font-size: var(--font-size-18);
   }
+  &__content__img{
+    display: flex;
+    justify-content: center;
+    //margin-top:-150px;
+    align-items: center;    
+    width: 60%;
+    height: 450px;
+    position: relative;
+  }
   &__content{
     display: flex;
     justify-content: center;
+    margin-top:-150px;
     align-items: center;    
-    width: 80%;
+    width: 60%;
     height: 450px;
     background-color: var(--color-white);
     position: relative;
     border-radius: 20px;
-    img{
-      position: absolute;
-      width: 350px;
-      top: -80px;
-    }
-    &__plus{
-      width: 100px;
-      height: 100px;
-      background: center no-repeat url("../../assets/plus.png");
-      background-size: 100% 100%;
-    }
   }
   &__card{
-    width: 330px;
-    margin: 2rem;
+   
+    justify-content: center;
     &__img{
-      height: 330px;
-      background: center no-repeat url("../../assets/main_webcam.png");
+      border-radius: 50%;
+      border: 4px solid var(--color-white);
+      width: 196px;
+      height: 196px;
+      background: center no-repeat url("../../assets/picture1.png");
       background-size: 100% 100%;
     }
     &__img2{
-      height: 35px;
-      background: center / contain no-repeat url("../../assets/youtube.png");
-    }
-    &__img3{
-      margin: 10px 0;
-      height: 275px;
-      background: center no-repeat url("../../assets/youtube_start.png");
+      border-radius: 50%;
+      border: 4px solid var(--color-white);      
+      width: 196px;
+      height: 196px;
+      background: center / contain no-repeat url("../../assets/picture3.png");
+      background-color: #FFF;
       background-size: 100% 100%;
     }
-    &__title{
-      padding: 1rem 0;
-      text-align: center;
-      font-size: var(--font-size-20);
+    &__img3{
+      border-radius: 50%;
+      border: 4px solid var(--color-white);      
+      width: 196px;
+      height: 196px;
+      background: center / contain no-repeat url("../../assets/picture4.png");
+      background-size: 100% 100%;
+    }
+    &__img4{
+      border-radius: 50%;
+      border: 4px solid var(--color-white);      
+      width: 196px;
+      height: 196px;
+      background: center / contain no-repeat url("../../assets/picture5.png");
+      background-size: 100% 100%;
     }
   }
 }
 .home6 {
-  background-color: #FCEF8E;
+  background-color: #b2fa9c;
   background-size:100vw 100vh;
-  font-family: "AppleSDGothicNeoM";
+  font-family: "neodgm_pro";
   font-weight: bold;
   &__box{
     width: 100vw;

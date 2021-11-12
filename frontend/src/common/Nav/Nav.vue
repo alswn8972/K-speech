@@ -56,32 +56,20 @@
             />
           </div>
         </div>
-        <div id="user-name"><p>{{user ? user.userNickname + '님' : '로그인이 필요합니다.'}}</p></div>
-        <div id="menu-container">
-          <div id="menu-dropdown" @click="showMenu = !showMenu">
-            <v-icon v-if="!showMenu">fas fa-angle-down</v-icon>
-            <v-icon v-if="showMenu">fas fa-angle-up</v-icon>
-          </div>
-          <ul
-            id="menus"
-            :class="{ 'menu-inactive': !showMenu, 'menu-active': showMenu }"
-            v-if="this.user === null"
-          >
-            <li><button @click="handleAbout">About</button></li>
-            <li><button @click="handleLogin">로그인</button></li>
-            <li><button @click="handleJoin">회원가입</button></li>
-          </ul>
-          <ul
-            id="menus"
-            :class="{ 'menu-inactive': !showMenu, 'menu-active': showMenu }"
-            v-else
-          >
-            <li><button @click="handleAbout">About</button></li>
-            <li><button @click="handleUnity">학교가기</button></li>
-            <li><button @click="handleMypage">마이페이지</button></li>
-            <li><button @click="handleLogout">로그아웃</button></li>
-          </ul>
+        <!-- <div id="user-name"><p>{{user ? user.userNickname + '님' : '로그인이 필요합니다.'}}</p></div> -->
+        <div id="menu-container" v-if="this.user === null">
+            <div @click="handleAbout" style="margin-right:20px;" class="pixel2">About</div>
+            <div @click="handleLogin" style="margin-right:20px;" class="pixel2">로그인</div>
+            <div @click="handleJoin" style="margin-right:20px;" class="pixel2">회원가입</div>
+          
         </div>
+        <div id="menu-container" v-else>
+          <div @click="handleAbout" style="margin-right:20px;" class="pixel2">About</div>
+          <div @click="handleUnity" style="margin-right:20px;" class="pixel2">GO K-speech</div>
+          <div @click="handleMypage" style="margin-right:20px;" class="pixel2">내 정보</div>
+          <div @click="handleLogout" style="margin-right:20px;" class="pixel2">로그아웃</div>
+        </div>
+          
       </div>
     </div>
   </div>
@@ -116,7 +104,7 @@ export default {
       this.showMenu = !this.showMenu;
     },
     handleMypage(){
-      window.location.href="https://k4b107.p.ssafy.io:8000/mypage"
+      window.location.href="http://localhost:8000/mypage"
     },
     handleLogout(){
       this.$store.commit('logout');

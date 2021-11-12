@@ -14,7 +14,7 @@
               :disabled="this.iskakao"
               style="padding-top:0px" 
               class="join_input join_input_id" 
-              placeholder="최대 10자입니다. " 
+              placeholder="이메일 형식으로 로그인해주세요 " 
               single-line
               autocomplete="off"
             ></v-text-field>
@@ -67,6 +67,10 @@
       </div>
       <div class="join_rightBox">
         <img class="join_img" src="../../../public/Image/join_img.png">
+        <p>K-speech에서</p>
+        <p>친구들과 함께</p>
+        <p>한국어 발음 연습도하고, </p>
+        <p>게임도 즐겨보세요!</p>
       </div>
     </div>
   </div>
@@ -140,10 +144,11 @@ export default {
     },
     // 아이디 중복체크
     CheckId(){
-      if(this.id.length<=0 || this.id.length>10){
+      let exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+      if(exptext.test(this.id)==false){
         Swal.fire({
           icon: "error",
-          text: "아이디는 최대 10자입니다. ",
+          text: "아이디가 이메일 형식이 아닙니다. ",
           showConfirmButton: false,
           timer: 1000,
         });
