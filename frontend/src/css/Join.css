@@ -30,7 +30,7 @@
 }
 
 .join_header{
-    color: var(--color-mainBlue);
+    color: #000000;
     font-size: var(--font-size-28);
     font-family: "neodgm_pro";
     margin-top: 40px;

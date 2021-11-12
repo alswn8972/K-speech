@@ -35,13 +35,13 @@
             <label class="id_remember" for="checkbox">아이디 기억하기</label>
 
             <div class="text-center" style="margin-top: 20px;">
-              <v-btn class="login_btn" rounded :color="classObject" dark @click="onSubmit">LOGIN</v-btn>
-              <v-btn class="login_btn" rounded style="background-color:#eee713" @click="onKakao">Kakao Login</v-btn>
+              <div class="pixel2" style="text-align: center;" @click="onSubmit">L O G I N</div>
+              <div class="pixel2" style="text-align: center; color:yellow;" @click="onKakao">K a k a o L o g i n</div>
             </div>
           </form>
           <div class="moves">
-            <router-link class="move" to="/join">회원가입</router-link> |
-            <router-link class="move" to="/findpw">비밀번호 찾기</router-link>
+            <router-link class="move" to="/join">회원가입</router-link>  <!-- |
+            <router-link class="move" to="/findpw">비밀번호 찾기</router-link> -->
           </div>
         </div>
       </div>
