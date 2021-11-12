@@ -67,6 +67,10 @@
       </div>
       <div class="join_rightBox">
         <img class="join_img" src="../../../public/Image/join_img.png">
+        <p>K-speech에서</p>
+        <p>친구들과 함께</p>
+        <p>한국어 발음 연습도하고, </p>
+        <p>게임도 즐겨보세요!</p>
       </div>
     </div>
   </div>

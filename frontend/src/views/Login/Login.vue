@@ -2,7 +2,7 @@
   <div class="login">
     <div class="login_content">
       <div class="login_leftBox">
-        <img class="login_img" src="../../../public/Image/login_img.png" />
+        <img class="login_img" src="../../../public/Image/sign_img.png" />
       </div>
       <div class="login_rightBox">
         <div class="login_input">
