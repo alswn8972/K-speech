@@ -27,15 +27,15 @@ pipeline {
       }
     }
 
-    // stage('Docker Del') {
-    //   steps {
-    //     sh "docker rm -f eureka && docker rmi eureka"
-    //     sh "docker rm -f gateway && docker rmi gateway"
-    //     sh "docker rm -f back && docker rmi back"
-    //     sh "docker rm -f game && docker rmi game"
-    //     sh "docker rm -f front && docker rmi front"
-    //   }
-    // }
+    stage('Docker Del') {
+      steps {
+        sh "docker rm -f eureka && docker rmi eureka"
+        sh "docker rm -f gateway && docker rmi gateway"
+        sh "docker rm -f back && docker rmi back"
+        sh "docker rm -f game && docker rmi game"
+        //sh "docker rm -f front && docker rmi front"
+      }
+    }
 
     stage('Docker Build') {
       steps {
