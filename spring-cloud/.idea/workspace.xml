@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8db7b74e-3b60-42cb-a9a5-4cd12058ca7b" name="Changes" comment="Changes">
-      <change beforePath="$PROJECT_DIR$/../backend/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.project" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/.settings/org.eclipse.buildship.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.settings/org.eclipse.buildship.core.prefs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/main/java/com/kspeech/game/api/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/game/src/main/java/com/kspeech/game/api/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/game/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application-local.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application-local.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,6 +111,17 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.GameApplication">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GameApplication (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.kspeech.game.GameApplication" />
       <extension name="coverage">
@@ -136,17 +143,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -244,6 +240,7 @@
       <workItem from="1635840461203" duration="229000" />
       <workItem from="1635841175647" duration="485000" />
       <workItem from="1635841723947" duration="1507000" />
+      <workItem from="1636937006886" duration="68000" />
     </task>
     <servers />
   </component>
