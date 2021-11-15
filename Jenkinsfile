@@ -33,7 +33,7 @@ pipeline {
         sh "docker rm -f gateway && docker rmi gateway"
         sh "docker rm -f back && docker rmi back"
         sh "docker rm -f game && docker rmi game"
-        //sh "docker rm -f front && docker rmi front"
+        sh "docker rm -f front && docker rmi front"
       }
     }
 
