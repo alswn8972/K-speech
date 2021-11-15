@@ -2,7 +2,7 @@
   <div id="nav">
     <div class="nav-container">
       <div class="logo">
-        <img src="@/../public/Image/kspeech_logo.png" width="200px" height="120px" id="bts-icon" v-if="this.$route.name !== 'About'"/>
+        <img src="@/../public/Image/kspeech_logo.png" width="200px" height="120px" id="icon" v-if="this.$route.name !== 'About'"/>
       </div>
       <!-- <div id="user-container">
         <div v-if="user!==null" id="user-img">
@@ -56,7 +56,6 @@
             />
           </div>
         </div> -->
-        <!-- <div id="user-name"><p>{{user ? user.userNickname + '님' : '로그인이 필요합니다.'}}</p></div> -->
         <div id="menu-container" v-if="this.user === null">
             <div @click="handleAbout" style="margin-right:20px;" class="pixel2">About</div>
             <div @click="handleLogin" style="margin-right:20px;" class="pixel2">로그인</div>
@@ -86,14 +85,7 @@ export default {
   },
   created(){
     this.user=this.$store.getters.getUser;
-    // if(this.user===null){
-    //    this.$router.push({
-    //     name:'Login'
-    //   })
-    // }
-    // if(this.user===null){
-    //   window.location.href="https://k4b107.p.ssafy.io:8000/login"
-    // }
+    
   },
   mounted() {
     
@@ -110,7 +102,7 @@ export default {
       this.showMenu = !this.showMenu;
     },
     handleMypage(){
-      window.location.href="http://localhost:8000/mypage"
+      this.$router.push('/mypage');
     },
     handleLogout(){
       this.$store.commit('logout');
