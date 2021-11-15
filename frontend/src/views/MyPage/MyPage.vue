@@ -108,7 +108,7 @@ export default {
   },
   created(){
     this.user=this.$store.getters.getUser;
-    this.user.userNickName="dfsfsafsadf";
+    // this.user.userNickName="dfsfsafsadf";
     http.get("game/total/ranking")
             .then((res) => {
               //console.log(res)
