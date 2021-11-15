@@ -1,7 +1,7 @@
 <template>
   <div class="loader__wrap inactive">
     <div class="loader__box">
-      <img class="loader__logo" src="@/../public/Image/bts_logo.png" alt="">
+      <img class="loader__logo" src="@/../public/Image/kspeech_logo.png" alt="">
     </div>
   </div>
 </template>

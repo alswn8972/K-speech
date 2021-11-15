@@ -2,9 +2,9 @@
   <div id="nav">
     <div class="nav-container">
       <div class="logo">
-        <img src="@/../public/Image/bts_logo.png" id="bts-icon" v-if="this.$route.name !== 'About'"/>
+        <img src="@/../public/Image/kspeech_logo.png" width="200px" height="120px" id="bts-icon" v-if="this.$route.name !== 'About'"/>
       </div>
-      <div id="user-container">
+      <!-- <div id="user-container">
         <div v-if="user!==null" id="user-img">
           <img v-if="user.userImg===''" src="@/../public/Image/user_profile.png" id="user-icon" />
           <img v-else :src="user.userImg" id="user-icon" />
@@ -55,7 +55,7 @@
               id="level-icon"
             />
           </div>
-        </div>
+        </div> -->
         <!-- <div id="user-name"><p>{{user ? user.userNickname + '님' : '로그인이 필요합니다.'}}</p></div> -->
         <div id="menu-container" v-if="this.user === null">
             <div @click="handleAbout" style="margin-right:20px;" class="pixel2">About</div>
