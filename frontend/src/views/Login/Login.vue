@@ -53,6 +53,7 @@
 import http from "@/util/http-common";
 import Swal from 'sweetalert2'
 import PV from "password-validator";
+import axios from 'axios';
 
 export default {
   name: "Login",
@@ -133,8 +134,10 @@ export default {
       .then((res) => {
         console.log(res);
         const token = res.data["accessToken"];
+        localStorage.setItem("token",token);
         if(token){
             this.$store.commit('login',res.data.user);
+            this.setUserInfo()
             Swal.fire({
             icon: "success",
             text: res.data['message'],
@@ -160,6 +163,21 @@ export default {
     },
     onKakao(){
       window.location.replace("https://kauth.kakao.com/oauth/authorize?client_id=176a306530233dd86c855ff4bb75e587&redirect_uri=http://localhost:8000/join&response_type=code");
+    },
+    setUserInfo(){
+      const CSRF_TOKEN = localStorage.getItem("token");
+      http
+        .get(`/api/users/me`, {
+          headers: { "Authorization": 'Bearer ' + CSRF_TOKEN }
+        })
+        .then(({ data }) => {
+          //console.log("data",data);
+           this.$store.commit("setUser", data.user);
+         
+        })
+        .catch((err) => {
+       
+        });
     }
   }
 };

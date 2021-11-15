@@ -2,7 +2,7 @@
     <div id="unity">
         <Nav/>
         <div id="unity-container">
-            <User/>
+            
             <div id="unity-game-container">
                 <div id="game-container"></div>
             </div>
@@ -11,12 +11,11 @@
 </template>
 
 <script>
-import User from '@/components/Unity/User';
 import Nav from '@/common/Nav/Nav';
 export default {
     name : "unity",
     components : {
-        User,
+        
         Nav
     },
     data() {
@@ -29,7 +28,7 @@ export default {
       } else if(this.$store.getters.getSchoolId === null) {
         this.$router.push({
           name: 'Unity',
-        })
+        }).catch(()=>{});
       }         
     },
 }

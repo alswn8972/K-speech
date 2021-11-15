@@ -87,10 +87,16 @@ export default {
   created(){
     this.user=this.$store.getters.getUser;
     // if(this.user===null){
+    //    this.$router.push({
+    //     name:'Login'
+    //   })
+    // }
+    // if(this.user===null){
     //   window.location.href="https://k4b107.p.ssafy.io:8000/login"
     // }
   },
   mounted() {
+    
     document.addEventListener(
       "click",
       function (event) {
@@ -111,7 +117,7 @@ export default {
       window.location.href="http://localhost:8000/"
     },
     handleAbout(){
-      window.location.href="https://k4b107.p.ssafy.io:8000/"
+        this.$router.push('/').catch(()=>{});;
     },
     handleLogin(){
       this.$router.push('/login');
@@ -120,7 +126,8 @@ export default {
       this.$router.push('/join');
     },
     handleUnity(){
-      this.$router.push({name : 'Unity'});
+      
+        this.$router.push({name : 'Unity'}).catch(()=>{});;
     }
   },
 };
