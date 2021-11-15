@@ -19,9 +19,6 @@
       </div>
     </div>
   </div>
-  <div>
-      평균점수 : {{aver}}
-    </div>
 </template>
 
 <script>
@@ -52,8 +49,6 @@ export default {
       this.aver+=result[i].score
     }
     this.aver/=content.length
-    console.log("케케",this.data)
-
   },
   methods: {
   
