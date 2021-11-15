@@ -19,7 +19,7 @@
     box-shadow: 0px 3px 15px var(--color-shadow);
 }
 
-.practice_title {
+/* .score_title {
     display: flex;
     flex-direction: row;
     font-family: system-ui, serif;
@@ -30,9 +30,9 @@
     background: var(--color-white);
     box-shadow: 0px 3px 15px var(--color-shadow);
     margin-bottom: 10%;
-}
+} */
 
-.practice_body {
+.score_body {
     display: flex;
     flex-direction: row;
     font-family: system-ui, serif;
@@ -42,4 +42,21 @@
     height: 250px;
     background: var(--color-white);
     box-shadow: 0px 3px 15px var(--color-shadow);
+}
+.score_title{
+    overflow: hidden; 
+    text-align: center;
+    color: white;
+}
+.score_left{
+    flex: 1 1 0; 
+    overflow: hidden; 
+    text-align: center;
+}
+
+.score_right{
+    flex: 1 1 0; 
+    overflow: hidden; 
+    border-left: 1px solid var(--color-grey-4);
+    text-align: center;
 }

@@ -29,8 +29,8 @@
 }
 
 .practice_body {
-    display: flex;
-    flex-direction: row;
+    /* display: flex;
+    flex-direction: row; */
     font-family: system-ui, serif;
     padding: 1.5rem;
     border-radius: 20px;
