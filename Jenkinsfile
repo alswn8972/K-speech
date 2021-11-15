@@ -23,6 +23,7 @@ pipeline {
         sh "cd ./spring-cloud/eureka && chmod +x gradlew && ./gradlew clean build"
         sh "cd ./spring-cloud/game && chmod +x gradlew && ./gradlew clean build"
         sh "cd ./spring-cloud/gateway && chmod +x gradlew && ./gradlew clean build"
+        
       }
     }
 
@@ -32,6 +33,7 @@ pipeline {
         sh "docker rm -f gateway && docker rmi gateway"
         sh "docker rm -f back && docker rmi back"
         sh "docker rm -f game && docker rmi game"
+        sh "docker rm -f front && docker rmi front"
       }
     }
 
@@ -41,6 +43,7 @@ pipeline {
         sh "docker build --build-arg ENVIRONMENT=prod -t gateway ./spring-cloud/gateway"
         sh "docker build -t back ./spring-cloud/backend"
         sh "docker build -t game ./spring-cloud/game"
+        sh 'docker build -t front ./frontend'
       }
     }
 
@@ -50,6 +53,7 @@ pipeline {
         sh "docker run -d --name gateway -p 8000:8000 gateway"
         sh "docker run -d --name back -p 8080:8080 back"
         sh "docker run -d --name game -p 8081:8081 game"
+        sh "docker run -d --name front -p 80:80 front"
       }
     }
 
