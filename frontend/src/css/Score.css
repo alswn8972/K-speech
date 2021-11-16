@@ -1,0 +1,112 @@
+.score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #eeda6c;
+    background-size: cover;
+}
+.text{
+    font-family: "neodgm_pro";
+    font-size: x-large;
+    margin-bottom: 20px;
+  }
+.top{
+    text-align: center;
+    font-family: "neodgm_pro";
+    font-weight: bold;
+    font-size: xx-large;
+  }
+.score_content {
+    display: flex;
+    flex-direction: column;
+    font-family: system-ui, serif;
+    padding: 1.5rem;
+    border-radius: 20px;
+    width: 60%;
+    height: 550px;
+    background: var(--color-white);
+    box-shadow: 0px 3px 15px var(--color-shadow);
+}
+.pixel2 {
+    position: relative;
+    display: block;
+    margin: 10px;
+    text-transform: uppercase;
+    font-family: 'neodgm_pro';
+    font-size: 25px;
+    color: white;
+  }
+  
+  .pixel2::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: -10px;
+    right: -10px;
+    background: black;
+    z-index: -1;
+  }
+  
+  .pixel2::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: -6px;
+    right: -6px;
+    background: black;
+    z-index: -1;
+  }
+  
+  .pixel2 {
+    padding: 10px 10px;
+    position: relative;
+    background: black;
+    width: auto;
+    z-index: 2;
+  }
+/* .score_title {
+    display: flex;
+    flex-direction: row;
+    font-family: system-ui, serif;
+    padding: 1.5rem;
+    border-radius: 20px;
+    width: 100%;
+    height: 70px;
+    background: var(--color-white);
+    box-shadow: 0px 3px 15px var(--color-shadow);
+    margin-bottom: 10%;
+} */
+
+.score_body {
+    display: flex;
+    flex-direction: row;
+    font-family: system-ui, serif;
+    padding: 1.5rem;
+    border-radius: 20px;
+    width: 100%;
+    height: 250px;
+    background: var(--color-white);
+    box-shadow: 0px 3px 15px var(--color-shadow);
+}
+.score_title{
+    overflow: hidden; 
+    text-align: center;
+    color: white;
+}
+.score_left{
+    flex: 1 1 0; 
+    overflow: hidden; 
+    text-align: center;
+}
+
+.score_right{
+    flex: 1 1 0; 
+    overflow: hidden; 
+    border-left: 1px solid var(--color-grey-4);
+    text-align: center;
+}

@@ -1,0 +1,307 @@
+@import 'style.css';
+
+.mypage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #b2fa9c;
+  background-size: cover;
+}
+.top{
+  text-align: center;
+  font-family: "neodgm_pro";
+  font-weight: bold;
+  font-size: xx-large;
+}
+.pont{
+  font-family: "neodgm_pro";
+  font-weight: bold;
+  font-size: x-large;
+  
+}
+.text{
+  font-family: "neodgm_pro";
+  font-size: large;
+}
+.img{
+  display: block; margin: 0px auto;
+}
+.mypage_content {
+  display: flex;
+  flex-direction: column;
+  font-family: system-ui, serif;
+  padding: 1.5rem;
+  border-radius: 20px;
+  width: 60%;
+  height: 500px;
+  background: var(--color-white);
+  box-shadow: 0px 3px 15px var(--color-shadow);
+}
+
+.content_top {
+  display: flex;
+  flex-direction: row;
+  flex: 15;
+  overflow: hidden;
+}
+
+.top_leftBox {
+  flex: 1 1 0;
+  overflow: hidden;
+  padding-top: 2rem;
+  padding-left: 8rem;
+}
+
+.left_h {
+  color: var(--color-mainBlue);
+  font-size: var(--font-size-28);
+  font-family: 'AppleSDGothicNeoEB';
+}
+
+.left_p {
+  font-size: var(--font-size-14);
+  color: var(--color-grey-3);
+  font-family: 'AppleSDGothicNeoB';
+}
+
+.left_name {
+  margin-top: 2.3vh;
+  color: var(--color-mainBlue);
+  font-size: var(--font-size-18);
+  font-family: 'AppleSDGothicNeoB';
+}
+
+.mid_header {
+  margin-top: 1.8vh;
+  color: var(--color-grey-1);
+  font-size: var(--font-size-16);
+  font-family: 'AppleSDGothicNeoB';
+}
+
+.input {
+  margin-top: -2vh !important;
+  width: 80%;
+}
+
+input::placeholder {
+  font-size: var(--font-size-12);
+  font-family: 'AppleSDGothicNeoR';
+}
+
+.user_img {
+  padding-left: 5.2vw;
+}
+
+.left_ul {
+  list-style: none;
+  padding-top: 6px;
+  height: 26px;
+}
+
+.input_file {
+  display: inline-block;
+  width: 65%;
+  float: left;
+  font-size: var(--font-size-14);
+  padding-top: 0.2rem;
+}
+
+.left_ul li {
+  font-family: 'AppleSDGothicNeoR';
+  float: left;
+  cursor: pointer;
+  font-size: var(--font-size-14);
+}
+
+.delete {
+  padding-left: 8px;
+  color: var(--color-red);
+}
+
+.top_rightBox {
+  flex: 1 1 0;
+  overflow: hidden;
+  padding-right: 4rem;
+  padding-top: 3rem;
+}
+
+.goCamera {
+  float: left;
+  height: 10px;
+  padding-left: 13rem;
+  font-family: 'AppleSDGothicNeoR';
+  color: var(--color-grey-2);
+  font-size: var(--font-size-14);
+  text-decoration: none;
+}
+
+.modify_btn {
+  margin-top: 0vh !important;
+  margin-left: 19vw !important;
+  width: 300px;
+  height: 55px;
+}
+
+.content_btm {
+  display: flex;
+  flex: 2;
+  overflow: hidden;
+}
+
+.goDelete {
+  margin-top: 1vh;
+  margin-left: 8vw !important;
+  color: var(--color-red);
+  font-size: var(--font-size-14);
+  font-family: 'AppleSDGothicNeoR';
+}
+
+.col-sm-4,
+.col-sm-6,
+.col-sm-2 {
+  font-size: var(--font-size-10);
+  font-family: 'AppleSDGothicNeoR';
+  padding: 0px !important;
+}
+
+.send_msg {
+  min-height: 50px !important;
+}
+
+.input_certify {
+  width: 100%;
+}
+
+.certify {
+  font-size: var(--font-size-12);
+  font-family: 'AppleSDGothicNeoR';
+  padding: 0px !important;
+}
+
+.certifyBtn {
+  margin-left: -0.8vw;
+  margin-top: 0.8vh;
+}
+
+.left_img {
+  margin-left: 1rem;
+  width: 216px;
+  height: 142px;
+}
+
+.left_img img {
+  width: 100%;
+  height: 100%;
+}
+
+.pixel, .pixel2 {
+  font-size: 25px;
+  color: white;
+  height: auto;
+  margin: 10px;
+  font-family: 'VT323';
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  text-transform: uppercase;
+  
+  cursor: pointer;
+  
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.pixel:active, .pixel2:active {
+  top: 2px;
+}
+
+.pixel {
+  line-height: 0;
+  
+  image-rendering: optimizeSpeed;
+  image-rendering: -moz-crisp-edges; /* Firefox */
+  image-rendering: -o-crisp-edges; /* Opera */
+  image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard naming) */
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
+  
+  border-style: solid;
+  border-width: 20px;
+  -moz-border-image: url(https://i.imgur.com/sREM8Yn.png) 20 stretch;
+  -webkit-border-image: url(https://i.imgur.com/sREM8Yn.png) 20 stretch;
+  -o-border-image: url(https://i.imgur.com/sREM8Yn.png) 20 stretch;
+  border-image: url(https://i.imgur.com/sREM8Yn.png) 20 stretch;
+}
+
+.pixel p {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  width: auto;
+  text-align: center;
+  margin: -20px -20px;
+  line-height: 20px;
+  padding: 10px 20px;
+ 
+    background: #000000;
+    background:
+        linear-gradient(135deg, transparent 10px, #000000 0) top left,
+        linear-gradient(225deg, transparent 10px, #000000 0) top right,
+        linear-gradient(315deg, transparent 10px, #000000 0) bottom right,
+        linear-gradient(45deg,  transparent 10px, #000000 0) bottom left;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    background-image:
+        radial-gradient(circle at 0 0, rgba(204,0,0,0) 14px, #000000 15px),
+        radial-gradient(circle at 100% 0, rgba(204,0,0,0) 14px, #000000 15px),
+        radial-gradient(circle at 100% 100%, rgba(204,0,0,0) 14px, #000000 15px),
+        radial-gradient(circle at 0 100%, rgba(204,0,0,0) 14px, #000000 15px);
+}
+
+.pixel2 {
+  position: relative;
+  display: block;
+  margin: 10px;
+  text-transform: uppercase;
+  font-family: 'neodgm_pro';
+  font-size: 25px;
+  color: white;
+}
+
+.pixel2::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: -10px;
+  right: -10px;
+  background: black;
+  z-index: -1;
+}
+
+.pixel2::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: -6px;
+  right: -6px;
+  background: black;
+  z-index: -1;
+}
+
+.pixel2 {
+  padding: 10px 10px;
+  position: relative;
+  background: black;
+  width: auto;
+  z-index: 2;
+}
