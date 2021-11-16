@@ -82,8 +82,16 @@
             </div>
           </v-col>
           </v-row>
-          <div @click="goHome()" class="pixel2" >홈으로</div>
-          <div @click="handleUnity()" class="pixel2">게임하러가기</div>
+          <v-row>
+            <v-col>
+                <div @click="goHome()" class="pixel2" >홈으로</div>
+            </v-col>
+            <!-- <v-col>
+                <div @click="handleUnity()" class="pixel2">게임하러가기</div>
+            </v-col> -->
+          </v-row>
+          
+          
           
       </div>
     </div>
