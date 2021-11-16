@@ -42,7 +42,7 @@ export default {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-image: url("../../../public/Image/join_bg.gif");
+  background-color: #FFF56E;
   background-size: cover;
   &__content{
     display: flex;
