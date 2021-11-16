@@ -139,7 +139,7 @@ export default {
                             this.$router.push({name : 'practice'});
                             break;
                         case "Ranking":
-                            this.$router.push({name : 'MyPage'});
+                            this.$router.push({name : 'Award'});
                             break;
                         default:
                             break;
