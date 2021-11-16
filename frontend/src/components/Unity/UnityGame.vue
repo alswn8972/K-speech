@@ -4,7 +4,7 @@
             <div id="mini-map-alt" class="map-alt" v-if="!showMap">
                 <div class="mini-alt">
                     <v-icon id="mini-alt-icon">fas fa-undo-alt</v-icon>
-                    <p id="mini-alt-text">돌아가기</p>
+                    <p id="mini-alt-text" >돌아가기</p>
                 </div>
             </div>
             <div id="keydown-map-alt" class="map-alt" v-if="keydownAlt">
@@ -21,7 +21,7 @@
             :hideFooter="true"
             >
             </unity>
-            <button id="link-btn" @click="getUnityHook" v-if="!linked">계정 연동</button>
+            <button id="link-btn" @click="getUnityHook" v-if="!linked" class="pont">계정 연동</button>
         </div>
         <div id="unity-school-name" hidden></div>
         <div id="unity-object-name" hidden></div>
@@ -87,27 +87,7 @@ export default {
         //unity.style.transform = `translate(${targetRect.left}px,102px)`;
         unity.style.transform = `translate(470px
         ,130px)`;
-        // document.addEventListener(
-        //     "click",
-        //     function (event) {
-        //         if (event.target.closest("#game-container")){ // 유니티 가능
-        //             if(this.$refs.hookInstance !== undefined) this.$refs.hookInstance.message('Game Manager','focusing',"true");
-        //             this.unityFocus = true;
-        //             this.keydownAlt = false;
-        //         }else{ // 윈도우 인풋 가능
-        //             if(this.$refs.hookInstance !== undefined)  this.$refs.hookInstance.message('Game Manager','focusing',"false");
-        //             this.unityFocus = false;
-        //         }
-        //     }.bind(this)
-        // );
-        // document.addEventListener(
-        //     "keydown",
-        //     function (event) {
-        //         if(this.$route.name === "Unity" && !this.unityFocus && this.enterMap){
-        //             this.keydownAlt = true;
-        //         }
-        //     }.bind(this)
-        // );
+       
     },
     computed : {
         showMap : function(){
@@ -159,35 +139,14 @@ export default {
                             this.$router.push({name : 'practice'});
                             break;
                         case "Ranking":
-                            this.$router.push({name : 'Award'});
+                            this.$router.push({name : 'MyPage'});
                             break;
                         default:
                             break;
                     }
                     document.getElementById('unity-object-name').innerHTML = "";
                 }
-                // else if(document.getElementById('unity-school-name').innerHTML!=="" && document.getElementById('unity-school-name').innerHTML !== this.schoolName){
-                //     this.schoolName = document.getElementById('unity-school-name').innerHTML;
-                //     //get 해서 방번호 저장하기
-                //     http.get(`v1/room/${this.schoolName}`)
-                //       .then(res=>{
-                //         if(res.data.data==="존재하지 않는 방입니다."){
-                //           http.post(`v1/room/${this.schoolName}`)
-                //             .then(res2=>{
-                //               this.$store.commit('setSchoolId',res2.data.data);
-                //               this.$store.commit('setSchoolName',this.schoolName);
-                //             })
-                //             .catch(err=>{
-                //               console.error(err);
-                //             })
-                //         } else{
-                //           this.$store.commit('setSchoolId',res.data.data);
-                //           this.$store.commit('setSchoolName',this.schoolName);
-                //         }
-                //       })
-                //     this.unityFocus = false;
-                //     this.enterMap = true;
-                // }
+                
             },1000);
         },
         goUnity(){

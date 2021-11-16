@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: url("../../public/Image/login_bg.gif");
+    background-color:#eeb66c;
     background-size: cover;
 }
 
@@ -89,4 +89,9 @@
     display: flex;
     justify-content: center;
     float: center;
+}
+.pont{
+    font-family: "neodgm_pro";
+    font-weight: bold;
+    font-size: x-large;
 }

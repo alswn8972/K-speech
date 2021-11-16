@@ -8,7 +8,7 @@
          <v-col>
            <ul>
              <li v-for="(item,index) in content.slice(0,5)" :key="item.id" class="text" >
-                {{item}} 
+                {{item}} :
                 {{score[index]}}
              </li>
              
@@ -18,7 +18,7 @@
             <ul>
              <li v-for="(item,index) in content.slice(5,10)" :key="item.id" class="text">
                
-                 {{item}} 
+                 {{item}} :
                  {{score[index]}}
              </li>
            </ul>
@@ -26,7 +26,7 @@
           <v-col>
             <ul>
              <li v-for="(item,index) in content.slice(10,15)" :key="item.id" class="text">
-               {{item}}
+               {{item}} :
                  {{score[index]}}
              </li>
             

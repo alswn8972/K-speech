@@ -180,3 +180,9 @@
     width: auto;
     z-index: 2;
   }
+  .pont{
+    font-family: "neodgm_pro";
+    font-weight: bold;
+    font-size: xx-large;
+    margin-bottom: 20px;
+  }
