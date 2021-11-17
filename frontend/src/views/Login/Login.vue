@@ -144,8 +144,11 @@ export default {
             showConfirmButton: false,
             timer: 1000,
             });
+            // this.$router.push({
+            //   name:'About'
+            // }); 
             this.$router.push({
-              name:'About'
+              name:'CamSetting'
             }); 
           }
           else{

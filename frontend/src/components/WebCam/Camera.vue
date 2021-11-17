@@ -2,23 +2,14 @@
   <div id="webcam-container">
     <div id="webcam-title">
       <div id="school-title">
-        <img src="@/../public/Image/school_icon.png" id="school-icon">
-        <p>{{schoolName}}</p>
+        <i class="fab fa-chromecast fa-3x" ></i>
+        <p>{{roomName}}</p>
       </div>
     </div>
     <div id="webcam-main">
       <div id="share-container" v-if="data.share.active">
         <div id="share-screen" v-if="data.share.screen">
           <user-video class="flex-item screen-video" :stream-manager="data.share.screen"></user-video>
-        </div>
-        <div id="youtube-container" v-if="youtubeShare.active">
-          <div id="mostPopular-title">
-              <v-icon color="red" id="mostPopular-icon">fab fa-youtube</v-icon>
-              <p>인기 동영상</p>
-              <v-icon id="btnLeaveYoutube" @click="leaveYoutube">fas fa-times</v-icon>
-          </div>
-          <youtube-list :youtubeShare="youtubeShare" v-on:showVideoDetail="showVideoDetail" v-if="youtubeShare.showList" :maxHeight="maxHeight"/>
-          <youtube-detail :videoDetail="youtubeShare.videoDetail" v-if="youtubeShare.showDetail" :maxHeight="maxHeight"/>
         </div>
       </div>
       <div id="video-container" :class="{'flex-column': data.share.active, 'screen-share' : data.share.active}">
@@ -49,14 +40,6 @@
           <div v-if="!data.setting.publishAudio"><v-icon id="unpublish-audio">fas fa-microphone-slash</v-icon></div>
           <div v-else><v-icon id="publish-audio">fas fa-microphone</v-icon></div>
       </button>
-      <button id="btnShareScreen" @click="shareScreen" class="webcam-button">
-        <div v-if="!screenShare"><v-icon id="unpublish-screen">fas fa-upload</v-icon></div>
-        <div v-else><v-icon id="publish-screen">fas fa-upload</v-icon></div>
-      </button>
-      <button id="btnShareYoutube" @click="getYoutubeVideo" class="webcam-button" v-if="location != 'computer'">
-        <div v-if="!youtubeShare.active"><v-icon id="unpublish-youtube">fab fa-youtube</v-icon></div>
-        <div v-else><v-icon id="publish-youtube">fab fa-youtube</v-icon></div>
-      </button>
       <button id="btnLeaveSession" @click="leaveSession" class="webcam-button"><v-icon id="leave-session">fas fa-phone-alt</v-icon></button>
     </div>
   </div>
@@ -65,16 +48,13 @@
 <script>
 import axios from "axios";
 import UserVideo from "@/components/WebCam/UserVideo";
-import YoutubeList from "@/components/Youtube/YoutubeList"
-import YoutubeDetail from '@/components/Youtube/YoutubeDetail';
+
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
 export default {
   name: "Camera",
   components: {
     UserVideo,
-    YoutubeList,
-    YoutubeDetail
   },
   data() {
     return {
@@ -86,7 +66,7 @@ export default {
         videoDetail : undefined,
       },
       screenShare : false,
-      schoolName : '',
+      roomName : '',
       maxHeight : 0,
     }
   },
@@ -95,7 +75,7 @@ export default {
     location : String,
   },
   created() {
-    this.schoolName = this.$store.getters.getSchoolName;
+    this.roomName = this.$store.getters.getRoomName;
   },
   mounted() {
     const target = document.querySelector('#webcam-main')

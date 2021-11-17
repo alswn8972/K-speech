@@ -51,7 +51,6 @@ export default {
     }
   },
   created(){
-    // 녹음 기능
     this.recorder = new Recorder();
     this.recorder.addEventListener('start', () => {
       this.recorderState = 'recording';
@@ -62,7 +61,6 @@ export default {
   },
   methods: {
     onRecording(){
-      console.log(this.index)
       this.isRecoding=true;
       this.record()
       this.recognition.lang='ko-KR'
@@ -163,14 +161,12 @@ export default {
           headers: {'Content-Type':'application/json; charset=UTF-8'}
       };
       request.post(options, (error, response, body)=> {
-          console.log('responseBody = ' + body);
+          // console.log('responseBody = ' + body);
           let my = body.split(":");
           this.score = my[my.length-1].replace("}}","")
-          // console.log(this.score)
           
           this.recognition.onresult = event=> {
             this.mypron = event.results[0][0].transcript;
-            // console.log(this.mypron)
           }
 
           let evalResult = {
@@ -178,7 +174,6 @@ export default {
             mypron : this.mypron
           }
           
-          console.log(this.value)
           this.value.splice(this.index, 1, evalResult)
           this.$emit('update', this.value);
           this.mypron=""
