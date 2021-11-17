@@ -106,10 +106,10 @@ export default {
     },
     handleLogout(){
       this.$store.commit('logout');
-      window.location.href="http://localhost:8000/"
+      this.$router.push('/').catch(()=>{});
     },
     handleAbout(){
-        this.$router.push('/').catch(()=>{});;
+        this.$router.push('/').catch(()=>{});
     },
     handleLogin(){
       this.$router.push('/login');
