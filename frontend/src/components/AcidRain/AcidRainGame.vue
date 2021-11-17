@@ -8,11 +8,8 @@
     
 
     <!-- <img class="ground" src="../../assets/rain.gif" /> -->
-    
-    
-
     <span id="menu" class="menu"> </span>
-
+    <audio-recorder v-model="audioRecordings" :index="this.index" :data="this.data"></audio-recorder>
   </div>
   </div>
 </template>
@@ -20,23 +17,33 @@
 <script>
 import { mapState } from 'vuex'
 import http from "@/util/http-game"
+import AudioRecorder from '../audio/AudioRecorder.vue'
 
 // 상자 생성 속도, 상자 이동 속도
 var placeLetterInterval = 4500;
 var placeLetterTimer, moveLettersTimer;
-var aiLetterTimer;
 
 var box;
 
 export default {
+  components: {
+    AudioRecorder
+  },
   name: "AcidRainGame",
   data() {
     return {
+      audioRecordings: new Array(1),
+      index : 0,
       letter : "",
       score: 0,
       life: 5,
+      boxes : [],
       gameIsOver: false,
       count: 0,
+      data : [{
+        content:"",
+        pron:""
+      }],
       word:null
     };
   },
@@ -51,6 +58,24 @@ export default {
     this.startGame();
     this.placeLetter();
     this.moveLetters();
+  },
+  watch: {
+    audioRecordings: function (newVal, oldVal) {
+      // console.log("노금", newVal[0].mypron)
+      // console.log("sd",this.boxes[1].innerText)
+      if(this.boxes.length<2) return;
+      for (var i = 1; i < this.boxes.length; i++) {
+        if (this.boxes[i].innerText == newVal[0].mypron) {
+          this.boxes[i].remove();
+          // console.log("zzzzzzzzzzzzz",this.boxes[i].innerText)
+          if (this.life == 0) {
+            this.gameIsOver = true;
+            this.endGame();
+          }
+          break;
+        }
+      }
+    }
   },
   mounted() {
     box = document.getElementById("box");
@@ -75,11 +100,13 @@ export default {
     },
     // 글자 이동
     moveLetters: function () {
-      var boxes = document.querySelectorAll("#box > div");
-      for (var i = 0; i < boxes.length; i++) {
-        boxes[i].style.bottom = parseInt(boxes[i].style.bottom) - 3 - this.count + "px";
-        if (parseInt(boxes[i].style.bottom) <= 5) {
-          boxes[i].remove();
+      this.boxes = document.querySelectorAll("#box > div");
+      for (var i = 0; i < this.boxes.length; i++) {
+        this.boxes[i].style.bottom = parseInt(this.boxes[i].style.bottom) - 3 - this.count + "px";
+        if (parseInt(this.boxes[i].style.bottom) <= 5) {
+          this.life = this.life - 1;
+          this.boxes[i].remove();
+          console.log("life",this.life)
           if (this.life == 0) {
             this.gameIsOver = true;
             this.endGame();
@@ -92,7 +119,6 @@ export default {
       // 글자 생성, 이동, 사용자 입력 정지
       clearInterval(moveLettersTimer);
       clearInterval(placeLetterTimer);
-      clearInterval(aiLetterTimer);
     },
     // 리셋
     resetGame: function () {
@@ -103,14 +129,10 @@ export default {
       this.life = 5;
       // 나와 있는 모든 글자 제거
       var boxes = document.querySelectorAll("#quiz");
-      for (var i = 0; i < boxes.length; i++) 
-        boxes[i].remove();
+      for (var i = 0; i < this.boxes.length; i++) 
+        this.boxes[i].remove();
 
       this.endGame();
-    },
-    // 지문자 입력 받기
-    aiLetter: function () {
-      
     },
     // 게임 시작
     startGame: function () {
@@ -127,12 +149,12 @@ export default {
 
 <style>
 .rain{
-  width: 70%;
-  height: 700px;
+  width: 80%;
+  height: 800px;
   background-color: #f4f1eb;
   flex: 70%;
   border-radius: 20px;
-  margin: 2vh 2vh 0 2vh;
+  margin: 2% 10%;
   box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.733);
   position: relative;
   overflow: hidden;

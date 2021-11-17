@@ -21,7 +21,6 @@
 import AudioDeviceSelectDialog from '../audio/AudioDeviceSelectDialog.vue';
 import http from "@/util/http-game";
 import httpUser from "@/util/http-common";
-import Recorder from '../../assets/js/recorder';
 import axios from "axios";
 import Swal from 'sweetalert2'
 import AudioRecorder from '../audio/AudioRecorder.vue'
