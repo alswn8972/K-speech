@@ -106,7 +106,7 @@ export default {
     },
     handleLogout(){
       this.$store.commit('logout');
-      window.location.href="http://52.79.253.253:3000/"
+      window.location.href="https://52.79.253.253:443/"
     },
     handleAbout(){
         this.$router.push('/').catch(()=>{});;
