@@ -5,16 +5,14 @@
     <!--가운데 내용-->
     <div class="camSetting_content">
       <div class="content_inner">
-        <p class="h">카메라 설정</p>
-        <p class="p">카메라 환경설정을 해주세요</p>
+        <p style="font-family: neodgm_pro; font-size: xx-large;">화상 설정</p>
+        
         <div class="boxes">
           <div class="left_box">
             <user-video id="preview-camera" class="publisher flex-item" :stream-manager="publisher"></user-video>
           </div>
           <div class="right_box">
-            <router-link class="goCamera" to="/mypage">
-              내정보 변경 >>
-            </router-link>
+           
             <ul class="box_ul">
               <li>
                 <v-container>
@@ -64,7 +62,8 @@
             </ul>
           </div>
         </div>
-        <v-btn class="modify_btn" rounded color="#04338C" dark @click="changeSetting">설정 완료</v-btn>
+        
+        <div @click="changeSetting" class="pixel2" style="margin-top : 60px;" >설정완료</div>
       </div>
     </div>
   </div>
@@ -74,8 +73,11 @@
 import axios from 'axios';
 import { OpenVidu } from "openvidu-browser";
 import UserVideo from "@/components/WebCam/UserVideo";
-const OPENVIDU_SERVER_URL = "https://k4b107.p.ssafy.io:4443";
-const OPENVIDU_SERVER_SECRET = "BACK_TO_SCHOOL";
+
+const OPENVIDU_SERVER_URL = "https://k5d104.p.ssafy.io:443";
+const OPENVIDU_SERVER_SECRET = "k5d104";
+axios.defaults.headers.post['Content-Type'] = 'application/json';
+
 export default {
   name: "CameraSetting",
   components : {
@@ -107,6 +109,7 @@ export default {
   created(){
     this.joinSession();
     this.user = this.$store.getters.getUser;
+    
   },
   destroyed(){
     this.leaveSession();
@@ -141,7 +144,6 @@ export default {
     joinSession() {
       this.OV = new OpenVidu();
       this.session = this.OV.initSession();
-
       this.getToken(this.roomName).then((token) => {
         this.session
           .connect(token, this.user)

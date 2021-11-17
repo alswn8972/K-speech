@@ -15,7 +15,7 @@ export default new Vuex.Store({
     gameType:null,
     user:null,
     schoolId: null,
-    schoolName: null,
+    RoomName: null,
     audio: undefined,
     video: undefined,
     isSubmit: false,
@@ -34,9 +34,9 @@ export default new Vuex.Store({
       if(state.schoolId===null) return null;
       return state.schoolId;
     },
-    getSchoolName(state){
-      if(state.schoolName===null) return null;
-      return state.schoolName;
+    getRoomName(state){
+      if(state.RoomName===null) return null;
+      return state.RoomName;
     },
     getAudio(state){
       return state.audio;
@@ -69,8 +69,8 @@ export default new Vuex.Store({
     setSchoolId(state,schoolId){
       state.schoolId=schoolId;
     },
-    setSchoolName(state,schoolName){
-      state.schoolName=schoolName;
+    setRoomName(state,RoomName){
+      state.RoomName=RoomName;
     },
     setVideo(state,selected){
       state.video=selected;

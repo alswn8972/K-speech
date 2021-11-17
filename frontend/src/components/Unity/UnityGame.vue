@@ -21,9 +21,10 @@
             :hideFooter="true"
             >
             </unity>
-            <button id="link-btn" @click="getUnityHook" v-if="!linked" class="pont">계정 연동</button>
+            <button id="link-btn" @click="getUnityHook" v-if="!linked" style="font-family: neodgm_pro;
+  font-size: x-large;">계정 연동</button>
         </div>
-        <div id="unity-school-name" hidden></div>
+        <div id="unity-room-name" hidden></div>
         <div id="unity-object-name" hidden></div>
     </div>
 
@@ -40,7 +41,7 @@ export default {
             user: {},
             nickname : '' ,
             objectName : '',
-            schoolName : '',
+            RoomName : '',
             linked : false,
             height : "960",
             width : "580",
@@ -56,7 +57,7 @@ export default {
     //   if(this.$store.state.user===null){
     //     this.$router.push('/login');
     //   }
-      //this.schoolName=this.$store.state.schoolName;
+      this.RoomName=this.$store.state.RoomName;
       this.user=this.$store.getters.getUser;
       
     },
@@ -130,10 +131,10 @@ export default {
             this.objectName = "";
             
             this.interval = setInterval(()=>{
-                //console.log("Dddd",document.getElementById('unity-object-name').innerHTML);
+                
                 if(document.getElementById('unity-object-name').innerHTML != this.objectName){
                     this.objectName = document.getElementById('unity-object-name').innerHTML;
-                    console.log("objectName",this.objectName);
+                    //console.log("objectName",this.objectName);
                     switch (this.objectName) {
                         case "Computer": // 정보공유/코드공유 - blackboard
                             this.$router.push({name : 'practice'});
@@ -141,12 +142,38 @@ export default {
                         case "Ranking":
                             this.$router.push({name : 'Award'});
                             break;
+                        case "meeting":
+                            this.$router.push({name : 'Meeting'});
+                            break;
                         default:
                             break;
                     }
                     document.getElementById('unity-object-name').innerHTML = "";
                 }
-                
+                else if(document.getElementById('unity-room-name').innerHTML!=="" && document.getElementById('unity-room-name').innerHTML !== this.RoomName){
+                    this.RoomName = document.getElementById('unity-room-name').innerHTML;
+                    console.log(this.RoomName)
+                    this.$store.commit('setRoomName',this.RoomName);
+                    // //get 해서 방번호 저장하기
+                    // http.get(`v1/room/${this.schoolName}`)
+                    //   .then(res=>{
+                    //     if(res.data.data==="존재하지 않는 방입니다."){
+                    //       http.post(`v1/room/${this.schoolName}`)
+                    //         .then(res2=>{
+                    //           this.$store.commit('setSchoolId',res2.data.data);
+                    //           this.$store.commit('setSchoolName',this.schoolName);
+                    //         })
+                    //         .catch(err=>{
+                    //           console.error(err);
+                    //         })
+                    //     } else{
+                     //       this.$store.commit('setSchoolId',res.data.data);
+                    //       this.$store.commit('setSchoolName',this.schoolName);
+                    //     }
+                    //   })
+                    this.unityFocus = false;
+                    this.enterMap = true;
+                }
             },1000);
         },
         goUnity(){
