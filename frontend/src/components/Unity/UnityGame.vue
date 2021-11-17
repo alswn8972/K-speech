@@ -154,23 +154,7 @@ export default {
                     this.RoomName = document.getElementById('unity-room-name').innerHTML;
                     console.log(this.RoomName)
                     this.$store.commit('setRoomName',this.RoomName);
-                    // //get 해서 방번호 저장하기
-                    // http.get(`v1/room/${this.schoolName}`)
-                    //   .then(res=>{
-                    //     if(res.data.data==="존재하지 않는 방입니다."){
-                    //       http.post(`v1/room/${this.schoolName}`)
-                    //         .then(res2=>{
-                    //           this.$store.commit('setSchoolId',res2.data.data);
-                    //           this.$store.commit('setSchoolName',this.schoolName);
-                    //         })
-                    //         .catch(err=>{
-                    //           console.error(err);
-                    //         })
-                    //     } else{
-                     //       this.$store.commit('setSchoolId',res.data.data);
-                    //       this.$store.commit('setSchoolName',this.schoolName);
-                    //     }
-                    //   })
+                   
                     this.unityFocus = false;
                     this.enterMap = true;
                 }
