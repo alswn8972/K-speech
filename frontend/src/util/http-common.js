@@ -5,7 +5,7 @@ export default axios.create({
   //개발
   //baseURL: "http://localhost:8080",
   //배포
-  baseURL: "http://k5d104.p.ssafy.io:8080",
+  baseURL: "https://k5d104.p.ssafy.io:8080",
 
   headers: {
     "Content-type": "application/json",
