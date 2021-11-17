@@ -106,10 +106,10 @@ export default {
     },
     handleLogout(){
       this.$store.commit('logout');
-      this.$router.push('/').catch(()=>{});
+      window.location.href="http://52.79.253.253:3000/"
     },
     handleAbout(){
-        this.$router.push('/').catch(()=>{});
+        this.$router.push('/').catch(()=>{});;
     },
     handleLogin(){
       this.$router.push('/login');
