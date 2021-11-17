@@ -22,7 +22,7 @@ import Inko from 'inko';
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
 // const OPENVIDU_SERVER_URL = "https://" + location.hostname + ":4443";
-const OPENVIDU_SERVER_URL = "https://k5d104.p.ssafy.io:443";
+const OPENVIDU_SERVER_URL = "https://k5d104.p.ssafy.io:4443";
 const OPENVIDU_SERVER_SECRET = "k5d104";
 export default {
     name : "Webcam",
