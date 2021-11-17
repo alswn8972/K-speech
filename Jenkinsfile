@@ -53,7 +53,7 @@ pipeline {
         sh "docker run -d --name gateway -p 8000:8000 gateway"
         sh "docker run -d --name back --network kspeech -p 8080:8080 back"
         sh "docker run -d --name game --network kspeech -p 8081:8081 game"
-        sh "docker run -d --name front -p 3000:80 -v /home/ubuntu/sslkey:/usr/share/nginx/html/homepage/cert  --network kspeech front"
+        sh "docker run -d --name front -p 3000:80 -p 443:443 -v /home/ubuntu/sslkey:/usr/share/nginx/html/homepage/cert  --network kspeech front"
       }
     }
 
