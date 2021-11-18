@@ -2,8 +2,6 @@
  * Crude class for recording HTML5 audio
  * Emits the following events: start, stop, pause, resume
  */
-
-
  export default class MRecorder extends EventTarget {
   URL = window.URL || window.webkitURL;
 
@@ -260,7 +258,7 @@
                   var dataview = encodeWAV(interleaved);
                   var audioBlob = new Blob([dataview], { type: type });
   
-                  self.postMessage({ command: 'exportWAV', data: audioBlob });
+                  this.postMessage({ command: 'exportWAV', data: audioBlob });
               }
   
               function getBuffer() {
@@ -268,7 +266,7 @@
                   for (var channel = 0; channel < numChannels; channel++) {
                       buffers.push(mergeBuffers(recBuffers[channel], recLength));
                   }
-                  self.postMessage({ command: 'getBuffer', data: buffers });
+                  this.postMessage({ command: 'getBuffer', data: buffers });
               }
   
               function clear() {
