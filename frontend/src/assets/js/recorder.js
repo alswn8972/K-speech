@@ -60,12 +60,11 @@
     this.dispatchEvent(new CustomEvent('start'));
   }
   audioRecorderStart(stream){
-    console.log(stream)
     var AudioContext = window.AudioContext || window.webkitAudioContext;
     this._audioRecorder = new AudioContext();
     this.input = this._audioRecorder.createMediaStreamSource(stream);
     this.rec = new Recorder(this.input,{numChannels:1})
-    console.log(this.rec)
+
     this.rec.record();
   }
 
@@ -211,9 +210,8 @@
                   recBuffers = [],
                   sampleRate = undefined,
                   numChannels = undefined;
-                console.log("onmessage")
+  
               self.onmessage = function (e) {
-                  console.log(e)
                   switch (e.data.command) {
                       case 'init':
                           init(e.data.config);
