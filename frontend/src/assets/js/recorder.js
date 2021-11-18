@@ -166,7 +166,7 @@
           throw new TypeError("Cannot call a class as a function");
       }
   }
-  
+  var self = {};
   var Recorder = exports.Recorder = (function () {
       function Recorder(source, cfg) {
           var _this = this;
@@ -204,7 +204,7 @@
           source.connect(this.node);
           this.node.connect(this.context.destination); //this should not be necessary
   
-          var self = {};
+          
           this.worker = new _inlineWorker2.default(function () {
               var recLength = 0,
                   recBuffers = [],
