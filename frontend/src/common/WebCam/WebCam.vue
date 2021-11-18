@@ -8,7 +8,6 @@
       </div>
     </div> -->
     <div id="session" v-if="data.session">
-        <Chat :data="data" v-on:sendMessage="send"/>
         <Camera :data="data" :location="location" v-on:leaveSession="leaveSession" v-on:updateStream="updateStream"/>
     </div>
   </div>
@@ -19,19 +18,18 @@ import axios from "axios";
 import { OpenVidu } from "openvidu-browser";
 import Nav from "@/common/Nav/Nav"
 import Camera from '@/components/WebCam/Camera';
-import Chat from '@/components/WebCam/Chat';
 import Inko from 'inko';
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
 // const OPENVIDU_SERVER_URL = "https://" + location.hostname + ":4443";
-const OPENVIDU_SERVER_URL = "https://k4b107.p.ssafy.io:4443";
-const OPENVIDU_SERVER_SECRET = "BACK_TO_SCHOOL";
+const OPENVIDU_SERVER_URL = "https://k5d104.p.ssafy.io:443";
+const OPENVIDU_SERVER_SECRET = "k5d104";
 export default {
     name : "Webcam",
     components : {
-      Nav,
+      //Nav,
       Camera,
-      Chat
+     // Chat
     },
     data() {
       return {
@@ -62,7 +60,7 @@ export default {
           // userName: "user1",
         },
         user : {},
-        schoolName : '',
+        RoomName : '',
       }
     },
     props : {
@@ -70,11 +68,11 @@ export default {
     },
     created(){
       this.user = this.$store.getters.getUser;
-      this.schoolName = this.$store.getters.getSchoolName;
+      this.RoomName = this.$store.getters.getRoomName;
       this.data.setting.audioSource = this.$store.getters.getAudio;
       this.data.setting.videoSource = this.$store.getters.getVideo;
       let inko = new Inko();
-      let name = this.schoolName.replaceAll(" ","");
+      let name = this.RoomName.replaceAll(" ","");
       this.data.roomName = inko.ko2en(name)+"-"+this.location;
 
       this.joinSession();

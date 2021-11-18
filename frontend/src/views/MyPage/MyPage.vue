@@ -7,13 +7,22 @@
       <div class="top">
         <p class="main">My Page</p>
         
-        <p class="pont" style="margin-top: 20px;">닉네임 : {{user.userNickName}}</p>
+        <p class="pont" style="margin-top: 20px;">닉네임 : {{user.userNickName}} </p>
+        <v-row>
+          <v-col>
+            <router-link to="/camSetting" style="text-align :center; font-size : large;">
+              화상설정 >>
+            </router-link>
+          </v-col>
+        </v-row>
         <v-img
         class="img"
         max-height="150"
         max-width="250"
         src="../../assets/picture3.png"
+        style="margin-bottom: 20px;"
       ></v-img>
+      
       </div>
         <v-row>
           <v-col>
