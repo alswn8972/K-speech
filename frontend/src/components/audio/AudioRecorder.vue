@@ -76,20 +76,26 @@ export default {
       this.deviceSelectionError = null;
       let previousDeviceId = this.$store.state.selectedAudioInputId;
       this.availableDevices = await this.getAvailableDevices();
+      console.log(1)
       
+      console.log(2)
       if (this.availableDevices.length < 1) {
         this.deviceSelectionError = true;
         return;
       }
+      console.log(3)
       
       if (this.availableDevices.length === 1)
         return this.startRecording(this.availableDevices[0]);
-      
+
+      console.log(4,previousDeviceId)
       let previousDevice = this.availableDevices.find(
         d => d.deviceId === previousDeviceId
       );
 
+      console.log(5,previousDevice)
       if (previousDevice)  return this.startRecording(previousDevice.deviceId);
+      console.log(6)
       
       this.presentSelectableDevices();
     },
