@@ -7,8 +7,26 @@
           <div class= "right"> 
           
           <span v-for="idx in this.life" :key="idx">
-          <img src="../../assets/heart.png" style="width: 30px" />
+            <img src="../../assets/heart.png" style="width: 30px" />
           </span>
+
+          </div>
+        </div>
+        <div class = "row words">
+          <div class= "col-4 word">
+            <div class = "content" v-for="(item,index) in boxes.slice(0,5)">
+              {{item.content}}
+            </div>
+          </div>
+          <div class= "col-4 word">
+            <div class = "content" v-for="(item,index) in boxes.slice(5,10)">
+              {{item.content}}
+            </div>
+          </div>
+          <div class= "col-4 word">
+            <div class = "content" v-for="(item,index) in boxes.slice(10,15)">
+              {{item.content}}
+            </div>
           </div>
         </div>
         <audio-recorder class = "audio" v-model="audioRecordings" :index="this.index" :data="this.data"></audio-recorder>
@@ -32,7 +50,7 @@ export default {
   components: {
     AudioRecorder
   },
-  name: "AcidRainGame",
+  name: "RockGame",
   data() {
     return {
       audioRecordings: new Array(1),
@@ -53,68 +71,36 @@ export default {
   created() {
     http.get("game/word")
       .then((res)=>{
-        this.word=res.data.word
+        this.boxes=res.data.word
+        console.log("testestsetset",this.boxes)
       })
       .catch((err)=>{
         console.log(err);
       })
-    this.startGame();
-    this.placeLetter();
-    this.moveLetters();
+      this.startGame();
   },
   watch: {
     audioRecordings: function (newVal, oldVal) {
-      if(this.boxes.length<2) return;
-      for (var i = 1; i < this.boxes.length; i++) 
-        if (this.boxes[i].innerText == newVal[0].mypron) {
-          this.score+=10
-          this.boxes[i].remove();
-          if (this.life == 0) {
-            this.gameIsOver = true;
-            this.endGame();
-          }
-          break;
-        }
-    }
-  },
-  mounted() {
-    box = document.getElementById("box");
-  },
-  methods: {
-    placeLetter: function () {
-      this.count = this.count + 0.4;
-      if(this.word==null) return
-
-      let i = (Math.random()*100/15).toFixed(0);; 
-      this.letters = this.word[i].content
-      const abc = document.querySelectorAll("#box > div")
+      if(newVal[0].mypron==null) return
+      newVal[0].mypron=newVal[0].mypron.replace(/(\s*)/g, "")
       
-      var newLetter = document.createElement("div");
-      newLetter.id = "quiz";
-      newLetter.innerHTML = this.letters;
-
-      newLetter.style.left = 5 + Math.random() * 85 + "%";
-      newLetter.style.bottom = 700+ "px";
-
-      box.appendChild(newLetter);
-    },
-    // 글자 이동
-    moveLetters: function () {
-      this.boxes = document.querySelectorAll("#box > div");
+      console.log("test2",newVal[0].mypron)
       for (var i = 0; i < this.boxes.length; i++) {
-        this.boxes[i].style.bottom = parseInt(this.boxes[i].style.bottom) - 3 - this.count + "px";
-        if (parseInt(this.boxes[i].style.bottom) <= 0) {
-          this.life = this.life - 1;
-          this.boxes[i].remove();
-          // console.log("life",this.life)
-          if (this.life == 0) {
-            this.gameIsOver = true;
-            this.endGame();
-          }
+        if (this.boxes[i].content == newVal[0].mypron) {
+          console.log(this.boxes[i])
+          this.score+=10
+          this.boxes[i].content="     ";
+          return;
         }
       }
-    },
-    // 게임 종료
+      this.life =this.life-1;
+      if (this.life == 0) {
+        this.gameIsOver = true;
+        this.endGame();
+      }
+    }
+  },
+  methods: {
     endGame: function () {
       const rank = {
           userNick: this.$store.getters.getUser.userNickName,
@@ -142,8 +128,6 @@ export default {
           console.log(err);
         })
 
-      clearInterval(moveLettersTimer);
-      clearInterval(placeLetterTimer);
       Swal.fire({
           html: this.$store.getters.getUser.userNickName+"님의 점수는 "+this.score+"점 입니다.<br>다시 한 번 플레이하시겠습니까?",
           showConfirmButton: true,
@@ -157,26 +141,20 @@ export default {
     },
     
     resetGame: function () {
-      this.gameIsOver = false;
       this.score = 0;
       this.life = 5;
-      
-      var boxes = document.querySelectorAll("#quiz");
-      for (var i = 2; i < this.boxes.length; i++) {
-        // console.log(this.boxes[i])
-        this.boxes[i].remove();
-      }
-
-      clearInterval(moveLettersTimer);
-      clearInterval(placeLetterTimer);
-
+      http.get("game/word")
+      .then((res)=>{
+        this.boxes=res.data.word
+        console.log("testestsetset",this.boxes)
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
       this.startGame()
     },
-    
     startGame: function () {
       this.life = 5;
-      placeLetterTimer = setInterval(this.placeLetter, placeLetterInterval);
-      moveLettersTimer = setInterval(this.moveLetters, 100);
     },
   },
   destroyed() {
@@ -186,10 +164,21 @@ export default {
 </script>
 
 <style>
+.content{
+  height:15%;
+  text-align:center;
+}
+.words{
+  height : 100%;
+}
+.word{
+  height : 75%;
+  margin-top : 15%;
+}
 .font{
   font-family: "neodgm_pro";
-    font-weight: bold;
-    font-size: x-large;
+  font-weight: bold;
+  font-size: x-large;
 }
 .acid{
   min-height: 100vh;
@@ -223,7 +212,7 @@ export default {
   flex: 70%;
   border-radius: 20px;
   box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.733);
-  background-image: url("../../assets/rain.png");
+  background-image: url("../../assets/rock.png");
   background-size : cover;
   position: relative;
   overflow: hidden;

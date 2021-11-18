@@ -11,6 +11,7 @@ import About from '../views/About/About.vue';
 import Practice from '../views/Practice/Practice.vue';
 import PracticeScore from "../components/Practice/Score.vue";
 import AcidRain from "../components/AcidRain/AcidRainGame.vue";
+import Rock from "../components/Rock/RockGame.vue";
 import SentencePractice from "../components/Practice/SentencePractice.vue";
 import Unity from "../views/Unity/Unity.vue";
 import CamSetting from "../views/MyPage/CamSetting.vue";
@@ -71,6 +72,11 @@ const routes = [
     path: "/acidRain",
     name: "acidRain",
     component: AcidRain
+  },
+  {
+    path: "/rock",
+    name: "rock",
+    component: Rock
   },
   {
     path: "/score",
