@@ -60,11 +60,12 @@
     this.dispatchEvent(new CustomEvent('start'));
   }
   audioRecorderStart(stream){
+    console.log(stream)
     var AudioContext = window.AudioContext || window.webkitAudioContext;
     this._audioRecorder = new AudioContext();
     this.input = this._audioRecorder.createMediaStreamSource(stream);
     this.rec = new Recorder(this.input,{numChannels:1})
-
+    console.log(this.rec)
     this.rec.record();
   }
 
@@ -210,8 +211,9 @@
                   recBuffers = [],
                   sampleRate = undefined,
                   numChannels = undefined;
-  
-              this.onmessage = function (e) {
+                console.log("onmessage")
+              self.onmessage = function (e) {
+                  console.log(e)
                   switch (e.data.command) {
                       case 'init':
                           init(e.data.config);
@@ -258,7 +260,7 @@
                   var dataview = encodeWAV(interleaved);
                   var audioBlob = new Blob([dataview], { type: type });
   
-                  this.postMessage({ command: 'exportWAV', data: audioBlob });
+                  self.postMessage({ command: 'exportWAV', data: audioBlob });
               }
   
               function getBuffer() {
@@ -266,7 +268,7 @@
                   for (var channel = 0; channel < numChannels; channel++) {
                       buffers.push(mergeBuffers(recBuffers[channel], recLength));
                   }
-                  this.postMessage({ command: 'getBuffer', data: buffers });
+                  self.postMessage({ command: 'getBuffer', data: buffers });
               }
   
               function clear() {
