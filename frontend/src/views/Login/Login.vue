@@ -36,7 +36,7 @@
 
             <div class="text-center" style="margin-top: 20px;">
               <div class="pixel2" style="text-align: center;" @click="onSubmit">L O G I N</div>
-              <div class="pixel2" style="text-align: center; color:yellow;" @click="onKakao">K a k a o L o g i n</div>
+              <!-- <div class="pixel2" style="text-align: center; color:yellow;" @click="onKakao">K a k a o L o g i n</div> -->
             </div>
           </form>
           <div class="moves">
