@@ -137,9 +137,7 @@ export default {
         }
 
         httpUser.post("api/users/game/result", JSON.stringify(result))
-            .then((res) => {
-              // console.log(res)
-              
+            .then((res) => {              
             }).catch((err)=>{
           console.log(err);
         })
@@ -164,8 +162,10 @@ export default {
       this.life = 5;
       
       var boxes = document.querySelectorAll("#quiz");
-      for (var i = 1; i < this.boxes.length; i++) 
+      for (var i = 2; i < this.boxes.length; i++) {
+        console.log(this.boxes[i])
         this.boxes[i].remove();
+      }
 
       clearInterval(moveLettersTimer);
       clearInterval(placeLetterTimer);
