@@ -2,6 +2,8 @@
  * Crude class for recording HTML5 audio
  * Emits the following events: start, stop, pause, resume
  */
+
+
  export default class MRecorder extends EventTarget {
   URL = window.URL || window.webkitURL;
 
@@ -166,7 +168,7 @@
           throw new TypeError("Cannot call a class as a function");
       }
   }
-  var self = {};
+  
   var Recorder = exports.Recorder = (function () {
       function Recorder(source, cfg) {
           var _this = this;
@@ -204,14 +206,14 @@
           source.connect(this.node);
           this.node.connect(this.context.destination); //this should not be necessary
   
-          
+          var self = {};
           this.worker = new _inlineWorker2.default(function () {
               var recLength = 0,
                   recBuffers = [],
                   sampleRate = undefined,
                   numChannels = undefined;
   
-              self.onmessage = function (e) {
+              this.onmessage = function (e) {
                   switch (e.data.command) {
                       case 'init':
                           init(e.data.config);
