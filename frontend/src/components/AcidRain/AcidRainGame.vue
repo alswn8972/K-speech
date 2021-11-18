@@ -180,7 +180,7 @@ export default {
     },
   },
   destroyed() {
-    this.endGame();
+    this.resetGame();
   },
 };
 </script>
