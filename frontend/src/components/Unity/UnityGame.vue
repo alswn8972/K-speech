@@ -140,6 +140,9 @@ export default {
                         case "Computer": // 정보공유/코드공유 - blackboard
                             this.$router.push({name : 'practice'});
                             break;
+                        case "Rain":
+                            this.$$router.pus({name : 'acidRain'});
+                            break;
                         case "Ranking":
                             this.$router.push({name : 'Award'});
                             break;

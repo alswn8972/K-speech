@@ -54,11 +54,7 @@ export default {
     },
     handleLogout(){
       this.$store.commit('logout');
-<<<<<<< HEAD
-      window.location.href="https://52.79.253.253:443/"
-=======
       window.location.href="https://k5d104.p.ssafy.io/"
->>>>>>> frontend
     },
     handleAbout(){
         this.$router.push('/').catch(()=>{});;
