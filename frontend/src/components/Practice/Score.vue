@@ -34,7 +34,7 @@
          </v-col>
        </v-row>
        <div class="top" style="margin-bottom: 10px;">
-         <p> <i class="fas fa-cat"></i> Average : {{this.aver}}</p>
+         <p> <i class="fas fa-cat"></i> Average : {{this.aver.toFixed(3)}}</p>
         </div>
         <div @click="goHome()" class="pixel2" >홈으로</div>
       </div>
