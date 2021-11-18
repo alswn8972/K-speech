@@ -13,6 +13,7 @@
             </div>
              <!-- hideFooter : 하단의 Full screen을 표시유무 , ref : 유니티와의 커뮤니케이션-->
             <unity id="bts-unity" 
+            style="margin-top : 10%;"
             src = "./unity/Build/unityWebgl.json"
             unityLoader = "./unity/Build/UnityLoader.js"
             :width=width
