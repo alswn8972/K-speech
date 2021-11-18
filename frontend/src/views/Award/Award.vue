@@ -24,7 +24,7 @@
                   <i class="fas fa-medal" v-if="index==0" style="color: #FFFA82;"></i>
                   <i class="fas fa-medal" v-if="index==1" style="color: #969696	;"></i>
                   <i class="fas fa-medal" v-if="index==2" style="color: #A05C37	;"></i>
-                  <span> User : {{item.userNick}}, Level : {{item.level}} , Score : {{item.score}}</span>
+                  <span> User : {{item.userNick}}, Score : {{item.score}}</span>
                   </li>
               </ul>
             </div>
@@ -41,7 +41,7 @@
                   <i class="fas fa-medal" v-if="index==0" style="color: #FFFA82;"></i>
                   <i class="fas fa-medal" v-if="index==1" style="color: #969696	;"></i>
                   <i class="fas fa-medal" v-if="index==2" style="color: #A05C37	;"></i>
-                  <span> User : {{item.userNick}}, Level : {{item.level}} , Score : {{item.score}}</span>
+                  <span> User : {{item.userNick}}, Score : {{item.score}}</span>
                   </li>
               </ul>
             </div>
@@ -59,7 +59,7 @@
                   <i class="fas fa-medal" v-if="index==0" style="color: #FFFA82;"></i>
                   <i class="fas fa-medal" v-if="index==1" style="color: #969696	;"></i>
                   <i class="fas fa-medal" v-if="index==2" style="color: #A05C37	;"></i>
-                  <span> User : {{item.userNick}}, Level : {{item.level}} , Score : {{item.score}}</span>
+                  <span> User : {{item.userNick}}, Score : {{item.score}}</span>
                   </li>
               </ul>
             </div>
@@ -77,7 +77,7 @@
                   <i class="fas fa-medal" v-if="index==0" style="color: #FFFA82;"></i>
                   <i class="fas fa-medal" v-if="index==1" style="color: #969696	;"></i>
                   <i class="fas fa-medal" v-if="index==2" style="color: #A05C37	;"></i>
-                  <span> User : {{item.userNick}}, Level : {{item.level}} , Score : {{item.score}}</span>
+                  <span> User : {{item.userNick}}, Score : {{item.score}}</span>
                   </li>
               </ul>
               </ul>
