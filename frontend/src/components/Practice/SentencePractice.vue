@@ -82,7 +82,7 @@ export default {
 
         http.post("game/save/score", JSON.stringify(rank))
             .then((res) => {
-              console.log(res)
+              // console.log(res)
             }).catch((err)=>{
           console.log(err);
         })
@@ -96,7 +96,7 @@ export default {
 
         httpUser.post("api/users/game/result", JSON.stringify(result))
             .then((res) => {
-              console.log(res)
+              // console.log(res)
               
             }).catch((err)=>{
           console.log(err);
