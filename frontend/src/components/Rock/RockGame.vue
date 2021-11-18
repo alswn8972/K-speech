@@ -1,7 +1,7 @@
 <template>
   <div class = "acid">
     <div class="rain">
-      <div id="box">
+      <div id="box_r">
         <div class="title">
           <a class="font">{{this.score}} 점</a>
           <div class= "right"> 
@@ -180,32 +180,12 @@ export default {
   font-weight: bold;
   font-size: x-large;
 }
-.acid{
-  min-height: 100vh;
-  background-color:#eeb66c;
-  font-family: "neodgm_pro";
-  font-weight: bold;
-  font-size: x-large;
-  display: flex;
-  justify-content: center;
-}
-.rain{
-  width: 70%;
-  height: 750px;
-  background-color: #f4f1eb;
-  flex: 70%;
-  border-radius: 20px;
-  margin: 2% 15%;
-  box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.733);
-  position: relative;
-  overflow: hidden;
-}
 .score{
   width: 80%;
   height: 800px;
 }
 
-#box {
+#box_r {
   flex-direction: row;
   width: 100%;
   height: 100%;
@@ -217,20 +197,7 @@ export default {
   position: relative;
   overflow: hidden;
 }
-
-#quiz{
-  display: inline-block;
-  position: absolute;
-  height: 50px;
-  width: 100px;
-  text-align: center;
-  transition-property: bottom;
-  transition-duration: 100ms;
-  transition-timing-function: linear;
-  transition-delay: 0;
-  z-index: 200;
-}
-.title{
+.title_r{
   text-align: center;
   position: relative;
   flex-direction: row;
