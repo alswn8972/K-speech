@@ -134,7 +134,10 @@ export default {
                             this.$router.push({name : 'practice'});
                             break;
                         case "Rain":
-                            this.$router.push({name : 'acidRain'});
+                            this.$router.push({name : 'acidRain'});rock
+                            break;
+                        case "Rock":
+                            this.$router.push({name : 'rock'});
                             break;
                         case "Ranking":
                             this.$router.push({name : 'Award'});
