@@ -105,7 +105,7 @@ export default {
       const rank = {
           userNick: this.$store.getters.getUser.userNickName,
           score : this.score,
-          type : 3,
+          type : 4,
         }
 
       http.post("game/save/score", JSON.stringify(rank))
@@ -119,7 +119,7 @@ export default {
           userId: this.$store.getters.getUser.userId,
           date : new Date(),
           score : this.score,
-          type : 3,
+          type : 4,
         }
 
         httpUser.post("api/users/game/result", JSON.stringify(result))
