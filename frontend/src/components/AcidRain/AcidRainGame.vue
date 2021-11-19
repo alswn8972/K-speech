@@ -179,7 +179,6 @@ export default {
     },
   },
   destroyed() {
-    console.log("실행되냐")
     this.resetGame();
   },
 };

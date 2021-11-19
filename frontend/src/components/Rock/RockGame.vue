@@ -156,7 +156,6 @@ export default {
       http.get("game/word")
       .then((res)=>{
         this.boxes=res.data.word
-        console.log("testestsetset",this.boxes)
       })
       .catch((err)=>{
         console.log(err);
