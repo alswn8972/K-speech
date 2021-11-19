@@ -35,6 +35,38 @@ public class RedisRunner implements ApplicationRunner {
         redisService.addWord("구미", "구미", 1);
         redisService.addWord("진로", "질로", 1);
         redisService.addWord("졸업", "조럽", 1);
+        redisService.addWord("취업", "취업", 1);
+        redisService.addWord("공원", "공원", 1);
+        redisService.addWord("나무판자", "나무판자", 1);
+        redisService.addWord("잡초", "잡초", 1);
+        redisService.addWord("땅콩", "땅콩", 1);
+        redisService.addWord("딱지", "딱찌", 1);
+        redisService.addWord("천연두", "처년두", 1);
+        redisService.addWord("깐부", "깐부", 1);
+        redisService.addWord("오리", "오리", 1);
+        redisService.addWord("초밥", "초밥", 1);
+        redisService.addWord("반창고", "반창고", 1);
+        redisService.addWord("의사", "의사", 1);
+        redisService.addWord("간호사", "간호사", 1);
+        redisService.addWord("대법원", "대버붠", 1);
+        redisService.addWord("야채", "야채", 1);
+        redisService.addWord("채소", "채소", 1);
+        redisService.addWord("과일", "과일", 1);
+        redisService.addWord("고기", "고기", 1);
+        redisService.addWord("물", "물", 1);
+        redisService.addWord("나무", "나무", 1);
+        redisService.addWord("한글", "한글", 1);
+        redisService.addWord("한문", "한문", 1);
+        redisService.addWord("한자", "한자", 1);
+        redisService.addWord("수료", "수료", 1);
+        redisService.addWord("통과", "통과", 1);
+        redisService.addWord("합격", "합껵", 1);
+        redisService.addWord("취직", "취직", 1);
+
+
+
+
+
 
         redisService.addSentence("면접보세요", "면접보세요",1);
         redisService.addSentence("안녕하세요", "안녕하세요",1);
