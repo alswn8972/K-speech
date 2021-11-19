@@ -2,6 +2,8 @@
 
 
 
+
+
 # 👍기획의도
 
 
@@ -48,6 +50,22 @@
 ![matabus](./readme_image/matabus.gif)
 
 ## 2. 발음 게임
+
+![practice_word](./readme_image/practice_word.gif)
+
+
+
+![practice_sentence](./readme_image/practice_sentence.gif)
+
+
+
+![rain_game](./readme_image/rain_game.gif)
+
+
+
+![rock_game](./readme_image/rock_game.gif)
+
+
 
 
 
