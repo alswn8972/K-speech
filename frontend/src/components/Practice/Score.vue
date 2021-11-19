@@ -90,4 +90,5 @@ export default {
 </script>
 
 <style scoped src="../../css/Score.css">
+
 </style>
