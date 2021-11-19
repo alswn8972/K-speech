@@ -54,6 +54,7 @@ export default {
   data() {
     return {
       audioRecordings: new Array(1),
+      gamecnt : 0,
       index : 0,
       letter : "",
       score: 0,
@@ -72,7 +73,6 @@ export default {
     http.get("game/word")
       .then((res)=>{
         this.boxes=res.data.word
-        console.log("testestsetset",this.boxes)
       })
       .catch((err)=>{
         console.log(err);
@@ -84,12 +84,22 @@ export default {
       if(newVal[0].mypron==null) return
       newVal[0].mypron=newVal[0].mypron.replace(/(\s*)/g, "")
       
-      console.log("test2",newVal[0].mypron)
       for (var i = 0; i < this.boxes.length; i++) {
         if (this.boxes[i].content == newVal[0].mypron) {
-          console.log(this.boxes[i])
           this.score+=10
+          this.gamecnt +=1
           this.boxes[i].content="     ";
+          
+          if(this.gamecnt>=15){
+            http.get("game/word")
+              .then((res)=>{
+                this.boxes=res.data.word
+              })
+              .catch((err)=>{
+                console.log(err);
+              })
+            this.gamecnt=0
+          }
           return;
         }
       }

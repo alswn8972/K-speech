@@ -65,7 +65,7 @@ export default {
   watch: {
     audioRecordings: function (newVal, oldVal) {
       if(this.boxes.length<2) return;
-      for (var i = 1; i < this.boxes.length; i++) 
+      for (var i = 2; i < this.boxes.length; i++) 
         if (this.boxes[i].innerText == newVal[0].mypron) {
           this.score+=10
           this.boxes[i].remove();
@@ -101,7 +101,7 @@ export default {
     // 글자 이동
     moveLetters: function () {
       this.boxes = document.querySelectorAll("#box > div");
-      for (var i = 0; i < this.boxes.length; i++) {
+      for (var i = 2; i < this.boxes.length; i++) {
         this.boxes[i].style.bottom = parseInt(this.boxes[i].style.bottom) - 3 - this.count + "px";
         if (parseInt(this.boxes[i].style.bottom) <= 0) {
           this.life = this.life - 1;
