@@ -106,7 +106,6 @@ export default {
         if (parseInt(this.boxes[i].style.bottom) <= 0) {
           this.life = this.life - 1;
           this.boxes[i].remove();
-          // console.log("life",this.life)
           if (this.life == 0) {
             this.gameIsOver = true;
             this.endGame();
@@ -160,10 +159,10 @@ export default {
       this.gameIsOver = false;
       this.score = 0;
       this.life = 5;
+      this.count = 0;
       
       var boxes = document.querySelectorAll("#quiz");
       for (var i = 2; i < this.boxes.length; i++) {
-        // console.log(this.boxes[i])
         this.boxes[i].remove();
       }
 
@@ -180,6 +179,7 @@ export default {
     },
   },
   destroyed() {
+    console.log("실행되냐")
     this.resetGame();
   },
 };
