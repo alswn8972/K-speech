@@ -7,10 +7,7 @@
                     <p id="mini-alt-text" >돌아가기</p>
                 </div>
             </div>
-            <div id="keydown-map-alt" class="map-alt" v-if="keydownAlt">
-                <v-icon id="keydown-alt-icon">fas fa-exclamation-circle</v-icon>
-                <p id="keydown-alt-text">캐릭터를 움직이기 위해선 게임 화면을 클릭해 주세요.</p>
-            </div>
+            
              <!-- hideFooter : 하단의 Full screen을 표시유무 , ref : 유니티와의 커뮤니케이션-->
             <unity id="bts-unity" 
             style="margin-top : 10%;"
@@ -32,7 +29,6 @@
 </template>
 <script>
 import Unity from 'vue-unity-webgl';
-//import http from '../../util/http-common.js';
 
 export default {
 
@@ -105,15 +101,14 @@ export default {
             if(newVal){
                 const top = document.querySelector('#nav').getBoundingClientRect().height + 1;
                 const target = document.querySelector('#unity-game-container')
-                //직사각형 만들기
+                
                 const targetRect = target.getBoundingClientRect();
-                // this.width = targetRect.width;
-                // this.height = window.innerHeight-102;
+                
                 this.width=960
                 this.height=540
                 const unity = document.querySelector('#unity-game');
                 unity.style.transform = `translate(470px,130px)`;
-                //unity.style.transform = `translate(${targetRect.left}px+20px,102px)`;
+                
             }else{
                 this.width = '150';
                 this.height = '100';
@@ -126,7 +121,6 @@ export default {
 
     methods : {
         getUnityHook(){
-            //닉네임 연동
             if(this.$refs.hookInstance !== undefined) this.$refs.hookInstance.message('NetworkManager','initNick',this.user.userNickName);
             this.linked = true;
             this.objectName = "";
@@ -135,10 +129,15 @@ export default {
                 
                 if(document.getElementById('unity-object-name').innerHTML != this.objectName){
                     this.objectName = document.getElementById('unity-object-name').innerHTML;
-                    //console.log("objectName",this.objectName);
                     switch (this.objectName) {
-                        case "Computer": // 정보공유/코드공유 - blackboard
+                        case "Computer": 
                             this.$router.push({name : 'practice'});
+                            break;
+                        case "Rain":
+                            this.$router.push({name : 'acidRain'});
+                            break;
+                        case "Rock":
+                            this.$router.push({name : 'rock'});
                             break;
                         case "Ranking":
                             this.$router.push({name : 'Award'});

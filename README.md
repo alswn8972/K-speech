@@ -1,3 +1,82 @@
+# K-Speech
+
+
+
+
+
+# 👍기획의도
+
+
+
+- 코로나 장기화로 마스크를 쓰고 지내는 시간이 길어지면서 최근 언어학습에 대한 문제가 증가 → 아이들의 경우 부모나 선생님의 입모양 표정등을 보고 글과 감정을 배우는데 마스크로 가려져있다..
+  
+    ![Untitled](./readme_image/Untitled.png)
+    
+- 최근 K-pop, K드라마 등 전세계 사람들이 한국어에 대한 관심이 많아지고 있는 추세다. 이는 외국인들의 한국어 능력시험 응시자의 증가를 통해 알 수 있다.
+  
+    ![Untitled](./readme_image/Untitled%201.png)
+    
+
+⇒ 아이들과 한국 문화를 좋아하는 외국인들이 이용할 수 있는 한국어 발음 연습 플랫폼을 제공
+
+
+
+# ✡️기술스택
+
+- Frontend : Vuejs, javascript, vuex, axios, webgl
+
+- Backend : Springboot, JPA, QueryDSL
+
+- Unity : Unity Hub , 2019.4.32f  unity
+
+- Infra : docker, Jenkins, Nginx, Redis, Mysql, SpringCloud,Openvidu
+
+  
+
+# 💫아키텍처
+
+![Untitled](./readme_image/Untitled%202.png)
+
+
+
+
+
+# ☪️주요 기능
+
+
+
+## 1. 메타버스
+
+![matabus](./readme_image/matabus.gif)
+
+## 2. 발음 게임
+
+![practice_word](./readme_image/practice_word.gif)
+
+
+
+![practice_sentence](./readme_image/practice_sentence.gif)
+
+
+
+![rain_game](./readme_image/rain_game.gif)
+
+
+
+![rock_game](./readme_image/rock_game.gif)
+
+
+
+
+
+## 3. 화상채팅
+
+![meeting](./readme_image/meeting.gif)
+
+
+
+
+
 ### GIT 규칙
 
 - 작업단위로 브랜치 생성하여 작업하기
@@ -36,3 +115,13 @@
   본문은 "어떻게" 보다 "무엇을", "왜"를 설명한다.
 
   본문에 여러줄의 메시지를 작성할 땐 "-"로 구분
+
+
+
+# 멤버
+
+- 강민주 : Backend ,Redis
+- 배태호 : Frontend ,산성비 게임 개발
+- 변준형 : Frontend , Redis
+- 봉대현 : Unity , SSL 적용 ,openvidu
+- 윤동현 : Spring Cloud , CI/CD , Docker

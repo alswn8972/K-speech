@@ -74,7 +74,7 @@ import axios from 'axios';
 import { OpenVidu } from "openvidu-browser";
 import UserVideo from "@/components/WebCam/UserVideo";
 
-const OPENVIDU_SERVER_URL = "https://k5d104.p.ssafy.io:443";
+const OPENVIDU_SERVER_URL = "https://k5d104.p.ssafy.io:4443";
 const OPENVIDU_SERVER_SECRET = "k5d104";
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 

@@ -81,20 +81,19 @@
     <section class="fullpage home6">
       <div class="home6__box">
         <div class="home6__title">
-          02. 가상환경에서의 상호작용
-          <div class="home6__subtitle">개인학습 서비스가 제공됩니다.</div>
+          03. 실제 사람과의 화상채팅
         </div>
         <div class="home6__content">
           <div class="home6__card">
             <div class="home6__card__img"></div>
-            <div class="home6__card__title blue">산성비 게임</div>
+            <div class="home6__card__title blue">여러 사람들과의 대화를 통한 발음 연습</div>
           </div>
-          <img src="../../assets/main_students.png" alt="">
+          <!-- <img src="../../assets/main_students.png" alt="">
           <div class="home6__content__plus"></div>
           <div class="home6__card">
             <div class="home6__card__img2"></div>
             <div class="home6__card__title blue">자원캐기 게임</div>
-          </div>
+          </div> -->
         </div>        
       </div>
     </section>
@@ -483,7 +482,7 @@ export default {
       border: 4px solid var(--color-white);
       width: 396px;
       height: 396px;
-      background: center no-repeat url("../../assets/calender_check.png");
+      background: center no-repeat url("../../assets/webcam.png");
       background-size: 100% 100%;
     }
     &__img2{

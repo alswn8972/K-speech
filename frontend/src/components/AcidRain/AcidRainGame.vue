@@ -7,7 +7,7 @@
           <div class= "right"> 
           
           <span v-for="idx in this.life" :key="idx">
-          <img src="./heart.png" style="width: 30px" />
+          <img src="../../assets/heart.png" style="width: 30px" />
           </span>
           </div>
         </div>
@@ -65,7 +65,7 @@ export default {
   watch: {
     audioRecordings: function (newVal, oldVal) {
       if(this.boxes.length<2) return;
-      for (var i = 1; i < this.boxes.length; i++) 
+      for (var i = 2; i < this.boxes.length; i++) 
         if (this.boxes[i].innerText == newVal[0].mypron) {
           this.score+=10
           this.boxes[i].remove();
@@ -101,12 +101,11 @@ export default {
     // 글자 이동
     moveLetters: function () {
       this.boxes = document.querySelectorAll("#box > div");
-      for (var i = 0; i < this.boxes.length; i++) {
+      for (var i = 2; i < this.boxes.length; i++) {
         this.boxes[i].style.bottom = parseInt(this.boxes[i].style.bottom) - 3 - this.count + "px";
         if (parseInt(this.boxes[i].style.bottom) <= 0) {
           this.life = this.life - 1;
           this.boxes[i].remove();
-          console.log("life",this.life)
           if (this.life == 0) {
             this.gameIsOver = true;
             this.endGame();
@@ -160,10 +159,10 @@ export default {
       this.gameIsOver = false;
       this.score = 0;
       this.life = 5;
+      this.count = 0;
       
       var boxes = document.querySelectorAll("#quiz");
       for (var i = 2; i < this.boxes.length; i++) {
-        console.log(this.boxes[i])
         this.boxes[i].remove();
       }
 

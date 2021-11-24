@@ -33,7 +33,7 @@ export default {
       isRecoding: false,
       mypron : null,
       score : null,
-      accessKey : '9ce13ac9-a6bf-43ea-acd4-edec418e0a3a',
+      accessKey : 'c23cef1f-ed3f-4449-9cdf-20397f93b6d7',
       languageCode : 'korean',
       audioURL :null,
       recorder : null,
