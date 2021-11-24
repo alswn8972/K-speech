@@ -8,7 +8,9 @@
          <v-col>
            <ul>
              <li v-for="(item,index) in content.slice(0,5)" :key="item.id" class="text" >
+
                 {{item}} :
+
                 {{score[index]}}
              </li>
              
@@ -26,15 +28,19 @@
           <v-col>
             <ul>
              <li v-for="(item,index) in content.slice(10,15)" :key="item.id" class="text">
+
                {{item}} :
                  {{score[index+10]}}
+
              </li>
             
            </ul>
          </v-col>
        </v-row>
        <div class="top" style="margin-bottom: 10px;">
+
          <p> <i class="fas fa-cat"></i> Average : {{this.aver.toFixed(3)}}</p>
+
         </div>
         <div @click="goHome()" class="pixel2" >홈으로</div>
       </div>
