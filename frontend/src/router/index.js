@@ -10,6 +10,7 @@ import Award from "../views/Award/Award.vue";
 import About from '../views/About/About.vue';
 import Practice from '../views/Practice/Practice.vue';
 import PracticeScore from "../components/Practice/Score.vue";
+import AcidRain from "../components/AcidRain/AcidRainGame.vue";
 import SentencePractice from "../components/Practice/SentencePractice.vue";
 import Unity from "../views/Unity/Unity.vue";
 import CamSetting from "../views/MyPage/CamSetting.vue";
@@ -65,6 +66,11 @@ const routes = [
     path: "/sentence",
     name: "sentence",
     component: SentencePractice
+  },
+  {
+    path: "/acidRain",
+    name: "acidRain",
+    component: AcidRain
   },
   {
     path: "/score",

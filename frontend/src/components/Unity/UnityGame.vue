@@ -4,7 +4,7 @@
             <div id="mini-map-alt" class="map-alt" v-if="!showMap">
                 <div class="mini-alt">
                     <v-icon id="mini-alt-icon">fas fa-undo-alt</v-icon>
-                    <p id="mini-alt-text">돌아가기</p>
+                    <p id="mini-alt-text" >돌아가기</p>
                 </div>
             </div>
             <div id="keydown-map-alt" class="map-alt" v-if="keydownAlt">
@@ -13,6 +13,7 @@
             </div>
              <!-- hideFooter : 하단의 Full screen을 표시유무 , ref : 유니티와의 커뮤니케이션-->
             <unity id="bts-unity" 
+            style="margin-top : 10%;"
             src = "./unity/Build/unityWebgl.json"
             unityLoader = "./unity/Build/UnityLoader.js"
             :width=width
@@ -88,27 +89,7 @@ export default {
         //unity.style.transform = `translate(${targetRect.left}px,102px)`;
         unity.style.transform = `translate(470px
         ,130px)`;
-        // document.addEventListener(
-        //     "click",
-        //     function (event) {
-        //         if (event.target.closest("#game-container")){ // 유니티 가능
-        //             if(this.$refs.hookInstance !== undefined) this.$refs.hookInstance.message('Game Manager','focusing',"true");
-        //             this.unityFocus = true;
-        //             this.keydownAlt = false;
-        //         }else{ // 윈도우 인풋 가능
-        //             if(this.$refs.hookInstance !== undefined)  this.$refs.hookInstance.message('Game Manager','focusing',"false");
-        //             this.unityFocus = false;
-        //         }
-        //     }.bind(this)
-        // );
-        // document.addEventListener(
-        //     "keydown",
-        //     function (event) {
-        //         if(this.$route.name === "Unity" && !this.unityFocus && this.enterMap){
-        //             this.keydownAlt = true;
-        //         }
-        //     }.bind(this)
-        // );
+       
     },
     computed : {
         showMap : function(){
@@ -174,23 +155,7 @@ export default {
                     this.RoomName = document.getElementById('unity-room-name').innerHTML;
                     console.log(this.RoomName)
                     this.$store.commit('setRoomName',this.RoomName);
-                    // //get 해서 방번호 저장하기
-                    // http.get(`v1/room/${this.schoolName}`)
-                    //   .then(res=>{
-                    //     if(res.data.data==="존재하지 않는 방입니다."){
-                    //       http.post(`v1/room/${this.schoolName}`)
-                    //         .then(res2=>{
-                    //           this.$store.commit('setSchoolId',res2.data.data);
-                    //           this.$store.commit('setSchoolName',this.schoolName);
-                    //         })
-                    //         .catch(err=>{
-                    //           console.error(err);
-                    //         })
-                    //     } else{
-                    //       this.$store.commit('setSchoolId',res.data.data);
-                    //       this.$store.commit('setSchoolName',this.schoolName);
-                    //     }
-                    //   })
+                   
                     this.unityFocus = false;
                     this.enterMap = true;
                 }

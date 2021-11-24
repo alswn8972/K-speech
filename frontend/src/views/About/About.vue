@@ -65,14 +65,14 @@
 
     <section class="fullpage home3">
       <div class="home3__box">
-        <div class="home3__title">01. 다양한 게임 제공</div>
+        <div class="home3__title">02. 메타버스 공간</div>
         <div class="home3__content">
           <div class="home3__content__left"></div>
           <div class="home3__content__right">
             <p>메타버스(Metaverse)란</p>
             <p>가상·초월(meta)과 세계·우주(universe)의 합성어로</p>
             <p>3차원 가상 세계를 뜻합니다.</p>
-            <p><span class="blue">백투스쿨</span>은 Unity를 통해</p>
+            <p><span class="blue">K-Speech</span>는 Unity를 통해</p>
             <p>가상환경으로 서비스를 제공합니다.</p>
           </div>
         </div>
@@ -258,7 +258,7 @@ export default {
     &__left{
       width: 700px;
       height: 600px;
-      background: center no-repeat url("../../assets/main_unity.gif");
+      background: center no-repeat url("../../assets/about_image.gif");
       background-size: 100% auto;
       margin-right: 11rem;
     }

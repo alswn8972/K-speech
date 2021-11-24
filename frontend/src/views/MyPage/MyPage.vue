@@ -33,7 +33,6 @@
                 <li>
                   <i class="fas fa-medal"> Rank</i>
                   {{rain_rank[0]}}</li>
-                <li><i class="fas fa-sign"> Level</i>  {{rain_rank[1].level}}</li>
                 <li><i class="fas fa-star"> Score</i> {{rain_rank[1].score}}</li>
               </ul>
             </div>
@@ -49,7 +48,6 @@
                 <li>
                   <i class="fas fa-medal"> Rank</i>
                   {{rock_rank[0]}}</li>
-                <li><i class="fas fa-sign"> Level</i> {{rock_rank[1].level}}</li>
                 <li><i class="fas fa-star"> Score</i> {{rock_rank[1].score}}</li>
               </ul>
             </div>
@@ -66,7 +64,6 @@
                 <li>
                   <i class="fas fa-medal"> Rank</i>
                   {{word_rank[0]}}</li>
-                <li><i class="fas fa-sign"> Level</i> {{word_rank[1].level}}</li>
                 <li><i class="fas fa-star"> Score</i> {{word_rank[1].score}}</li>
               </ul>
             </div>
@@ -82,7 +79,6 @@
                 <li>
                   <i class="fas fa-medal"> Rank</i>
                   {{sentence_rank[0]}}</li>
-                <li><i class="fas fa-sign"> Level</i>{{sentence_rank[1].level}}</li>
                 <li><i class="fas fa-star"> Score</i> {{sentence_rank[1].score}}</li>
               </ul>
             </div>

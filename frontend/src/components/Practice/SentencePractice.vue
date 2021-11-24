@@ -3,15 +3,15 @@
   <div class="pre_button" @click="pre"></div>
     <div class="practice_content" >
       <div class="practice_title">
-        <a>{{this.data[index].content}}</a>
+        <a class="pont">{{this.data[index].content}}</a>
         <audio-recorder v-model="audioRecordings" :index="this.index" :data="this.data"></audio-recorder>
       </div>
       <div class="practice_body">
-        <div><p>올바른 발음 : {{this.data[index].pron}}</p></div>
-        <div><p>내 발음 : {{audioRecordings[this.index].mypron}}</p></div>
-        <div><p>발음 점수 : {{audioRecordings[this.index].score}}</p></div>
+        <div><p class="pont">올바른 발음 : {{this.data[index].pron}}</p></div>
+        <div><p class="pont">내 발음 : {{audioRecordings[this.index].mypron}}</p></div>
+        <div><p class="pont">발음 점수 : {{audioRecordings[this.index].score}}</p></div>
       </div>
-      <p>{{index+1}}/ {{this.data.length}}</p>
+      <p class="pont">{{index+1}}/ {{this.data.length}}</p>
     </div>
     <div class="next_button" @click="next"></div>
   </div>
@@ -21,7 +21,6 @@
 import AudioDeviceSelectDialog from '../audio/AudioDeviceSelectDialog.vue';
 import http from "@/util/http-game";
 import httpUser from "@/util/http-common";
-import Recorder from '../../assets/js/recorder';
 import axios from "axios";
 import Swal from 'sweetalert2'
 import AudioRecorder from '../audio/AudioRecorder.vue'
