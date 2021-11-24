@@ -23,7 +23,7 @@ export default {
   },
   computed : {
     showUnity : function(){
-      if(this.$route.name === "MyPage" || this.$route.name === "CamSetting" || this.$route.name === "About"){
+      if(this.$route.name === "MyPage" || this.$route.name === "CamSetting" || this.$route.name === "About" || this.$route.name==="Login"){
         return false;
       }
       return true;

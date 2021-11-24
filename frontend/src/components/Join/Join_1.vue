@@ -14,12 +14,12 @@
               :disabled="this.iskakao"
               style="padding-top:0px" 
               class="join_input join_input_id" 
-              placeholder="이메일 형식으로 로그인해주세요 " 
+              placeholder="이메일 형식으로 입력해주세요." 
               single-line
               autocomplete="off"
             ></v-text-field>
 
-            <v-btn v-if="idCheck == false" class="join_id_check_btn" outlined color="#04338C" @click="CheckId">중복확인</v-btn>
+            <v-btn v-if="idCheck == false" class="join_id_check_btn" color="#ffffff" @click="CheckId">중복확인</v-btn>
             <v-btn v-if="idCheck == true" class="join_id_check_btn" style="color:white;" depressed color="#04338C">확인완료</v-btn> 
 
             <p class="mid_join_header" for="user-nick">닉네임</p>
@@ -34,7 +34,7 @@
               autocomplete="off"
             ></v-text-field>
 
-            <v-btn v-if="nickNameCheck == false" class="join_id_check_btn" outlined color="#04338C" @click="CheckNickName">중복확인</v-btn>
+            <v-btn v-if="nickNameCheck == false" class="join_id_check_btn" color="#ffffff" @click="CheckNickName">중복확인</v-btn>
             <v-btn v-if="nickNameCheck == true" class="join_id_check_btn" style="color:white;" depressed color="#04338C">확인완료</v-btn> 
 
             <p class="mid_join_header" for="user-pw">비밀번호</p>

@@ -3,7 +3,6 @@ import VueRouter from "vue-router";
 import Login from "../views/Login/Login.vue";
 import Camera from "../components/Login/Camere.vue";
 import Join from "../views/Join/Join.vue";
-import FindPw from "../views/FindPw/FindPw.vue";
 import MyPage from "../views/MyPage/MyPage.vue";
 import joinUserInfo from "../components/Join/Join_1.vue";
 import joinUserCheck from "../components/Join/Join_2.vue";
@@ -12,7 +11,9 @@ import About from '../views/About/About.vue';
 import Practice from '../views/Practice/Practice.vue';
 import PracticeScore from "../components/Practice/Score.vue";
 import SentencePractice from "../components/Practice/SentencePractice.vue";
-
+import Unity from "../views/Unity/Unity.vue";
+import CamSetting from "../views/MyPage/CamSetting.vue";
+import meeting from  "../views/meeting/meeting.vue"
 Vue.use(VueRouter);
 
 const routes = [
@@ -25,13 +26,13 @@ const routes = [
     path: "/login",
     name: "Login",
     component: Login,
-    // children: [
-    //   {
-    //     path: "camera",
-    //     name: "Camera",
-    //     component: Camera,
-    //   },
-    // ],
+    children: [
+      {
+        path: "camera",
+        name: "Camera",
+        component: Camera,
+      },
+    ],
   },
   {
     path: "/join",
@@ -70,37 +71,30 @@ const routes = [
     name: "score",
     component: PracticeScore
   },
-  // {
-  //   path: "/findpw",
-  //   name: "FindPw",
-  //   component: FindPw,
-  //   children: [
-  //     {
-  //       path: "",
-  //       name: "Confirm",
-  //       component: Confirm,
-  //     },
-  //     {
-  //       path: "changePw",
-  //       name: "ChangePw",
-  //       component: ChangePw,
-  //     },
-  //   ],
-  // },
   {
     path: "/mypage",
     name: "MyPage",
     component: MyPage,
   },
-  // {
-  //   path: "/camSetting",
-  //   name: "CamSetting",
-  //   component: CamSetting,
-  // },
+  {
+    path: "/camSetting",
+    name: "CamSetting",
+    component: CamSetting,
+  },
+  {
+    path: "/meeting",
+    name: "Meeting",
+    component: meeting,
+  },
   {
     path: "/award",
     name: "Award",
     component: Award
+  },
+  {
+    path : "/unityGame",
+    name : "Unity",
+    component : Unity,
   },
 ];
 

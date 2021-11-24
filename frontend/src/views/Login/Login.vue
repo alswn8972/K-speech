@@ -35,13 +35,13 @@
             <label class="id_remember" for="checkbox">아이디 기억하기</label>
 
             <div class="text-center" style="margin-top: 20px;">
-              <v-btn class="login_btn" rounded :color="classObject" dark @click="onSubmit">LOGIN</v-btn>
-              <v-btn class="login_btn" rounded style="background-color:#eee713" @click="onKakao">Kakao Login</v-btn>
+              <div class="pixel2" style="text-align: center;" @click="onSubmit">L O G I N</div>
+              <div class="pixel2" style="text-align: center; color:yellow;" @click="onKakao">K a k a o L o g i n</div>
             </div>
           </form>
           <div class="moves">
-            <router-link class="move" to="/join">회원가입</router-link> |
-            <router-link class="move" to="/findpw">비밀번호 찾기</router-link>
+            <router-link class="move" to="/join">회원가입</router-link>  <!-- |
+            <router-link class="move" to="/findpw">비밀번호 찾기</router-link> -->
           </div>
         </div>
       </div>
@@ -53,6 +53,7 @@
 import http from "@/util/http-common";
 import Swal from 'sweetalert2'
 import PV from "password-validator";
+import axios from 'axios';
 
 export default {
   name: "Login",
@@ -133,16 +134,21 @@ export default {
       .then((res) => {
         console.log(res);
         const token = res.data["accessToken"];
+        localStorage.setItem("token",token);
         if(token){
             this.$store.commit('login',res.data.user);
+            this.setUserInfo()
             Swal.fire({
             icon: "success",
             text: res.data['message'],
             showConfirmButton: false,
             timer: 1000,
             });
+            // this.$router.push({
+            //   name:'About'
+            // }); 
             this.$router.push({
-              name:'About'
+              name:'CamSetting'
             }); 
           }
           else{
@@ -160,6 +166,21 @@ export default {
     },
     onKakao(){
       window.location.replace("https://kauth.kakao.com/oauth/authorize?client_id=176a306530233dd86c855ff4bb75e587&redirect_uri=http://localhost:8000/join&response_type=code");
+    },
+    setUserInfo(){
+      const CSRF_TOKEN = localStorage.getItem("token");
+      http
+        .get(`/api/users/me`, {
+          headers: { "Authorization": 'Bearer ' + CSRF_TOKEN }
+        })
+        .then(({ data }) => {
+          //console.log("data",data);
+           this.$store.commit("setUser", data.user);
+         
+        })
+        .catch((err) => {
+       
+        });
     }
   }
 };
